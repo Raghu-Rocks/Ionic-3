@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title start>Card Events and Basic Card</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card (tap)="tapEvent($event)">
+    <ion-item>
+      Tapped: {{tap}} times
+    </ion-item>
+    <ion-card-content>
+      This is just your basic card with some text to boot. Like it?  Keep scrolling... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi architecto ullam officiis nostrum harum laudantium animi voluptatem eveniet necessitatibus ex dolor nobis tempora ut voluptates expedita, quod aliquid iusto quisquam!
+    </ion-card-content>
+  </ion-card>
+
+  <!--<ion-card (press)="pressEvent($event)">
+    <ion-item>
+      Pressed: {{press}} times
+    </ion-item>
+  </ion-card>
+
+  <ion-card (pan)="panEvent($event)">
+    <ion-item>
+      Panned: {{pan}} times
+    </ion-item>
+  </ion-card>-->
+
+  <ion-card (swipe)="swipeEvent($event)">
+    <ion-item>
+      Swiped: {{swipe}} times
+    </ion-item>
+    <ion-card-content>
+      This is just your basic card with some text to boot. Like it?  Keep scrolling...
+       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor doloribus numquam quo obcaecati quia repudiandae nobis fugit odit enim, tenetur id necessitatibus error laudantium, alias excepturi molestias commodi voluptatem reiciendis!
+    </ion-card-content>
+  </ion-card>
+
+
+
+<!--<ion-content class="cards-bg">
+<ion-card>
+  <ion-card-content>
+    This is just your basic card with some text to boot. Like it?  Keep scrolling...
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor doloribus numquam quo obcaecati quia repudiandae nobis fugit odit enim, tenetur id necessitatibus error laudantium, alias excepturi molestias commodi voluptatem reiciendis!
+  </ion-card-content>
+</ion-card>
+</ion-content>-->
+</ion-content>

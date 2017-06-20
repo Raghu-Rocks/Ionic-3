@@ -1,0 +1,25 @@
+
+     <!--<h2>Card :{{hero | json}}</h2>-->
+    <ion-card>
+       <ion-card-content>
+                <button ion-button full (click)="navigateToDetailPage()" color="secondary">Navigate to Detail page</button>
+                <button ion-button>Name :{{hero.name}}</button>
+                <p>1. Template : {{hero.template}}</p>
+                <p>2. Target_column_name : {{hero.target_column_name}}</p>
+                <p>3. Source_metric : {{hero.source_metric}}</p>
+                <p>4. Counter : {{hero.counter}}</p>
+        </ion-card-content>
+    </ion-card>
+
+
+<!--<ion-card>
+
+  <ion-card-header>
+    Card Header
+  </ion-card-header>
+
+  <ion-card-content>
+    \Dummy Data
+  </ion-card-content>
+
+</ion-card>-->
