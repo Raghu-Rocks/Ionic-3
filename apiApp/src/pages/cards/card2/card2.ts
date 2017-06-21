@@ -36,7 +36,7 @@ export class Card2Page {
   });
 }
   navigateToDetailPage(){
-    this.navCtrl.push("DetailScreen1Page", this.hero2)
+    this.navCtrl.push("DetailScreen2Page", this.hero2)
     console.log(this.hero2, "hero")
   }
 

@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class PeopleServiceProvider {
 data: any;
   constructor(public http: Http) {
-    console.log('Hello PeopleServiceProvider Provider');
+    // console.log('Hello PeopleServiceProvider Provider');
   }
   load() {
   if (this.data) {
