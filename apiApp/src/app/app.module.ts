@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage} from '../pages/home/home';
 import { Card1Page } from '../pages/cards/card1/cards';
 import { Card2Page } from '../pages/cards/card2/card2';
+// import { DetailScreen1Page } from '../pages/detail-screens/detail-screen1/detail-screen1';
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { PeopleServiceProvider } from '../providers/people-service/people-servic
     HomePage,
     Card1Page,
     Card2Page
+    // DetailScreen1Page
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,8 @@ import { PeopleServiceProvider } from '../providers/people-service/people-servic
   entryComponents: [
     MyApp,
     HomePage
+    // DetailScreen1Page
+    
   ],
   providers: [
     StatusBar,
