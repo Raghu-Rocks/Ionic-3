@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild} from '@angular/core';
+import { IonicPage, NavController, NavParams,Slides } from 'ionic-angular';
 
 /**
  * Generated class for the DetailScreen2Page page.
@@ -13,10 +13,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail-screen2.html',
 })
 export class DetailScreen2Page {
+    @ViewChild(Slides) slides: Slides;
+    public hero: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+// ngOnInit(){
+ ngAfterViewInit(){
+    this.slides.freeMode = true;
+    this.hero = this.navParams.get("hero");
+}
+  goToPrevSlide() {
+    this.slides.slidePrev();
+  }
+
+  goToNextSlide() {
+    this.slides.slideNext();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailScreen2Page');
   }

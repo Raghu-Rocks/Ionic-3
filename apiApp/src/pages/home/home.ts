@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  IonicPage, NavController, NavParams } from 'ionic-angular';
+import {  IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import {PeopleServiceProvider} from '../../providers/people-service/people-service';
 import { Card1Page } from '../../pages/cards/card1/cards';
 import { Card2Page } from '../../pages/cards/card2/card2';
@@ -14,9 +14,15 @@ import { Card2Page } from '../../pages/cards/card2/card2';
 export class HomePage {
   master = 'Master';
   public people: any;
-  constructor(public navCtrl: NavController, public peopleServiceProvider: PeopleServiceProvider, public navParams: NavParams) {
-this.loadPeople();
-  }
+
+  
+  constructor(
+    public navCtrl: NavController, 
+    public peopleServiceProvider: PeopleServiceProvider,
+    public navParams: NavParams,
+    public menu: MenuController) {
+        this.loadPeople();
+    }
 
 
 

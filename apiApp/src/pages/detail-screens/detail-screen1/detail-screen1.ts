@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 
 /**
  * Generated class for the DetailScreen1Page page.
@@ -13,17 +13,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail-screen1.html',
 })
 export class DetailScreen1Page {
-
+    @ViewChild(Slides) slides: Slides;
+    public hero: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
+  }
+// ngOnInit(){
+ ngAfterViewInit(){
+    this.slides.freeMode = true;
+    this.hero = this.navParams.get("hero");
+}
+  goToPrevSlide() {
+    this.slides.slidePrev();
   }
 
-ketchup: string[] = this.navParams.get('ketchup');
-
-goBack() {
-    this.navCtrl.pop();
-}
+  goToNextSlide() {
+    this.slides.slideNext();
+  }
+// goBack() {
+//     this.navCtrl.pop();
+// }
 ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailScreen1Page', this.ketchup);
+    console.log('ionViewDidLoad DetailScreen1Page', this.hero);
   }
 }

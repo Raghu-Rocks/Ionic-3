@@ -24,12 +24,10 @@ export class Card1Page {
   this.peopleServiceProvider.load()
   .then(data => {
         this.hero= data;
-        // console.log(this.hero,'this.hero',data,'data');
-        // this.processCard(this.people);
   });
 }
-  navigateToDetailPage(){
-    this.navCtrl.push("DetailScreen1Page", this.hero);
-    console.log(this.hero, "hero");
+  navigateToDetailPage(hero){
+    this.navCtrl.push("DetailScreen1Page", hero);
+    // console.log(this.hero, "hero");
   }
 }

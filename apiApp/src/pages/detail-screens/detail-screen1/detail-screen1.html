@@ -8,7 +8,17 @@
 
 
   <ion-content>
-    <p>{{hero | json}}</p>
-    <!-- Add card content here! -->detail  screen
+    <!--<p>{{navParams.data.detail_trends}}</p>-->
+<ion-slides pager>
+
+  <ion-slide style="background-color: blue"  *ngFor="let item of navParams.data.detail_trends; let i = index">
+    <h2>Slide</h2>
+      <button ion-button block (click)="goToPrevSlide()">Navigate Back</button>
+        <h2>{{item[0].detail}}</h2>
+        <h2>{{item[0].name}}</h2>
+        <h2>{{item[0].template}}</h2>
+      <button ion-button block (click)="goToNextSlide()">Navigate Forward</button>
+  </ion-slide>
+</ion-slides>
   </ion-content>
 
