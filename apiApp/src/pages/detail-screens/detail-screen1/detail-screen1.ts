@@ -15,10 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class DetailScreen1Page {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailScreen1Page');
-  }
+ketchup: string[] = this.navParams.get('ketchup');
 
+goBack() {
+    this.navCtrl.pop();
+}
+ionViewDidLoad() {
+    console.log('ionViewDidLoad DetailScreen1Page', this.ketchup);
+  }
 }

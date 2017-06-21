@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PeopleServiceProvider } from '../../../providers/people-service/people-service';
 
+
 @IonicPage()
 @Component({
   selector: 'card1-design',
   templateUrl: 'cards.html',
-    providers: [PeopleServiceProvider]
+  providers: [PeopleServiceProvider]
 })
 
 export class Card1Page {
@@ -28,7 +29,7 @@ export class Card1Page {
   });
 }
   navigateToDetailPage(){
-    this.navCtrl.push("DetailScreen1Page", this.hero)
-    console.log(this.hero, "hero")
+    this.navCtrl.push("DetailScreen1Page", this.hero);
+    console.log(this.hero, "hero");
   }
 }
