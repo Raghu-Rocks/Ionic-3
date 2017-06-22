@@ -46,7 +46,7 @@ ionViewDidLoad() {
     c3.generate({
         bindto: dashboardChartArea,
     // data: {
-    	url: '../../pages/home/c3Data.json',
+    	// url: '../../pages/home/c3Data.json',
     //     type : 'donut',
     // },
     data: {
@@ -61,10 +61,13 @@ ionViewDidLoad() {
         onmouseover: function (d, i) { console.log("onmouseover", d, i); },
         onmouseout: function (d, i) { console.log("onmouseout", d, i); }
     },
+    legend: {
+        show: false
+    },
     donut: {
         title: "100%",
         label: {
-            threshold: 0.05,
+            threshold: 0.06,
             //format: (value:number, ratio=0.5, id) => value +'' + ratio
         },
         // title: Math.round(percentage * 100),
