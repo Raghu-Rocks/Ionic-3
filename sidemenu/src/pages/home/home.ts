@@ -18,7 +18,11 @@ export class HomePage {
   
 @ViewChild ('dashboardChart') dashboardChart: ElementRef;
   
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController,  public httpProvider:HttpProvider, public loadingCtrl: LoadingController ) {
+  constructor(
+    public navCtrl: NavController,
+    public viewCtrl: ViewController,
+    public httpProvider:HttpProvider,
+    public loadingCtrl: LoadingController ) {
     // this.loading = this.loadingCtrl.create({
     //   content: `<ion-spinner></ion-spinner>`
     // });

@@ -1,10 +1,20 @@
-    <ion-card  color="wheat1">
+    <ion-card  color="wheat1" (click)="navigateToDetailPage()" >
        <ion-card-content>
-                <button ion-button color="green2">{{hero2.name}}</button>
-                <p>1. Template : {{hero2.template}}</p>
-                <p>2. Target_column_name : {{hero2.target_column_name}}</p>
-                <p>3. Source_metric : {{hero2.source_metric}}</p>
-                <p>4. Counter : {{hero2.counter}}</p>
-                <button ion-button full (click)="navigateToDetailPage()" color="green1">Navigate to Detail page</button>
+                <button ion-button full color="green1">{{hero2.name}}</button>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-6 col-sm>
+                          <p>Today</p>
+                              <div id="dashboardChart" #dashboardChart></div>
+                    </ion-col>
+                    <ion-col col-6 col-sm>
+                        <p>Today</p>
+                        <p>{{hero2.template}}</p>
+                        <p> {{hero2.target_column_name}}</p>
+                        <p>{{hero2.source_metric}}</p>
+                        <p> {{hero2.counter}}</p>
+                    </ion-col>
+                </ion-row>
+              </ion-grid>
         </ion-card-content>
     </ion-card>

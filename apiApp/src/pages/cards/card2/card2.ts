@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PeopleServiceProvider } from '../../../providers/people-service/people-service';
+import * as c3 from 'c3';  
+
 
 
 /**
@@ -20,12 +22,32 @@ export class Card2Page {
   
   @Input() hero2: PeopleServiceProvider;
   @Input('master') masterName: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public peopleServiceProvider: PeopleServiceProvider) {
-  }
+  @ViewChild ('dashboardCharts')dashboardChart: ElementRef;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Card2Page');
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public peopleServiceProvider: PeopleServiceProvider) {
   }
+ionViewDidLoad() {  
+    let dashboardChartArea = this.dashboardChart.nativeElement;
+
+    c3.generate({
+        bindto: "#dashboardChart",
+        data: {
+            type: 'bar',
+            columns: [
+                ['Under 18', 50],
+                ['Above 18', 50]
+            ]
+        },
+        donut: {
+            title: "Age"
+        }
+    });
+}
+
 
   loadPeople(){
   this.peopleServiceProvider.load()
