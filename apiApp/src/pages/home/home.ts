@@ -15,6 +15,7 @@ import * as c3 from 'c3';
 export class HomePage {
   master = 'Master';
   public people: any;
+  public bgimg: any;
   @ViewChild ('dashboardChart') dashboardChart: ElementRef;
 
   
@@ -23,6 +24,8 @@ export class HomePage {
     public navParams: NavParams,
     public peopleServiceProvider: PeopleServiceProvider,
     public menu: MenuController) {
+        // this.bgimg = 'images/background.png';
+        // style="background: url('{{bgimg}}')"
         this.loadPeople();
     }
 

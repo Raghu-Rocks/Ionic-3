@@ -5,10 +5,10 @@
   </ion-navbar>
 
 </ion-header>
-  <ion-content>
+  <ion-content class="app-bg">
 <ion-slides pager>
 
-  <ion-slide style="background-color: green"  *ngFor="let item of navParams.data.detail_trends; let i = index">
+  <ion-slide *ngFor="let item of navParams.data.detail_trends; let i = index">
     <h2>Slide</h2>
       <button ion-button block (click)="goToPrevSlide()">Navigate Back</button>
         <h2>{{item[0].detail}}</h2>
