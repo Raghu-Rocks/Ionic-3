@@ -20,8 +20,8 @@ export class Card1Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CardsPage');
   }
-  loadPeople(){
-  this.peopleServiceProvider.load()
+  loadPeople(url){
+  this.peopleServiceProvider.load(url)
   .then(data => {
         this.hero= data;
   });

@@ -14,7 +14,7 @@ data: any;
   constructor(public http: Http) {
     // console.log('Hello PeopleServiceProvider Provider');
   }
-  load() {
+  load(url) {
   if (this.data) {
     // already loaded data
     return Promise.resolve(this.data);
@@ -29,11 +29,12 @@ data: any;
       //  this.http.get('https://api.myjson.com/bins/wrm37') first one
      //  this.http.get('https://api.myjson.com/bins/pnt27')
     // this.http.get('https://api.myjson.com/bins/1c3ukf')
-    this.http.get('https://api.myjson.com/bins/dwd8f') //latest with detail screen
+    //this.http.get('https://api.myjson.com/bins/dwd8f') latest with detail screen
+    this.http.get(url) //latest with detail screen
 
       .map(res => res.json())
       .subscribe(data => {
-          this.data = data.columns;
+          this.data = data.cards;
           resolve(this.data);
       });
   });

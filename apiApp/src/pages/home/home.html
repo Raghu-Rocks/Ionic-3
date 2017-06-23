@@ -22,13 +22,8 @@
 
     <div *ngFor="let card of people let i = index; let f=first; let l=last; let e=even; let o=odd;">
       <!--<h1>Length : {{card.length}}</h1>-->
-        <div  *ngIf="card.id == 'same' ">
-            <card1-design [hero]="card"></card1-design>          
-        </div>
-
-        <div  *ngIf="card.template == 'channels'">
-            <card2-design [hero2]="card"></card2-design>          
-        </div>
-        
+            <card1-design  *ngIf="card.template == 'summary'" [hero]="card"></card1-design>
+            <card1-design  *ngIf="card.template == 'conversion'" [hero]="card"></card1-design>
+            <card2-design  *ngIf="card.template == 'channels'" [hero2]="card"></card2-design>          
     </div>
 </ion-content>

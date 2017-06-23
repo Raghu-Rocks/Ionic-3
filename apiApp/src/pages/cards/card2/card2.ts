@@ -49,8 +49,8 @@ ionViewDidLoad() {
 }
 
 
-  loadPeople(){
-  this.peopleServiceProvider.load()
+  loadPeople(url){
+  this.peopleServiceProvider.load(url)
   .then(data => {
         this.hero2= data;
         // console.log(this.hero,'this.hero',data,'data');

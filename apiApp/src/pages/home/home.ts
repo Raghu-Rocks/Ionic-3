@@ -26,13 +26,13 @@ export class HomePage {
     public menu: MenuController) {
         // this.bgimg = 'images/background.png';
         // style="background: url('{{bgimg}}')"
-        this.loadPeople();
+        this.loadPeople('/data.json');
     }
 
 
 
-loadPeople(){
-  this.peopleServiceProvider.load()
+loadPeople(url){
+  this.peopleServiceProvider.load(url)
   .then(data => {
         this.people= data;
         // console.log(this.people,'this.people',data,'data');
