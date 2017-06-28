@@ -45177,7 +45177,7 @@ ion-navbar.toolbar {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center center;
-  background-image: url("images/background.png");
+  background-image: url("../../assets/images/background.png");
 }
 
 .border-radius {
