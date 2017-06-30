@@ -29,8 +29,8 @@ data: any;
       //  this.http.get('https://api.myjson.com/bins/wrm37') first one
      //  this.http.get('https://api.myjson.com/bins/pnt27')
     // this.http.get('https://api.myjson.com/bins/1c3ukf')
-    //this.http.get('https://api.myjson.com/bins/dwd8f') latest with detail screen
-    this.http.get(url) //latest with detail screen
+    // this.http.get('https://api.myjson.com/bins/dwd8f') latest with detail screen
+    this.http.get(url)
 
       .map(res => res.json())
       .subscribe(data => {

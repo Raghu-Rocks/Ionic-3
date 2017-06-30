@@ -1,18 +1,22 @@
-
-     <!--<h2>Card :{{hero | json}}</h2>-->
-    <ion-card class="border-radius" color="greys"l (click)="navigateToDetailPage(this.hero)">
+    <div class="mail-icon-container">
+        <h2 class="card-name">{{hero.name}}</h2>
+        <ion-icon name="mail" class="mail-icon"></ion-icon>
+      </div>
+    <ion-card class="border-radius" color="greys" (click)="navigateToDetailPage(this.hero)">
         <ion-card-content>
-                <button ion-button full color="light-sky">{{hero.name}}</button>
                   <ion-grid>
                     <ion-row>
                       <ion-col col-12 col-sm>
                         1 of 4
                     </ion-col>
                     <ion-col col-12 col-sm>
-                      <p>1. Template : {{hero.template}}</p>
+                          <div> 
+                              <div id="dashboardChart{{card_index}}" #dashboardChart class="donut-chart"></div>
+                          </div>
+                      <!--<p>1. Template : {{hero.template}}</p>
                       <p>2. Target_column_name : {{hero.target_column_name}}</p>
                       <p>3. Source_metric : {{hero.source_metric}}</p>
-                      <p>4. Counter : {{hero.counter}}</p>
+                      <p>4. Counter : {{hero.counter}}</p>-->
                     </ion-col>
                 </ion-row>
               </ion-grid>

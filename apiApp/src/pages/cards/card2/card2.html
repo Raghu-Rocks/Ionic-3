@@ -1,18 +1,60 @@
+    <div class="mail-icon-container">
+        <h2 class="card-name">{{hero2.name}}</h2>
+        <ion-icon name="mail" class="mail-icon"></ion-icon>
+    </div> 
     <ion-card class="border-radius"  color="wheat1" (click)="navigateToDetailPage()" >
        <ion-card-content>
-                <button ion-button full color="green1">{{hero2.name}}</button>
                   <ion-grid>
                     <ion-row>
-                      <ion-col col-6 col-sm>
-                          <p>Today</p>
-                              <div id="dashboardChart" #dashboardChart></div>
+                      <ion-col col-6 col-sm >
+                          <p class="bold center-txt">{{hero2.collection[0].name}}</p>
+                          <div> 
+                              <div id="dashboardChart{{card_index}}" #dashboardChart class="donut-chart"></div>
+                          </div>
                     </ion-col>
                     <ion-col col-6 col-sm>
-                        <p>Today</p>
-                        <p>{{hero2.template}}</p>
-                        <p> {{hero2.target_column_name}}</p>
-                        <p>{{hero2.source_metric}}</p>
-                        <p> {{hero2.counter}}</p>
+                        <p class="bold center-txt">{{hero2.collection[0].name}}</p>                       
+                        <div>
+                            <span class="small-txt bold">Paid Search</span>
+                            <span class="small-txt legend-txt legend-paid">{{hero2.collection[0].axis_label.y_axis}}</span>
+                            <span class="small-txt legend-txt legend-paid">{{hero2.collection[0].data.Visits   | json}}</span>
+                            <span class="small-txt  legend-txt">0.25M</span>
+                            <div class="outer-div">
+                                <div class="inner-div paid-search"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="small-txt bold">Affiliates</span>
+                            <span class="small-txt legend-txt legend-affiliate">44.45K</span>
+                            <span class="small-txt legend-txt">70.56K</span>
+                            <div class="outer-div">
+                                <div class="inner-div affilates"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="small-txt bold">Organic</span>
+                            <span class="small-txt legend-txt legend-organic">1.5K</span>
+                            <span class="small-txt  legend-txt">0.00</span>
+                            <div class="outer-div">
+                                <div class="inner-div organic"></div>
+                            </div>
+                        </div>
+                        <!--<p>{{hero2.template}}</p>
+                        <p> {{hero2.date_today}}</p>
+                        <p>{{hero2.last_refreshed}}</p>-->
+                        <!--<p>{{hero2.collection[0].data}}</p>-->
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-list class="display-flex">
+                            <ion-item>
+                                <span class="legend-txt small-txt legend-paid">Paid Search</span>
+                                <span class="legend-txt small-txt legend-affiliate">Affiliates</span>
+                                <span class="legend-txt small-txt legend-organic">Organic</span>
+                                <span class="legend-txt small-txt legend-display">Display</span>
+                                <span class="legend-txt small-txt legend-others">others</span>
+                                <span class="legend-txt small-txt legend-projected">Projected</span>
+                            </ion-item>
+                        </ion-list>
                     </ion-col>
                 </ion-row>
               </ion-grid>

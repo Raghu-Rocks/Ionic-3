@@ -1,3 +1,26 @@
 page-card2 {
 
 }
+ion-card-content{padding: 0 !important;}
+.outer-div{
+    height: 20px;
+    background-color: #bdbdbd;
+    padding: 5px 15px 5px 0;
+    border-radius: 0 8px 8px 0px;
+}
+.inner-div{
+    height: 10px;
+    border-radius: 0 8px 8px 0px;    
+}
+.paid-search{
+    background-color: #d5406a;
+    color: #d5406a
+}
+.affilates{
+    color: #0d6580;
+    background-color: #0d6580;
+}
+.organic{
+    color: #21daa0;
+    background-color: #21daa0;
+}

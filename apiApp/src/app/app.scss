@@ -18,8 +18,53 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center center;
-  background-image: url("../../assets/images/background.png")
+  background-image: url("../../assets/images/background.png");
 }
-.border-radius{
-    border-radius: 6px; 
+
+.border-radius{border-radius: 6px;}
+.white-txt{color: #ffffff;}
+.small-txt {font-size: 10px;font-weight: normal;}
+.display-flex{display: flex; justify-content: space-between;}
+.bold{font-weight: bold;}
+.center-txt{text-align: center;}
+.right-txt{text-align: right;}
+
+.card-name{
+  font-size: 18px;
+  color: white;
+  line-height: 1.4;
+  background-color: transparent;
+  padding-left: 12px;
+  font-weight: 100;
+  margin: 20px 0 -5px;
+}
+.legend-txt::before{
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    background-color: #69b6d5;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+.legend-paid::before {background-color: #d5406a;}
+.legend-affiliate::before {background-color: #0d6580;}
+.legend-organic::before {background-color: #21daa0;}
+.legend-display::before {background-color: #D3885F;}
+.legend-others::before {background-color: #0B94FF;}
+.legend-projected::before {background-color: #E8E8E8;}
+.mail-icon-container{position: relative;}
+.mail-icon{
+    color: #3774FF;
+    position: absolute;
+    right: 20px;
+    padding: 2px 5px 0;
+    background-color: #ffffff;
+    font-size: 20px;
+    bottom: -10px;
+    border-radius: 5px 5px 0px 0px;
 }
