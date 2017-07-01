@@ -5,6 +5,12 @@
     <ion-card class="border-radius"  color="wheat1" (click)="navigateToDetailPage()" >
        <ion-card-content>
                   <ion-grid>
+
+   <!--{{hero2.collection[0].name | json}}-->
+   <!--{{ hero2.collection[0].data.Affiliates?.raghu?.paid | json}}-->
+                      {{hero2.collection[0].data.Visits | json}}
+
+                         <!--{{hero2.collection[0].data.Visits  | json}}-->
                     <ion-row>
                       <ion-col col-6 col-sm >
                           <p class="bold center-txt">{{hero2.collection[0].name}}</p>
@@ -17,7 +23,7 @@
                         <div>
                             <span class="small-txt bold">Paid Search</span>
                             <span class="small-txt legend-txt legend-paid">{{hero2.collection[0].axis_label.y_axis}}</span>
-                            <span class="small-txt legend-txt legend-paid">{{hero2.collection[0].data.Visits   | json}}</span>
+                            <span class="small-txt legend-txt legend-paid">asd</span>
                             <span class="small-txt  legend-txt">0.25M</span>
                             <div class="outer-div">
                                 <div class="inner-div paid-search"></div>
