@@ -5,10 +5,21 @@
     <ion-card class="border-radius"  color="wheat1" (click)="navigateToDetailPage()" >
        <ion-card-content>
                   <ion-grid>
+                     
+          <!--<span>suarj = {{abc}}</span>-->
 
+
+
+
+          <span *ngFor="let array of cardDataArray">
+                <span>{{array[0]}}</span>  <span>{{array[1]}}</span>
+          </span>
+
+   
+     <!--raghu = {{Object.entries(this.hero2.collection[0])}}-->
    <!--{{hero2.collection[0].name | json}}-->
    <!--{{ hero2.collection[0].data.Affiliates?.raghu?.paid | json}}-->
-                      {{hero2.collection[0].data.Visits | json}}
+                      <!--{{hero2.collection[0].data.Visits | json}}-->
 
                          <!--{{hero2.collection[0].data.Visits  | json}}-->
                     <ion-row>

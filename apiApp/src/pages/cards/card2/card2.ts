@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef} from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PeopleServiceProvider } from '../../../providers/people-service/people-service';
 // import { HomePage } from '../../home/home';
@@ -17,7 +17,6 @@ import * as c3 from 'c3';
   selector: 'card2-design',
   templateUrl: 'card2.html',
   providers: [PeopleServiceProvider]
-
 })
 export class Card2Page {
   
@@ -25,16 +24,15 @@ export class Card2Page {
   @Input('index') card_index:any;
   @Input('master') masterName: string;
   @ViewChild ('#dashboardCharts')dashboardChart: ElementRef;
-    public  nullArray = [];
-    public  notNullArray = [];
+    public data :any;
+    public cardData : any;
+    public cardDataArray:any;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    public peopleServiceProvider: PeopleServiceProvider) {
-    
-  
-  }
+    public peopleServiceProvider: PeopleServiceProvider,
+    private cdr: ChangeDetectorRef) {  }
 ngAfterViewInit() {
 //   console.log(this.card_index,'card_index1');
    // let dashboardChartArea = this.dashboardChart.nativeElement;
@@ -61,69 +59,27 @@ ngAfterViewInit() {
     });
 }
 
-
-//   loadPeople(url){
-//   this.peopleServiceProvider.load(url)
-//   .then(data => {
-//         this.hero2= data;
-//         // console.log(this.hero,'this.hero',data,'data');
-//         // this.processCard(this.people);
-//   });
-// }
   navigateToDetailPage(){
     this.navCtrl.push("DetailScreen2Page", this.hero2)
   //  console.log(this.hero2, "hero")
 }
 
 public keyValue:any;
-
+public van :any;
   mapjson (){
-   // let json = this.hero2;
- //  console.log("inside mapjon start");
-  //  console.log(JSON.parse(JSON.stringify( this.hero2)));
-  //    console.log("inside mapjon end");
-  //    let array = this.hero2;
-//debugger;
-
-  for (var index = 0; index < this.hero2.collection.length; index++) {
-      // console.log("INDEX ="+index);
-      let data:any =  this.hero2.collection[index];
-    //  console.log( this.hero2.collection[index]);
-      //  let suraj = Object.entries(data );
-      //  console.log("lkdsjfsd =" + suraj);
-  }
+  this.data = Object.entries(this.hero2.collection[0]);
   
-
-  let raghu = Object.entries(this.hero2.collection[0])
     // console.log("raghu =" + Object.entries(this.hero2.collection[0]));
-    let suraj = Object.entries(raghu[2][1]);
-    // console.log("suraj =" +  suraj[0][1]);
-    //  let suarabh =suraj[0][1];
-      // console.log("suarabh =" +  suarabh[0][0]);
-
-    let suarabh =  Object.entries(suraj[0][1]); 
-    // console.log("suarabh =" +  suarabh[0][1]);
-
-  let gst = Object.entries( suarabh[0][1]);
-
-  console.log("gst =" +  gst[2]);
-    
-    
-    
-    
-       //  console.log("raghu =" + Object.entries(this.hero2.collection[1] ));
-  //  let objs = Object.keys(json).map(key => json[key]); 
- //   console.log(objs, "object json");
-    // var filters = [{"user":"abc"},{"application":"xyz"}];
-    // for (let key in filters){
-    //     console.log( key + ": " + filters[key], "key");
-    // }
+    // debugger;
+    let temp = Object.entries(this.data[2][1]);
+    this.cardData = Object.entries(temp[0][1])[0][1];
+    this.cardDataArray = Object.entries(this.cardData);
+    // this.van = Object.entries(this.abc);
+    console.log(this.cardDataArray);
+    this.cdr.detectChanges();
   }
-
-myArray = [];
-for (anObject = this.hero2) { 
-   this.myArray.push(anObject)
-}
-
+// generateArray(obj){
+//    return Object.keys(obj).map((key)=>{ return obj[key]});
+// }
 
 }
