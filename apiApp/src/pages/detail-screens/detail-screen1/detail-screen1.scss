@@ -1,3 +1,93 @@
-page-detail-screen1 {
-
+.date-btn{
+    height: 40px;
+// display: inline-block;
+// -webkit-box-sizing: content-box;
+// -moz-box-sizing: content-box;
+// box-sizing: content-box;
+// float: none;
+// z-index: auto;
+// width: 106px;
+// height: auto;
+// position: static;
+// cursor: pointer;
+// opacity: 1;
+// margin: 0;
+// padding: 5px;
+// overflow: visible;
+// border: 20px none rgba(0,0,0,0);
+// -webkit-border-radius: 116px;
+// border-radius: 116px;
+// font: normal normal bold 15px/normal "Battambang", Helvetica, sans-serif;
+// color: darkslateblue;
+// text-align: center;
+// text-transform: uppercase;
+// -o-text-overflow: clip;
+// text-overflow: clip;
+// background: wheat;
+// -webkit-box-shadow: none;
+// box-shadow: none;
+// text-shadow: none;
+// -webkit-transition: background 0.2s cubic-bezier(0.25, 0.25, 0.75, 0.75);
+// -moz-transition: background 0.2s cubic-bezier(0.25, 0.25, 0.75, 0.75);
+// -o-transition: background 0.2s cubic-bezier(0.25, 0.25, 0.75, 0.75);
+// transition: background 0.2s cubic-bezier(0.25, 0.25, 0.75, 0.75);
+// -webkit-transform: none;
+// transform: none;
+// -webkit-transform-origin: 50% 50% 0;
+// transform-origin: 50% 50% 0;
+}
+.detail-back-btn button.back-button{
+    position: absolute;
+    z-index: 1;
+}
+.date-btn ion-icon{
+    margin-right: 5px;
+    // color: #204eb5;
+    font-weight: bolder;
+}
+.screen-title{
+    font-size: 20px;
+    font-weight: normal;
+    font-family: "Roboto";
+    color: #ffffff;
+}
+.bg-transparent{
+    background-color: transparent !important;
+}
+.demo-bullet{
+    height: 10px;
+    background: orange;
+    border-radius: 0px 15px 15px 0px;
+    margin-right: 5px;  
+}
+.detail-screen-card{
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.detail-screen-card-title{
+    margin: 5px 0;  
+}
+.bg-grey{
+    background-color: #464646;
+    border-radius: 5px 0 0 5px;
+}
+.bg-blue{
+    background-color: #0A3B66;
+    border-radius: 0 5px 5px 0;
+}
+.txt-total{
+    background: #0A3B66;
+    border: 1px solid black;
+    line-height: 15px;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 2px 8px 2px 8px;
+    margin: auto;
+    position: absolute;
+    bottom: -14%;
+    left: 43%;
+    margin: 0 auto;
+    z-index: 1;
+}
+.pos-relative{
+    position: relative;
 }

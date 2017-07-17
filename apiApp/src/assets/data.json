@@ -1,0 +1,899 @@
+{
+	"profile": {
+		"display_name": "Veerendra Mulage",
+		"display_title": "Senior Consultant, Adobe Global Services",
+		"display_image": "https://expcloudapp.adobe.com/mca/assets/images/profile/missing.gif",
+		"company_id": 3
+	},
+	"cards": [
+		{
+			"name": "Shoppers Trend",
+			"template": "summary",
+			"date_today": "2017-06-15",
+			"last_refreshed": "2017-06-15 14:09:12 IST",
+			"collection": [
+				{
+					"name": "Today",
+					"axis_label": {
+						"x_axis": "Sub Section 1 (v21)",
+						"y_axis": "Visits"
+					},
+					"data": {
+						"Visits": {
+							"15/06": 799389
+						},
+						"Target": {
+							"15/06": 2140979
+						},
+						"Projected": {
+							"15/06": 1998997
+						}
+					}
+				},
+				{
+					"name": "Last Week",
+					"axis_label": {
+						"x_axis": "Sub Section 1 (v21)",
+						"y_axis": "Visits"
+					},
+					"data": {
+						"Visits": {
+							"08/06": 1869446
+						},
+						"Target": {
+							"08/06": 1845093
+						}
+					}
+				},
+				{
+					"name": "Daily Trend",
+					"axis_label": {
+						"x_axis": "Sub Section 1 (v21)",
+						"y_axis": "Visits"
+					},
+					"data": {
+						"Visits": {
+							"07/06": 2024760,
+							"08/06": 1869442,
+							"09/06": 1860534,
+							"10/06": 1993113,
+							"11/06": 2316928,
+							"12/06": 2268757,
+							"13/06": 2094042,
+							"14/06": 2052511,
+							"15/06": 799389
+						},
+						"Target": {
+							"07/06": 1919866,
+							"08/06": 1845093,
+							"09/06": 1777872,
+							"10/06": 2076245,
+							"11/06": 2084035,
+							"12/06": 2198308,
+							"13/06": 2198684,
+							"14/06": 2168390,
+							"15/06": 2140979
+						},
+						"Projected": {
+							"15/06": 1998997
+						}
+					}
+				}
+			],
+			"detail_trends": [
+				[
+					{
+						"name": "Shoppers Hourly Trend - Last Week",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Sub Section 1 (v21)",
+								"y_axis": "Shoppers"
+							},
+							"data": {
+								"Shoppers": {
+									"08/06": 1869446
+								},
+								"Target": {
+									"08/06": 1845093
+								}
+							}
+						}
+					},
+					{
+						"name": "Shoppers Hourly Trend - Today",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Sub Section 1 (v21)",
+								"y_axis": "Shoppers"
+							},
+							"data": {
+								"Shoppers": {
+									"15/06": 799389
+								},
+								"Target": {
+									"15/06": 2140979
+								},
+								"Projected": {
+									"15/06": 1998997
+								}
+							}
+						}
+					},
+					{
+						"name": "Shoppers Report",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Sub Section 1 (v21)",
+								"y_axis": "Shoppers"
+							},
+							"data": {
+								"Shoppers": {
+									"00 ": 61017,
+									"01 ": 30432,
+									"02 ": 15686,
+									"03 ": 11151,
+									"04 ": 13511,
+									"05 ": 16763,
+									"06 ": 29015,
+									"07 ": 49968,
+									"08 ": 84530,
+									"09 ": 107418,
+									"10 ": 115870,
+									"11 ": 124453,
+									"12 ": 122863,
+									"13 ": 62809,
+									"14 ": null,
+									"15 ": null,
+									"16 ": null,
+									"17 ": null,
+									"18 ": null,
+									"19 ": null,
+									"20 ": null,
+									"21 ": null,
+									"22 ": null,
+									"23 ": null
+								},
+								"Target": {
+									"00 ": 70219,
+									"01 ": 33960,
+									"02 ": 16846,
+									"03 ": 9927,
+									"04 ": 8498,
+									"05 ": 13048,
+									"06 ": 30104,
+									"07 ": 55497,
+									"08 ": 74028,
+									"09 ": 86503,
+									"10 ": 103196,
+									"11 ": 117774,
+									"12 ": 123429,
+									"13 ": 123030,
+									"14 ": 131129,
+									"15 ": 135290,
+									"16 ": 127816,
+									"17 ": 117316,
+									"18 ": 114026,
+									"19 ": 129475,
+									"20 ": 132979,
+									"21 ": 134153,
+									"22 ": 141581,
+									"23 ": 111157
+								}
+							}
+						}
+					}
+				],
+				[
+					{
+						"name": "Orders Conversion Hourly Trend - Last Week",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Date",
+								"y_axis": "Orders Conversion Rate"
+							},
+							"data": {
+								"Orders Conversion Rate": {
+									"08/06": "3.45%"
+								},
+								"Target": {
+									"08/06": 0
+								}
+							}
+						}
+					},
+					{
+						"name": "Orders Conversion Hourly Trend - Today",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Date",
+								"y_axis": "Orders Conversion Rate"
+							},
+							"data": {
+								"Orders Conversion Rate": {
+									"15/06": "3.55%"
+								},
+								"Target": {
+									"15/06": 0
+								},
+								"Projected": {
+									"15/06": 0
+								}
+							}
+						}
+					},
+					{
+						"name": "Orders Report",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Date",
+								"y_axis": "Orders Conversion Rate"
+							},
+							"data": {
+								"Orders Conversion Rate": {
+									"00 ": "3.63%",
+									"01 ": "3.62%",
+									"02 ": "3.46%",
+									"03 ": "3.19%",
+									"04 ": "3.32%",
+									"05 ": "3.17%",
+									"06 ": "2.9%",
+									"07 ": "3.3%",
+									"08 ": "3.17%",
+									"09 ": "3.14%",
+									"10 ": "3.14%",
+									"11 ": "3.19%",
+									"12 ": "3.3%",
+									"13 ": "3.26%",
+									"14 ": null,
+									"15 ": null,
+									"16 ": null,
+									"17 ": null,
+									"18 ": null,
+									"19 ": null,
+									"20 ": null,
+									"21 ": null,
+									"22 ": null,
+									"23 ": null
+								},
+								"Target": {
+									"00 ": 0,
+									"01 ": 0,
+									"02 ": 0,
+									"03 ": 0,
+									"04 ": 0,
+									"05 ": 0,
+									"06 ": 0,
+									"07 ": 0,
+									"08 ": 0,
+									"09 ": 0,
+									"10 ": 0,
+									"11 ": 0,
+									"12 ": 0,
+									"13 ": 0,
+									"14 ": 0,
+									"15 ": 0,
+									"16 ": 0,
+									"17 ": 0,
+									"18 ": 0,
+									"19 ": 0,
+									"20 ": 0,
+									"21 ": 0,
+									"22 ": 0,
+									"23 ": 0
+								}
+							}
+						}
+					}
+				]
+			]
+		},
+		{
+			"name": "Order Conversion Trend",
+			"template": "conversion",
+			"date_today": "2017-06-15",
+			"last_refreshed": "2017-06-15 14:08:59 IST",
+			"collection": [
+				{
+					"name": "Today",
+					"axis_label": {
+						"x_axis": "Date",
+						"y_axis": "Orders Conversion Rate"
+					},
+					"data": {
+						"Orders Conversion Rate": {
+							"15/06": "3.55%"
+						},
+						"Target": {
+							"15/06": 0
+						},
+						"Projected": {
+							"15/06": 0
+						}
+					}
+				},
+				{
+					"name": "Last Week",
+					"axis_label": {
+						"x_axis": "Date",
+						"y_axis": "Orders Conversion Rate"
+					},
+					"data": {
+						"Orders Conversion Rate": {
+							"08/06": "3.45%"
+						},
+						"Target": {
+							"08/06": 0
+						}
+					}
+				},
+				{
+					"name": "Daily Trend",
+					"axis_label": {
+						"x_axis": "Date",
+						"y_axis": "Orders Conversion Rate"
+					},
+					"data": {
+						"Orders Conversion Rate": {
+							"07/06": "3.36%",
+							"08/06": "3.45%",
+							"09/06": "3.35%",
+							"10/06": "3.68%",
+							"11/06": "3.85%",
+							"12/06": "3.53%",
+							"13/06": "3.54%",
+							"14/06": "3.46%",
+							"15/06": "3.53%"
+						},
+						"Target": {
+							"07/06": 0,
+							"08/06": 0,
+							"09/06": 0,
+							"10/06": 0,
+							"11/06": 0,
+							"12/06": 0,
+							"13/06": 0,
+							"14/06": 0,
+							"15/06": 0
+						},
+						"Projected": {
+							"15/06": 0
+						}
+					}
+				}
+			],
+			"detail_trends": [
+				[
+					{
+						"name": "Orders Conv. Hourly Trend - Last Week",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Date",
+								"y_axis": "Orders Conversion Rate"
+							},
+							"data": {
+								"Orders Conversion Rate": {
+									"08/06": "3.45%"
+								},
+								"Target": {
+									"08/06": 0
+								}
+							}
+						}
+					},
+					{
+						"name": "Orders Conv. Hourly Trend - Today",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Date",
+								"y_axis": "Orders Conversion Rate"
+							},
+							"data": {
+								"Orders Conversion Rate": {
+									"15/06": "3.55%"
+								},
+								"Target": {
+									"15/06": 0
+								},
+								"Projected": {
+									"15/06": 0
+								}
+							}
+						}
+					},
+					{
+						"name": "Orders Report",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Date",
+								"y_axis": "Orders Conversion Rate"
+							},
+							"data": {
+								"Orders Conversion Rate": {
+									"00 ": "3.63%",
+									"01 ": "3.62%",
+									"02 ": "3.46%",
+									"03 ": "3.19%",
+									"04 ": "3.32%",
+									"05 ": "3.17%",
+									"06 ": "2.9%",
+									"07 ": "3.3%",
+									"08 ": "3.17%",
+									"09 ": "3.14%",
+									"10 ": "3.14%",
+									"11 ": "3.19%",
+									"12 ": "3.3%",
+									"13 ": "3.26%",
+									"14 ": null,
+									"15 ": null,
+									"16 ": null,
+									"17 ": null,
+									"18 ": null,
+									"19 ": null,
+									"20 ": null,
+									"21 ": null,
+									"22 ": null,
+									"23 ": null
+								},
+								"Target": {
+									"00 ": 0,
+									"01 ": 0,
+									"02 ": 0,
+									"03 ": 0,
+									"04 ": 0,
+									"05 ": 0,
+									"06 ": 0,
+									"07 ": 0,
+									"08 ": 0,
+									"09 ": 0,
+									"10 ": 0,
+									"11 ": 0,
+									"12 ": 0,
+									"13 ": 0,
+									"14 ": 0,
+									"15 ": 0,
+									"16 ": 0,
+									"17 ": 0,
+									"18 ": 0,
+									"19 ": 0,
+									"20 ": 0,
+									"21 ": 0,
+									"22 ": 0,
+									"23 ": 0
+								}
+							}
+						}
+					}
+				],
+				[
+					{
+						"name": "Shoppers Hourly Trend - Last Week",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Sub Section 1 (v21)",
+								"y_axis": "Shoppers"
+							},
+							"data": {
+								"Shoppers": {
+									"08/06": 1869446
+								},
+								"Target": {
+									"08/06": 1845093
+								}
+							}
+						}
+					},
+					{
+						"name": "Shoppers Hourly Trend - Today",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Sub Section 1 (v21)",
+								"y_axis": "Shoppers"
+							},
+							"data": {
+								"Shoppers": {
+									"15/06": 799389
+								},
+								"Target": {
+									"15/06": 2140979
+								},
+								"Projected": {
+									"15/06": 1998997
+								}
+							}
+						}
+					},
+					{
+						"name": "Shoppers Report",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Sub Section 1 (v21)",
+								"y_axis": "Shoppers"
+							},
+							"data": {
+								"Shoppers": {
+									"00 ": 61017,
+									"01 ": 30432,
+									"02 ": 15686,
+									"03 ": 11151,
+									"04 ": 13511,
+									"05 ": 16763,
+									"06 ": 29015,
+									"07 ": 49968,
+									"08 ": 84530,
+									"09 ": 107418,
+									"10 ": 115870,
+									"11 ": 124453,
+									"12 ": 122863,
+									"13 ": 62809,
+									"14 ": null,
+									"15 ": null,
+									"16 ": null,
+									"17 ": null,
+									"18 ": null,
+									"19 ": null,
+									"20 ": null,
+									"21 ": null,
+									"22 ": null,
+									"23 ": null
+								},
+								"Target": {
+									"00 ": 70219,
+									"01 ": 33960,
+									"02 ": 16846,
+									"03 ": 9927,
+									"04 ": 8498,
+									"05 ": 13048,
+									"06 ": 30104,
+									"07 ": 55497,
+									"08 ": 74028,
+									"09 ": 86503,
+									"10 ": 103196,
+									"11 ": 117774,
+									"12 ": 123429,
+									"13 ": 123030,
+									"14 ": 131129,
+									"15 ": 135290,
+									"16 ": 127816,
+									"17 ": 117316,
+									"18 ": 114026,
+									"19 ": 129475,
+									"20 ": 132979,
+									"21 ": 134153,
+									"22 ": 141581,
+									"23 ": 111157
+								}
+							}
+						}
+					}
+				]
+			]
+		},
+		{
+			"name": "Shoppers by Channel",
+			"template": "channels",
+			"date_today": "2017-06-15",
+			"last_refreshed": "2017-06-15 14:09:10 IST",
+			"collection": [
+				{
+					"name": "Today",
+					"axis_label": {
+						"x_axis": "Last Touch Marketing Channel",
+						"y_axis": "Visits"
+					},
+					"data": {
+						"Visits": {
+							"15/06": {
+								"Paid Search": 17.13,
+								"Affiliates": 4.66,
+								"Organic": 41.35,
+								"Display": 13.36,
+								"Others": 23.5
+							}
+						}
+					}
+				},
+				{
+					"name": "Today&#039;s Breakup",
+					"axis_label": {
+						"x_axis": "Last Touch Marketing Channel",
+						"y_axis": "Visits"
+					},
+					"data": {
+						"Visits": {
+							"15/06": {
+								"Paid Search": 95084,
+								"Affiliates": 25887,
+								"Organic": 229521,
+								"Display": 74138
+							}
+						},
+						"Projected": {
+							"15/06": {
+								"Paid Search": 290925,
+								"Affiliates": 81418,
+								"Organic": 251424,
+								"Display": 206284
+							}
+						}
+					}
+				}
+			],
+			"detail_trends": [
+				[
+					{
+						"name": "Shoppers by Channel - Last Week",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Last Touch Marketing Channel",
+								"y_axis": "Visits"
+							},
+							"data": {
+								"Visits": {
+									"08/06": {
+										"Paid Search": 220401,
+										"Affiliates": 70823,
+										"Organic": 519827,
+										"Display": 159329,
+										"Others": 349558
+									}
+								}
+							}
+						}
+					},
+					{
+						"name": "Shoppers by Channel - Today",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Last Touch Marketing Channel",
+								"y_axis": "Visits"
+							},
+							"data": {
+								"Visits": {
+									"15/06": {
+										"Paid Search": 95084,
+										"Affiliates": 25887,
+										"Organic": 229521,
+										"Display": 74138,
+										"Others": 130425
+									}
+								},
+								"Projected": {
+									"15/06": {
+										"Paid Search": 290925,
+										"Affiliates": 81418,
+										"Organic": 251424,
+										"Display": 206284
+									}
+								}
+							}
+						}
+					}
+				],
+				[
+					{
+						"name": "Orders by Channel - Last Week",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Last Touch Marketing Channel",
+								"y_axis": "Orders"
+							},
+							"data": {
+								"Orders": {
+									"08/06": {
+										"Paid Search": 4057,
+										"Affiliates": 2037,
+										"Organic": 32910,
+										"Display": 5797,
+										"Others": 16648
+									}
+								}
+							}
+						}
+					},
+					{
+						"name": "Orders by Channel - Today",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Last Touch Marketing Channel",
+								"y_axis": "Orders"
+							},
+							"data": {
+								"Orders": {
+									"15/06": {
+										"Paid Search": 1917,
+										"Affiliates": 883,
+										"Organic": 15593,
+										"Display": 2751,
+										"Others": 6046
+									}
+								},
+								"Projected": {
+									"15/06": {
+										"Paid Search": 3786,
+										"Affiliates": 5987,
+										"Organic": 30213,
+										"Display": 6209
+									}
+								}
+							}
+						}
+					}
+				]
+			]
+		},
+		{
+			"name": "Orders by Channel",
+			"template": "channels",
+			"date_today": "2017-06-15",
+			"last_refreshed": "2017-06-15 14:09:19 IST",
+			"collection": [
+				{
+					"name": "Today",
+					"axis_label": {
+						"x_axis": "Last Touch Marketing Channel",
+						"y_axis": "Orders"
+					},
+					"data": {
+						"Orders": {
+							"15/06": {
+								"Paid Search": 7.19,
+								"Affiliates": 3.31,
+								"Organic": 57.15,
+								"Display": 10.36,
+								"Others": 21.99
+							}
+						}
+					}
+				},
+				{
+					"name": "Todays Breakup",
+					"axis_label": {
+						"x_axis": "Last Touch Marketing Channel",
+						"y_axis": "Orders"
+					},
+					"data": {
+						"Orders": {
+							"15/06": {
+								"Paid Search": 1905,
+								"Affiliates": 877,
+								"Organic": 15141,
+								"Display": 2745
+							}
+						},
+						"Projected": {
+							"15/06": {
+								"Paid Search": 3786,
+								"Affiliates": 5987,
+								"Organic": 30213,
+								"Display": 6209
+							}
+						}
+					}
+				}
+			],
+			"detail_trends": [
+				[
+					{
+						"name": "Orders by Channel - Last Week",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Last Touch Marketing Channel",
+								"y_axis": "Orders"
+							},
+							"data": {
+								"Orders": {
+									"08/06": {
+										"Paid Search": 4025,
+										"Affiliates": 1981,
+										"Organic": 31189,
+										"Display": 5767,
+										"Others": 16237
+									}
+								}
+							}
+						}
+					},
+					{
+						"name": "Orders by Channel - Today",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Last Touch Marketing Channel",
+								"y_axis": "Orders"
+							},
+							"data": {
+								"Orders": {
+									"15/06": {
+										"Paid Search": 1905,
+										"Affiliates": 877,
+										"Organic": 15141,
+										"Display": 2745,
+										"Others": 5825
+									}
+								},
+								"Projected": {
+									"15/06": {
+										"Paid Search": 3786,
+										"Affiliates": 5987,
+										"Organic": 30213,
+										"Display": 6209
+									}
+								}
+							}
+						}
+					}
+				],
+				[
+					{
+						"name": "Shoppers by Channel - Last Week",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Last Touch Marketing Channel",
+								"y_axis": "Visits"
+							},
+							"data": {
+								"Visits": {
+									"08/06": {
+										"Paid Search": 241644,
+										"Affiliates": 91760,
+										"Organic": 795062,
+										"Display": 175514,
+										"Others": 1202850
+									}
+								}
+							}
+						}
+					},
+					{
+						"name": "Shoppers by Channel - Today",
+						"template": "trend",
+						"collection": {
+							"axis_label": {
+								"x_axis": "Last Touch Marketing Channel",
+								"y_axis": "Visits"
+							},
+							"data": {
+								"Visits": {
+									"15/06": {
+										"Paid Search": 106363,
+										"Affiliates": 44087,
+										"Organic": 359555,
+										"Display": 80284,
+										"Others": 491249
+									}
+								},
+								"Projected": {
+									"15/06": {
+										"Paid Search": 290925,
+										"Affiliates": 81418,
+										"Organic": 251424,
+										"Display": 206284
+									}
+								}
+							}
+						}
+					}
+				]
+			]
+		}
+	],
+	"success": true
+}

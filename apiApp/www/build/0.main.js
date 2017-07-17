@@ -1,13 +1,13 @@
 webpackJsonp([0],{
 
-/***/ 270:
+/***/ 271:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__detail_screen2__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__detail_screen2__ = __webpack_require__(274);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DetailScreen2PageModule", function() { return DetailScreen2PageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -26,13 +26,13 @@ var DetailScreen2PageModule = (function () {
 DetailScreen2PageModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__detail_screen2__["a" /* DetailScreen2Page */],
+            __WEBPACK_IMPORTED_MODULE_2__detail_screen2__["a" /* channels */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__detail_screen2__["a" /* DetailScreen2Page */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__detail_screen2__["a" /* channels */]),
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_2__detail_screen2__["a" /* DetailScreen2Page */]
+            __WEBPACK_IMPORTED_MODULE_2__detail_screen2__["a" /* channels */]
         ]
     })
 ], DetailScreen2PageModule);
@@ -41,13 +41,15 @@ DetailScreen2PageModule = __decorate([
 
 /***/ }),
 
-/***/ 272:
+/***/ 274:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DetailScreen2Page; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_c3__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_c3___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_c3__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return channels; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,44 +61,75 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
  * Generated class for the DetailScreen2Page page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-var DetailScreen2Page = (function () {
-    function DetailScreen2Page(navCtrl, navParams) {
+var channels = (function () {
+    function channels(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
     // ngOnInit(){
-    DetailScreen2Page.prototype.ngAfterViewInit = function () {
+    channels.prototype.ngAfterViewInit = function () {
         this.slides.freeMode = true;
         this.hero = this.navParams.get("hero");
+        //   console.log(this.card_index,'card_index1');
+        // let dashboardChartArea = this.dashboardChart.nativeElement;
+        //    console.log(this.card_index, "Card Index")
+        __WEBPACK_IMPORTED_MODULE_2_c3__["generate"]({
+            bindto: "#dashboardChart",
+            data: {
+                type: 'line',
+                columns: [
+                    ['data1', 30, 200, 100, 400, 150, 250],
+                    ['data2', 50, 20, 10, 40, 15, 25]
+                ]
+            },
+            legend: {
+                show: false
+            },
+            size: {
+                height: 120
+            },
+            donut: {
+                title: "Age"
+            }
+        });
     };
-    DetailScreen2Page.prototype.goToPrevSlide = function () {
+    channels.prototype.goToPrevSlide = function () {
         this.slides.slidePrev();
     };
-    DetailScreen2Page.prototype.goToNextSlide = function () {
+    channels.prototype.goToNextSlide = function () {
         this.slides.slideNext();
     };
-    DetailScreen2Page.prototype.ionViewDidLoad = function () {
+    channels.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad DetailScreen2Page');
     };
-    return DetailScreen2Page;
+    return channels;
 }());
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Slides */]),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Slides */])
-], DetailScreen2Page.prototype, "slides", void 0);
-DetailScreen2Page = __decorate([
+], channels.prototype, "slides", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* Input */])('index'),
+    __metadata("design:type", Object)
+], channels.prototype, "card_index", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('#dashboardCharts'),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* ElementRef */])
+], channels.prototype, "dashboardChart", void 0);
+channels = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-detail-screen2',template:/*ion-inline-start:"C:\My-Work\ionic\ionic_3\apiApp\src\pages\detail-screens\detail-screen2\detail-screen2.html"*/'\n<ion-header>\n  <ion-navbar>\n    <ion-title>detail-screen2</ion-title>\n  </ion-navbar>\n\n</ion-header>\n  <ion-content class="app-bg">\n<ion-slides pager>\n\n  <ion-slide *ngFor="let item of navParams.data.detail_trends; let i = index">\n    <h2>Slide</h2>\n      <button ion-button block (click)="goToPrevSlide()">Navigate Back</button>\n        <h2>{{item[0].detail}}</h2>\n        <h2>{{item[0].name}}</h2>\n        <h2>{{item[0].template}}</h2>\n      <button ion-button block (click)="goToNextSlide()">Navigate Forward</button>\n  </ion-slide>\n</ion-slides>\n  </ion-content>\n'/*ion-inline-end:"C:\My-Work\ionic\ionic_3\apiApp\src\pages\detail-screens\detail-screen2\detail-screen2.html"*/,
+        selector: 'page-detail-screen2',template:/*ion-inline-start:"C:\My-Work\ionic\ionic_3\apiApp\src\pages\detail-screens\detail-screen2\detail-screen2.html"*/'\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>detail-screen2</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n  <ion-content class="app-bg">\n\n         <div> \n\n            <span>Graph</span>\n\n         <div id="dashboardChart" #dashboardChart class="donut-chart"></div>\n\n         </div>\n\n<ion-slides pager>\n\n\n\n  <ion-slide *ngFor="let item of navParams.data.detail_trends; let i = index">\n\n    <h2>Slide</h2>\n\n      <button ion-button block (click)="goToPrevSlide()">Navigate Back</button>\n\n        <h2>{{item[0].detail}}</h2>\n\n        <h2>{{item[0].name}}</h2>\n\n        <h2>{{item[0].template}}</h2>\n\n      <button ion-button block (click)="goToNextSlide()">Navigate Forward</button>\n\n  </ion-slide>\n\n</ion-slides>\n\n  </ion-content>\n\n'/*ion-inline-end:"C:\My-Work\ionic\ionic_3\apiApp\src\pages\detail-screens\detail-screen2\detail-screen2.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
-], DetailScreen2Page);
+], channels);
 
 //# sourceMappingURL=detail-screen2.js.map
 

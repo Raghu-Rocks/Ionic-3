@@ -1,24 +1,47 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>detail-screen</ion-title>
+  <ion-navbar class="detail-back-btn">
+    <ion-title  align="center">
+      <button ion-button round class="date-btn">
+        <ion-icon  md="md-time" ios="ios-time-outline"></ion-icon>{{navParams.data.date_today}}
+      </button>
+      <!--<span class="date-btn">
+        <ion-icon  md="md-time" ios="ios-time-outline"></ion-icon>{{navParams.data.date_today}}
+      </span>-->
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
   <ion-content class="app-bg">
-    <!--<p>{{navParams.data.detail_trends}}</p>-->
-<ion-slides pager>
-
-  <ion-slide  *ngFor="let item of navParams.data.detail_trends; let i = index">
-    <h2>Slide</h2>
-      <button ion-button block (click)="goToPrevSlide()">Navigate Back</button>
-        <h2>{{item[0].detail}}</h2>
-        <h2>{{item[0].name}}</h2>
-        <h2>{{item[0].template}}</h2>
-      <button ion-button block (click)="goToNextSlide()">Navigate Forward</button>
-  </ion-slide>
-</ion-slides>
-  </ion-content>
+    <div  *ngFor="let item of navParams.data.detail_trends; let i = index; let f = first;">
+        <div *ngIf="f">
+        	<h2 class="screen-title" align="center">{{item[0].name}}</h2>
+<ion-grid class="white-txt">
+  <ion-row class="pos-relative">
+    <ion-col class="detail-screen-card bg-grey">
+                  	<p class="detail-screen-card-title">Last week</p>
+      				<div class="demo-bullet"></div>
+               		<div>
+                          		<span  class="legend-txt small-txt" >2.02M</span>
+                          		<span  class="legend-txt small-txt" >0.00</span>
+        			</div>
+    </ion-col>
+	<span class="txt-total">Total</span>
+    <ion-col class="detail-screen-card bg-blue">
+                  	<p class="detail-screen-card-title">Today</p>
+      				<div class="demo-bullet"></div>
+               		<div align="right">
+                          		<span  class="legend-txt small-txt" >2.02M</span>
+                          		<span  class="legend-txt small-txt" >0.00</span>
+        			</div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+        	<div> 
+         		<div id="dashboardChart" #dashboardChart class="donut-chart"></div>
+         	</div>
+      	</div>         
+    </div>
+</ion-content>
 

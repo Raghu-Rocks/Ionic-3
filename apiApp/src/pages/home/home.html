@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <button ion-button menuToggle class="hamburger">
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title text-center>Home</ion-title>
@@ -8,26 +8,10 @@
 </ion-header>
 
 <ion-content class="app-bg home">
-  
-    <!--<h2>{{master}} controls {{people.length}} heroes</h2>-->
-      <!--<page-cards [hero]="people" [master]="master"></page-cards>-->
-                    <!--<ion-grid>
-                    <ion-row>
-                      <ion-col col-6 col-sm>
-                              <div id="dashboardChart" #dashboardChart></div>
-                    </ion-col>
-                    <ion-col col-6 col-sm>
-                        <p>1. Template : </p>
-
-                    </ion-col>
-                </ion-row>
-              </ion-grid>-->
-
-
-    <div *ngFor="let card of people let i = index; let f=first; let l=last; let e=even; let o=odd;">
+      <div *ngFor="let card of people let i = index; let f=first; let l=last; let e=even; let o=odd;">
       <!--<h1>Length : {{card.length}}</h1>-->
-            <card1-design *ngIf="card.template == 'summary'" [hero]="card" [index]="i"></card1-design>          
-            <card1-design *ngIf="card.template == 'conversion'" [hero]="card" [index]="i"></card1-design>          
+            <card1-design *ngIf="card.template == 'summary' " [hero]="card" [index]="i"></card1-design>          
+            <!--<card1-design *ngIf="card.template == 'conversion'" [hero]="card" [index]="i"></card1-design>-->
             <card2-design *ngIf="card.template == 'channels'" [hero2]="card" [index]="i"></card2-design>          
     </div>
 </ion-content>

@@ -4,12 +4,41 @@
       </div>
     <ion-card class="border-radius" color="greys" (click)="navigateToDetailPage(this.hero)">
         <ion-card-content>
-                  <ion-grid>
+                  <ion-grid class="nopadding">
                     <ion-row>
                       <ion-col col-12 col-sm>
-                        1 of 4
+                            <div class="display-flex justify-content small-txt">
+                                  <span>
+                                              <span class="legend-txt legend-tdy bold">Today</span>
+                                              <span>1.37M</span>
+                                  </span>
+                                  <span>
+                                              <span class="legend-target legend-txt bold">Target</span>
+                                              <span>0.00</span>
+                                  </span>
+                                  <span>
+                                              <span class="legend-projected legend-txt bold">Projected</span>
+                                              <span>0.00</span>
+                                  </span>
+                            </div>
+                            <div class="card1-bullet-wraper">
+                                <div class="inner-div card1-bullet"></div>
+                            </div>
+                            <div class="card1-bullet-wraper">
+                                <div class="inner-div card1-bullet"></div>
+                            </div>
+                            <div class="display-flex small-txt">
+                                  <span class="mrgn-rght">
+                                              <span class="legend-txt legend-tdy bold">Last Week</span>
+                                              <span>1.78M</span>
+                                  </span>
+                                  <span>
+                                              <span class="legend-target legend-txt bold">Target</span>
+                                              <span>0.00</span>
+                                  </span>
+                            </div>
                     </ion-col>
-                    <ion-col col-12 col-sm>
+                    <ion-col col-12 col-sm class="bar-graph-bg">
                           <div> 
                               <div id="dashboardChart{{card_index}}" #dashboardChart class="donut-chart"></div>
                           </div>

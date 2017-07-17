@@ -295,7 +295,7 @@
 		},
 		{
 			"name": "Order Conversion Trend",
-			"template": "conversion",
+			"template": "summary",
 			"date_today": "2017-06-15",
 			"last_refreshed": "2017-06-15 14:08:59 IST",
 			"collection": [

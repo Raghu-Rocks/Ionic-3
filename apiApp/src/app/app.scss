@@ -15,20 +15,29 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 .app-bg{
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center center;
-  background-image: url("../../assets/images/background.png");
+  // background-image: url("../../assets/images/background.png");
+    // background: url("../../assets/images/background.png") no-repeat center center fixed; 
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    background-size: 100%;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,2989d8+50,207cca+100,7db9e8+100,207cca+100 */
+background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(left, #1e5799 0%, #2989d8 50%, #207cca 100%, #7db9e8 100%, #207cca 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #1e5799 0%,#2989d8 50%,#207cca 100%,#7db9e8 100%,#207cca 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #1e5799 0%,#2989d8 50%,#207cca 100%,#7db9e8 100%,#207cca 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#207cca',GradientType=1 ); /* IE6-9 */
 }
 
 .border-radius{border-radius: 6px;}
 .white-txt{color: #ffffff;}
 .small-txt {font-size: 10px;font-weight: normal;}
-.display-flex{display: flex; justify-content: space-between;}
+.display-flex{display: flex;}
+.display-flex span{display: inline-block;}
 .bold{font-weight: bold;}
 .center-txt{text-align: center;}
 .right-txt{text-align: right;}
-
+.nomargin{margin: 0;}
+.nopadding{padding: 0;}
 .card-name{
   font-size: 18px;
   color: white;
@@ -51,12 +60,14 @@
     margin-left: 3px;
 }
 
-.legend-paid::before {background-color: #d5406a;}
-.legend-affiliate::before {background-color: #0d6580;}
-.legend-organic::before {background-color: #21daa0;}
-.legend-display::before {background-color: #D3885F;}
-.legend-others::before {background-color: #0B94FF;}
-.legend-projected::before {background-color: #E8E8E8;}
+.legend-tdy::before            {background-color: #eaab1c;}
+.legend-target::before       {background-color: #00bb00;}
+.legend-paid::before          {background-color: #d5406a;}
+.legend-affiliate::before     {background-color: #0d6580;}
+.legend-organic::before     {background-color: #21daa0;}
+.legend-display::before      {background-color: #D3885F;}
+.legend-others::before       {background-color: #0B94FF;}
+.legend-projected::before  {background-color: #E8E8E8;}
 .mail-icon-container{position: relative;}
 .mail-icon{
     color: #3774FF;
@@ -67,4 +78,7 @@
     font-size: 20px;
     bottom: -10px;
     border-radius: 5px 5px 0px 0px;
+}
+.donut-chart{
+    font-size: 11px;
 }

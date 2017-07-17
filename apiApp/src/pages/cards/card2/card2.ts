@@ -2,9 +2,7 @@ import { Component, Input, ViewChild, ElementRef, ChangeDetectorRef } from '@ang
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PeopleServiceProvider } from '../../../providers/people-service/people-service';
 // import { HomePage } from '../../home/home';
-import * as c3 from 'c3';  
-
-
+import * as c3 from 'c3';
 
 /**
  * Generated class for the Card2Page page.
@@ -19,7 +17,7 @@ import * as c3 from 'c3';
   providers: [PeopleServiceProvider]
 })
 export class Card2Page {
-  
+
   @Input() hero2:any = PeopleServiceProvider;
   @Input('index') card_index:any;
   @Input('master') masterName: string;
@@ -36,16 +34,13 @@ export class Card2Page {
 ngAfterViewInit() {
 //   console.log(this.card_index,'card_index1');
    // let dashboardChartArea = this.dashboardChart.nativeElement;
-   this.mapjson ();
+   this.mapjson ();this.donutdata();
 
     c3.generate({
         bindto: "#dashboardChart"+this.card_index,
         data: {
             type: 'donut',
-            columns: [
-                ['Under 18', 50],
-                ['Above 18', 50]
-            ]
+            columns: this.cardDataArray,
         },
         legend: {
             show: false
@@ -53,19 +48,17 @@ ngAfterViewInit() {
         size: {
         height: 120
     },
-        donut: {
-            title: "Age"
-        }
+    donut: {
+      width: 12
+    }
     });
 }
 
   navigateToDetailPage(){
-    this.navCtrl.push("DetailScreen2Page", this.hero2)
+    this.navCtrl.push("channels", this.hero2)
   //  console.log(this.hero2, "hero")
 }
 
-public keyValue:any;
-public van :any;
   mapjson (){
   this.data = Object.entries(this.hero2.collection[0]);
   
@@ -74,12 +67,15 @@ public van :any;
     let temp = Object.entries(this.data[2][1]);
     this.cardData = Object.entries(temp[0][1])[0][1];
     this.cardDataArray = Object.entries(this.cardData);
-    // this.van = Object.entries(this.abc);
-    console.log(this.cardDataArray);
+    // console.log(this.cardDataArray, "dataArray");
     this.cdr.detectChanges();
   }
-// generateArray(obj){
-//    return Object.keys(obj).map((key)=>{ return obj[key]});
-// }
-
+  public element:any;
+  donutdata(){
+        for (var index = 0; index < this.cardDataArray.length; index++) {
+          this.element = this.cardDataArray[index];
+        }
+        // console.log(this.element[0],this.element[1], "element");
+        
+  }
 }

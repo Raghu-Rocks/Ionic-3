@@ -29,23 +29,19 @@ ngAfterViewInit() {
         data: {
             type: 'bar',
             columns: [
-                ['data1', 180, 170, 180, 180, 190, 190, 190, 190, 76 ]
+                ['data1', 180, 170, 180, 190, 170, 140, 170, 190, 76 ]
                 // ['data2', 180, 170, 180, 180, 190, 190, 190, 190, 76 ]
             ],
            colors: {
-            data1: '#eaab1c'
+            data1: '#F68B24'
             // data2: '#00ff00',
-            // data3: '#0000ff'
-        },
+            },
         },
         legend: {
             show: false
         },
         size: {
-        height: 120
-        },
-        donut: {
-            title: "Age"
+        height: 80
         },
         axis: {
         x: {
@@ -59,7 +55,7 @@ ngAfterViewInit() {
         },
        bar: {
         width: {
-            ratio: 0.95 // this makes bar width 50% of length between ticks
+            ratio: 0.9 // this makes bar width 50% of length between ticks
         }
        }
     });
@@ -72,7 +68,7 @@ ngAfterViewInit() {
 //   });
 // }
   navigateToDetailPage(hero){
-    this.navCtrl.push("DetailScreen1Page", hero);
+    this.navCtrl.push("summary", hero);
     // console.log(this.hero, "hero");
   }
 }

@@ -6,6 +6,10 @@
 
 </ion-header>
   <ion-content class="app-bg">
+         <div> 
+            <span>Graph</span>
+         <div id="dashboardChart" #dashboardChart class="donut-chart"></div>
+         </div>
 <ion-slides pager>
 
   <ion-slide *ngFor="let item of navParams.data.detail_trends; let i = index">

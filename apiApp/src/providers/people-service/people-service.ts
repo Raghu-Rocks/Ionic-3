@@ -26,10 +26,7 @@ data: any;
     // then on the response, it'll map the JSON data to a parsed JS object.
     // Next, we process the data and resolve the promise with the new data.
 
-      //  this.http.get('https://api.myjson.com/bins/wrm37') first one
-     //  this.http.get('https://api.myjson.com/bins/pnt27')
-    // this.http.get('https://api.myjson.com/bins/1c3ukf')
-    // this.http.get('https://api.myjson.com/bins/dwd8f') latest with detail screen
+      //  this.http.get('https://api.myjson.com/bins/14oa07') first one
     this.http.get(url)
 
       .map(res => res.json())
