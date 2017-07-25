@@ -14,9 +14,9 @@
 </ion-header>
 
   <ion-content class="app-bg">
-    <div  *ngFor="let item of navParams.data.detail_trends; let i = index; let f = first;">
-        <div *ngIf="f">
-        	<h2 class="screen-title" align="center">{{item[0].name}}</h2>
+    <div  *ngFor="let item of cardName; let i = index; let f = first;">
+        <div *ngIf="i == 0">
+        	<h2 class="screen-title" align="center">{{item[1]}}</h2>
 <ion-grid class="white-txt">
   <ion-row class="pos-relative">
     <ion-col class="detail-screen-card bg-grey">

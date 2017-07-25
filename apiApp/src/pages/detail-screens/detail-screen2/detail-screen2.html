@@ -1,24 +1,56 @@
 
 <ion-header>
-  <ion-navbar>
-    <ion-title>detail-screen2</ion-title>
+  <ion-navbar class="detail-back-btn">
+    <ion-title  align="center">
+      <button ion-button round class="date-btn">
+        <ion-icon  md="md-time" ios="ios-time-outline"></ion-icon>{{navParams.data.date_today}}
+      </button>
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
   <ion-content class="app-bg">
-         <div> 
-            <span>Graph</span>
-         <div id="dashboardChart" #dashboardChart class="donut-chart"></div>
-         </div>
-<ion-slides pager>
+    <div *ngFor="let item of cardName; let i = index;">
+          <h2 *ngIf="i == 1" class="screen-title" align="center">{{item[1]}}</h2>
+    </div>
+    <div *ngFor="let item of navParams.data.detail_trends; let i = index;">
+          <div *ngIf="i == 0">
+            <ion-grid class="white-txt">
+              <ion-row class="pos-relative">
+                  <ion-col class="detail-screen-card bg-grey">
+                  	<p class="detail-screen-card-title">Last week</p>
+      				      <div class="demo-bullet"></div>
+               		  <div>
+                          		<span  class="legend-txt small-txt" >2.02M</span>
+                          		<span  class="legend-txt small-txt" >0.00</span>
+        			      </div>
+                </ion-col>
+	              <span class="txt-total">Total</span>
+                <ion-col class="detail-screen-card bg-blue">
+                  	<p class="detail-screen-card-title">Today</p>
+      				      <div class="demo-bullet"></div>
+               		  <div align="right">
+                          		<span  class="legend-txt small-txt" >2.02M</span>
+                          		<span  class="legend-txt small-txt" >0.00</span>
+        			      </div>
+                </ion-col>
+              </ion-row>
+          </ion-grid>
+        </div>
+    </div>
+    <ion-grid class="white-txt">
+      <ion-row class="pos-relative">
+      		<ion-col col-5 class="detail-screen-card bg-grey">
+        			<div>
+stgsjv        			</div>
+      		</ion-col>
+      		<ion-col col-7 class="detail-screen-card bg-grey">
+        			<div>
+         				<div id="bulletChart" #bulletChart class="donut-chart"></div>
+        			</div>
+      		</ion-col>
+    	</ion-row>
+    </ion-grid>
 
-  <ion-slide *ngFor="let item of navParams.data.detail_trends; let i = index">
-    <h2>Slide</h2>
-      <button ion-button block (click)="goToPrevSlide()">Navigate Back</button>
-        <h2>{{item[0].detail}}</h2>
-        <h2>{{item[0].name}}</h2>
-        <h2>{{item[0].template}}</h2>
-      <button ion-button block (click)="goToNextSlide()">Navigate Forward</button>
-  </ion-slide>
-</ion-slides>
+
   </ion-content>

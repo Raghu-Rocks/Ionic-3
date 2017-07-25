@@ -45301,20 +45301,55 @@ ion-navbar.toolbar {
   font-size: 11px;
 }
 
-.card1-bullet-wraper {
-  margin: 10px 0;
-}
-
-.card1-bullet {
-  background-color: #eaab1c;
-}
-
 .mrgn-rght {
   margin-right: 10px;
 }
 
 .bar-graph-bg {
   background: #464646;
+}
+
+.bullet {
+  font: 10px sans-serif;
+}
+
+.bullet .marker {
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.bullet .tick line {
+  stroke: #666;
+  stroke-width: .5px;
+}
+
+.bullet .range.s0 {
+  fill: #eee;
+}
+
+.bullet .range.s1 {
+  fill: #ddd;
+}
+
+.bullet .range.s2 {
+  fill: #ccc;
+}
+
+.bullet .measure.s0 {
+  fill: lightsteelblue;
+}
+
+.bullet .measure.s1 {
+  fill: #eaab1c;
+}
+
+.bullet .title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bullet .subtitle {
+  fill: #999;
 }
 
 ion-card-content {

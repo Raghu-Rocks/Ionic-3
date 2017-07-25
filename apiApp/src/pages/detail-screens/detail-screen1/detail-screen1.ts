@@ -1,27 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { HomePage } from '../../home/home';
 import * as c3 from 'c3';  
 
-/**
- * Generated class for the DetailScreen1Page page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-detail-screen1',
   templateUrl: 'detail-screen1.html',
 })
 export class summary {
-    public hero: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    data:any;
+    cardName:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private cdr:ChangeDetectorRef) {
+      this.navParams.get("hero");
   }
-// ngOnInit(){
+
  ngAfterViewInit(){
-    this.hero = this.navParams.get("hero");
-        c3.generate({
+        this.mapjson ();
+        this.areaGraph();
+    }
+
+
+    mapjson (){
+      // today
+    this.data = Object.entries(this.navParams.data);
+    this.cardName = Object.entries(this.data[0]);
+    this.cdr.detectChanges();
+}
+
+
+
+
+    areaGraph(){
+                c3.generate({
         bindto: "#dashboardChart",
     data: {
         columns: [
@@ -30,23 +41,16 @@ export class summary {
         ],
         types: {
             data1: 'area',
-            data2: 'area'
+            data2: 'area-spline'
         },
         // type: 'area',
-        colors: {
-          data1: '#ff0000', data2: '#ff9900'
-      }
+    //     colors: {
+    //       data1: '#ff0000', data2: '#ff9900'
+    //   }
     },
         legend: {
             show: false
         }
     });
-}
-
-// goBack() {
-//     this.navCtrl.pop();
-// }
-ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailScreen1Page');
-  }
+    }
 }

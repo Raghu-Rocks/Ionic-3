@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 269:
+/***/ 270:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__card2__ = __webpack_require__(200);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Card2PageModule", function() { return Card2PageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cards__ = __webpack_require__(202);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CardsPageModule", function() { return CardsPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,26 +18,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var Card2PageModule = (function () {
-    function Card2PageModule() {
+var CardsPageModule = (function () {
+    function CardsPageModule() {
     }
-    return Card2PageModule;
+    return CardsPageModule;
 }());
-Card2PageModule = __decorate([
+CardsPageModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__card2__["a" /* Card2Page */],
+            __WEBPACK_IMPORTED_MODULE_2__cards__["a" /* Card1Page */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__card2__["a" /* Card2Page */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__cards__["a" /* Card1Page */]),
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_2__card2__["a" /* Card2Page */]
+            __WEBPACK_IMPORTED_MODULE_2__cards__["a" /* Card1Page */]
         ]
     })
-], Card2PageModule);
+], CardsPageModule);
 
-//# sourceMappingURL=card2.module.js.map
+//# sourceMappingURL=cards.module.js.map
 
 /***/ })
 

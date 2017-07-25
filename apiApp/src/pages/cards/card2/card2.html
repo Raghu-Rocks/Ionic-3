@@ -3,68 +3,44 @@
         <ion-icon name="mail" class="mail-icon"></ion-icon>
     </div> 
     <ion-card class="border-radius"  color="wheat1" (click)="navigateToDetailPage()" >
-       <ion-card-content>
-                  <ion-grid>
-                     
-          <!--<span>suarj = {{abc}}</span>-->
-<!--{{cardDataArray | json}}-->
-
-
-          <!--<span *ngFor="let array of cardDataArray">
-                <span>{{array[0]}}</span>  <span>{{array[1]}}</span>
-          </span>-->
-
-   
-     <!--raghu = {{Object.entries(this.hero2.collection[0])}}-->
-   <!--{{hero2.collection[0].name | json}}-->
-   <!--{{ hero2.collection[0].data.Affiliates?.raghu?.paid | json}}-->
-                      <!--{{hero2.collection[0].data.Visits | json}}-->
-
-                         <!--{{hero2.collection[0].data.Visits  | json}}-->
-                    <ion-row>
-                      <ion-col col-6 col-sm >
-                          <p class="bold center-txt">{{hero2.collection[0].name}}</p>
-                          <div> 
-                              <div id="dashboardChart{{card_index}}" #dashboardChart class="donut-chart"></div>
-                          </div>
-                    </ion-col>
-                    <ion-col col-6 col-sm>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-5   >
                         <p class="bold center-txt">{{hero2.collection[0].name}}</p>
-                        <div *ngFor="let array of cardDataArray; let i = index">
-                                <span *ngIf="i < 3" class="small-txt bold">{{array[0]}}</span>
-                                <span *ngIf="i < 3"  class="small-txt legend-txt legend-paid">{{array[1] || "0.00"}}</span>
-                                <span *ngIf="i < 3"  class="small-txt legend-txt legend-paid">{{array[2] || "0.00"}}</span>
-
-                            <div *ngIf="i < 3"  class="outer-div">
-                                <div class="inner-div paid-search"></div>
-                            </div>
-                        </div>
-                        <!--<div>
-                            <span class="small-txt bold">Affiliates</span>
-                            <span class="small-txt legend-txt legend-affiliate">44.45K</span>
-                            <span class="small-txt legend-txt">70.56K</span>
-                            <div class="outer-div">
-                                <div class="inner-div affilates"></div>
-                            </div>
-                        </div>-->
-                        <!--<div>
-                            <span class="small-txt bold">Organic</span>
-                            <span class="small-txt legend-txt legend-organic">1.5K</span>
-                            <span class="small-txt  legend-txt">0.00</span>
-                            <div class="outer-div">
-                                <div class="inner-div organic"></div>
-                            </div>
-                        </div>-->
-                        <!--<p>{{hero2.template}}</p>
-                        <p> {{hero2.date_today}}</p>
-                        <p>{{hero2.last_refreshed}}</p>-->
-                        <!--<p>{{hero2.collection[0].data}}</p>-->
+                        <div id="dashboardChart{{card_index}}" #dashboardChart class="donut-chart"></div>
                     </ion-col>
-                    <ion-col col-12 col-sm>
+                    
+                    <ion-col col-7 >
+                        <p class="bold center-txt">{{hero2.collection[0].name}}</p>
+
+                        <div *ngFor="let array of cardDataArray; let i = index">
+                            <ion-grid class="nopadding"  *ngIf="i < 3">
+                                <ion-row>
+                                        <ion-col col-4  style="padding-right:0;">
+                                            <span class="small-txt bold">{{array[0]}}</span>
+                                        </ion-col>
+                                        <ion-col col-4 >
+                                            <span   class="small-txt legend-txt" [ngClass]="{'legend-paid': i == 0, 'legend-affiliate': i == 1,'legend-organic': i == 2}">{{array[1] || "0.00"}}</span>
+                                        </ion-col>
+                                        <ion-col col-4 >
+                                             <span  class="small-txt legend-txt legend-projected">{{array[2] || "0.00"}}</span>
+                                        </ion-col>
+                                        <ion-col col-12   *ngIf="i < 3">
+                                            <div [ngClass]="{'paid-search': i == 0, 'affilates': i == 1,'organic': i == 2}" class="inner-div"></div>
+                                        </ion-col>
+                                    </ion-row>
+                            </ion-grid>
+                        </div>
+                    </ion-col>
+
+                    <ion-col col-12 >
                         <ion-list class="display-flex justify-content">
                             <ion-item>
                                     <span *ngFor="let array of cardDataArray; let i=index">
-                                        <span  class="legend-txt small-txt" >{{array[0]}}</span>
+                                        <span  class="legend-txt small-txt" 
+                                            [ngClass]="{'legend-paid': i == 0, 'legend-affiliate': i == 1,'legend-organic': i == 2, 'legend-display': i == 3, 'legend-others': i == 4,'legend-projected': i == 5}">
+                                            {{array[0]}}</span>
                                     </span>
                                 <!--<span class="legend-txt small-txt legend-paid">Paid Search</span>
                                 <span class="legend-txt small-txt legend-affiliate">Affiliates</span>

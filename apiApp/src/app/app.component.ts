@@ -25,7 +25,7 @@ export class MyApp {
       this.peopleServiceProvider.load("data.json")
   .then(data => {
         this.people= data;
-         console.log(this.people,'this.people',data,'data');
+        //  console.log(this.people,'this.people',data,'data');
         // this.processCard(this.people);
   });
     });
