@@ -13,7 +13,6 @@
                     
                     <ion-col col-7 >
                         <p class="bold center-txt">{{hero2.collection[0].name}}</p>
-
                         <div *ngFor="let array of cardDataArray; let i = index">
                             <ion-grid class="nopadding"  *ngIf="i < 3">
                                 <ion-row>
@@ -28,6 +27,9 @@
                                         </ion-col>
                                         <ion-col col-12   *ngIf="i < 3">
                                             <div [ngClass]="{'paid-search': i == 0, 'affilates': i == 1,'organic': i == 2}" class="inner-div"></div>
+                                            <div #bull>
+                                                <div  id="bulletChart{{card_index}}{{i}}"></div>
+                                            </div>
                                         </ion-col>
                                     </ion-row>
                             </ion-grid>
@@ -42,12 +44,6 @@
                                             [ngClass]="{'legend-paid': i == 0, 'legend-affiliate': i == 1,'legend-organic': i == 2, 'legend-display': i == 3, 'legend-others': i == 4,'legend-projected': i == 5}">
                                             {{array[0]}}</span>
                                     </span>
-                                <!--<span class="legend-txt small-txt legend-paid">Paid Search</span>
-                                <span class="legend-txt small-txt legend-affiliate">Affiliates</span>
-                                <span class="legend-txt small-txt legend-organic">Organic</span>
-                                <span class="legend-txt small-txt legend-display">Display</span>
-                                <span class="legend-txt small-txt legend-others">others</span>
-                                <span class="legend-txt small-txt legend-projected">Projected</span>-->
                             </ion-item>
                         </ion-list>
                     </ion-col>

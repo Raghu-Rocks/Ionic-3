@@ -86,11 +86,15 @@ ngAfterViewInit() {
     this.barData = Object.entries(this.barDataArray[1])[2];
     this.barDataTarget = Object.entries(this.barData[1])[0][1];
     this.barGraphTarget = Object.entries(this.barDataTarget);
-    console.log(this.barGraphTarget);
+    // console.log(this.barDataTarget, "dataTarget");
+    // console.log(this.barGraphTarget);
     this.barDataVisits = Object.entries(this.barData[1])[0][1];
     this.barGraphVisits = Object.entries(this.barDataVisits);
     // console.log(this.barGraphVisits, 'Visits');
-    
+    for (var index = 0; index < this.barGraphTarget.length; index++) {
+      var element = this.barGraphTarget[index];
+      // console.log(element[1], 'element');
+    }
     this.cdr.detectChanges();
   }// end of fun json mapping
 
@@ -103,16 +107,12 @@ barChart(){
         bindto: "#barChart"+this.card_index,
         data: {
             type: 'bar',
-            rows: [
-  ['data1', 'data2', 'data3'],
-  [90, 120, 300],
-  [40, 160, 240],
-  [50, 200, 290],
-  [120, 160, 230],
-  [80, 130, 300],
-  [90, 220, 320]
-],
-            // columns: this.barGraphVisits,
+            // columns: [
+            //                   ['data1', 30, 20, 50, 40, 60, 50],
+            //                   ['data2', 200, 130, 90, 240, 130, 220],
+            //                   ['data3', 300, 200, 160, 400, 250, 250]
+            //                 ],
+            columns: this.barGraphVisits,
             //  [
             //     ['data1', 180, 170, 180, 190, 170, 140, 170, 190, 76 ]
             //     // ['data2', 180, 170, 180, 180, 190, 190, 190, 190, 76 ]
@@ -181,8 +181,6 @@ this.something = d3.json("https://api.myjson.com/bins/1ciwp3", (error, data) => 
       .data(data)
     .enter().append("svg")
       .attr("class", "bullet")
-    //   .attr("width", "100%")
-    //   .attr("height", "auto")
       .attr("width", this.width + this.margin.left + this.margin.right)
       .attr("height", this.height + this.margin.top + this.margin.bottom)
     .append("g")
