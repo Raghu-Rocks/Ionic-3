@@ -3,7 +3,6 @@
         <ion-icon name="mail" class="mail-icon"></ion-icon>
       </div>
             <!--<div *ngFor="let m of ['1','2','3']"   (click)="show()">{{m}}-click me</div>-->
-      
     <ion-card class="border-radius" color="greys" (click)="navigateToDetailPage(this.hero)">
         <ion-card-content>
                   <ion-grid class="nopadding">
@@ -40,7 +39,11 @@
                             </ion-grid>
 
                             <div class="card1-bullet-wraper" #bulletChart>
-                                    <div id="bulletChart{{card_index}}"></div>
+                                    <div id="bulletTdy{{card_index}}"></div>
+                                    <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
+                            </div>
+                            <div class="card1-bullet-wraper" #bulletChart>
+                                    <div id="bulletLstWeek{{card_index}}"></div>
                             </div>
                             <!--<page-bullet [index] = "i" #bulletChart></page-bullet>-->
                             <ion-grid class="nopadding">

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+// import { NvD3Component } from 'ng2-nvd3';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
@@ -17,6 +18,7 @@ import { C3providerProvider } from '../providers/c3provider/c3provider';
 @NgModule({
   declarations: [
     MyApp,
+    // NvD3Component,
     HomePage,
     Card1Page,
     Card2Page,

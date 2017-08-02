@@ -1,4 +1,11 @@
-<h2>Bullet</h2>
+<!--<h2>Bullet</h2>
                             <div class="card1-bullet-wraper" #bulletChart>
                                     <div id="bulletChart{{card_index}}"></div>
-                            </div>
+                            </div>-->
+<div class="bullet-wrapper" [style.height.px]="calc_height" #bulletwrapper>
+    <div class="ranges" [style.background-color]="color_array[0]" *ngFor="let item of calc_ranges; let i = index" [style.width.%]="item" [style.height.px]="calc_height" [style.opacity]="range_opacity[i]"></div>
+
+    <div class="actual" [style.background-color]="color_array[1]" *ngFor="let item of calc_actual; let i = index" [style.width.%]="item" [style.height.px]="actual_height" [style.top.px]="actual_top" [style.opacity]="actual_opacity[i]"></div>
+
+    <div class="target" [style.background-color]="color_array[2]" [style.left.%]="calc_target" [style.height.px]="calc_height"></div>
+</div>

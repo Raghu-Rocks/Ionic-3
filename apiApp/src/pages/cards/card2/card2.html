@@ -26,8 +26,9 @@
                                              <span  class="small-txt legend-txt legend-projected">{{array[2] || "0.00"}}</span>
                                         </ion-col>
                                         <ion-col col-12   *ngIf="i < 3">
-                                            <div [ngClass]="{'paid-search': i == 0, 'affilates': i == 1,'organic': i == 2}" class="inner-div"></div>
-                                            <div #bull>
+<!--<div [ngClass]="{'paid-search': i == 0, 'affilates': i == 1,'organic': i == 2}" class="inner-div"></div>-->
+<!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
+                                            <div #bullet>
                                                 <div  id="bulletChart{{card_index}}{{i}}"></div>
                                             </div>
                                         </ion-col>

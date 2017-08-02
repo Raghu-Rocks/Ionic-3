@@ -20,66 +20,59 @@ export class Card1Page {
   @Input('master') masterName: string;
   @Input('index') card_index:string;
   @ViewChild ("bulletChart")bulletCharts: ElementRef;
-    public data :any;
-    public cardData : any;
-    public cardDataArray:any;
-    public cardTargetProjected: any;
-    public cardTargetData: any;
-    public cardProjectedData: any;
-    public jsonData:any
-    public mainArray: any;
-    public collectionArray: any;
-    public lastWeek:any;
-    public lastWeekData: any;
-    public dataArray: any;
-    public dataArrayValue: any;
+    public cardDataArray:any;       public data :any;                      public cardData : any;   public cardTargetProjected: any;
+    public cardTargetData: any;     public jsonData:any;                public cardProjectedData: any;
+    public mainArray: any;             public collectionArray: any;     public lastWeek:any;
+    public lastWeekData: any;        public dataArray: any;             public dataArrayValue: any;
+    public targetValue:any=[];        public actualValue:any=[];       public projectedValue:any=[];
+    public tdy:any;                          public lstWeekData:any;          public title:any;
+
+    barDataArray : any;    barData : any;             barDataTarget : any;  barDataProjected : any; 
+    barDataVisits : any;    barGraphTarget: any;  barGraphVisits: any;
+  ranges: number[] = [250, 230, 210, 150];
+  actual: number[] = [200];
+  target: number[] = [193];
+  colors: any[] = ['lightgrey', 'orange', 'green'];
+  height: number = 20;
 
   constructor(
-        public navCtrl: NavController,
-        public peopleServiceProvider: PeopleServiceProvider,
-        public navParams: NavParams,
-        public el: ElementRef,
-        private cdr: ChangeDetectorRef) {
+        public navCtrl: NavController,        public peopleServiceProvider: PeopleServiceProvider,
+        public navParams: NavParams,      public el: ElementRef,        private cdr: ChangeDetectorRef) {
 
          }
 
-
-ngAfterViewInit() {
+  navigateToDetailPage(hero){
+    this.navCtrl.push("summary", hero);
+    // console.log(this.hero, "hero");
+  }
+  ngAfterViewInit() {
     this.mapjson ();
-    this.bulletChart();
-    this.barChart();
-}// fun ngafterViewInit ends here
+    this.barChart("#barChart"+this.card_index, this.barGraphVisits);
+    this.processBulletChart("#bulletTdy"+this.card_index, this.tdy, this.projectedValue,  this.targetValue, this.actualValue);
+    this.processBulletChart("#bulletLstWeek"+this.card_index, this.lstWeekData, this.projectedValue,  this.targetValue, this.actualValue);
+  }// fun ngafterViewInit ends here
 
-  barDataArray : any;
-  barData : any;
-  barDataTarget : any;
-  barDataProjected : any;
-  barDataVisits : any;
-  barGraphTarget: any;
-  barGraphVisits: any;
   // fun for mapping the json data starts here, the variables are decleard at top
   mapjson (){
       // today
     this.data = Object.entries(this.hero.collection[0]);
-    let tdy = Object.entries(this.data[2][1]);
-    this.cardData = Object.entries(tdy[0][1]);
+    this.tdy = Object.entries(this.data[2][1]);
+    this.cardData = Object.entries(this.tdy[0][1]);
+    // console.log(this.tdy, 'cardData  tdy  ');
     this.cardDataArray = Object.entries(this.cardData);    
     this.cardTargetProjected = Object.entries(this.data[2][1]);
     this.cardTargetData = Object.entries( this.cardTargetProjected[1][1])[0][1];
     this.cardProjectedData = Object.entries( this.cardTargetProjected[2][1])[0][1];
-    // console.log("legend", this.cardTargetProjected);
-    // console.log("Projected", this.cardProjectedData);
+
     //last week lebel and data
     this.jsonData = Object.entries(this.hero);
     this.mainArray = Object.entries(this.jsonData[4]);
     this.collectionArray = Object.entries(this.mainArray[1][1]);
     this.lastWeek = Object.entries(this.collectionArray[1][1])[0];
-    
     this.dataArray = Object.entries(this.collectionArray[1][1])[2];
+    this.lstWeekData = Object.entries(this.dataArray[1]);// for bullet last week data only
     this.dataArrayValue = Object.entries(this.dataArray[1])[0][1];
-    // console.log(this.dataArrayValue);
     this.lastWeekData = Object.entries(this.dataArrayValue);
-
 
     // bar chart data
     this.barDataArray = Object.entries(this.collectionArray[2])[1];
@@ -90,21 +83,115 @@ ngAfterViewInit() {
     // console.log(this.barGraphTarget);
     this.barDataVisits = Object.entries(this.barData[1])[0][1];
     this.barGraphVisits = Object.entries(this.barDataVisits);
-    // console.log(this.barGraphVisits, 'Visits');
-    for (var index = 0; index < this.barGraphTarget.length; index++) {
-      var element = this.barGraphTarget[index];
-      // console.log(element[1], 'element');
-    }
+    console.log(this.barGraphVisits, 'Visits');
     this.cdr.detectChanges();
   }// end of fun json mapping
 
+  processBulletChart(whereToPut, whichWeekData, projectedValue, targetValue, actualValue){
+    for (var i in whichWeekData) {
+                  // console.log(this.tdy, 'tdy');
+              if (whichWeekData.hasOwnProperty(i) || typeof(whichWeekData[i])!='object') {
+                  var test = whichWeekData[i];
+                  // console.log(test, 'test')
+                  for(var test_val in test){
+                      if(typeof(test[test_val])!='object' ){
+                       this.title=test[test_val]; // prints title
+                      // console.log(this.title,'titlettt');
+                    }
+                    else{
+                      //  console.log(test[test_val],'test[test_val]');
+                      var arr_object=test[test_val];
+                      if(typeof(arr_object)=='object' ){ // loop for date  inside object something like 15/11
+                          for(var new_visit in arr_object ){
+                            // console.log(arr_object[new_visit],new_visit,'data and key');
+                            var arr_object1=arr_object[new_visit];
+                           // console.log(arr_object1,'arr_object12',typeof arr_object1);
+                            if(typeof (arr_object1)!='object' ){ // loop for date  inside object something like 15/11
+                            //  console.log(arr_object1, 'abc');                 
+                                var count1=0;  var count2=0;
+                                if (typeof arr_object1=='string') {
+                                    arr_object1=  arr_object1.slice(0, -1); 
+                                   this.renderCardData(arr_object1, projectedValue, targetValue, actualValue );
+                                }
+                                else if(typeof arr_object1=='number'){
+                                 //  console.log(this.title,'title45');
+                                   this.renderCardData(arr_object1, projectedValue, targetValue, actualValue );
+                                }
+                               //     console.log(this.title,'title444',typeof this.title);
+                            }//if(typeof(arr_object1)=='object' )
+                          }//for(var new_visit in arr_object )
+                        }
+                    }
+                  }//for(var test_val in test)
+                }
+              }
+                if(projectedValue.length>-1){
+                    // console.log(this.projectedValue,this.targetValue,this.actualValue,'array output3');
+                        for (var j = 0; j < projectedValue.length; j++) {
+                          var bulletStackData = [{"ranges":[0,projectedValue[j] ,0], "measures":[actualValue[j] ],	  "markers":[targetValue]  }]
+                          this.renderBulletChart(whereToPut, bulletStackData);
+                        }
+                    }//if(this.array2.length>0){
+    }
+  
+    renderCardData(objectArray, outputProjected, outputTarget, outputActual){
+                  var count1=0;var count3 =0;
+                  var count2=0;                              
+                    if(this.title.indexOf('Project')!=-1){ // it will be background color of graph
+                        outputProjected[count1]=objectArray;
+                        count1++;
+                    }
+                    else if (this.title.indexOf('Target')!=-1){
+                        outputTarget[count2]=objectArray;
+                        count2++;
+                    }
+                    else{//actual value
+                        outputActual[count3]=objectArray;
+                        count3++;
+                    }
+      }
 
+renderBulletChart(WhereToPut, WhatDataToPut) {
+  var bulletParentWidth; var bulletchart; var bulletmargin; var bulletwidth; var bulletHeight;
+
+    bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth;
+    bulletmargin = {top: 0, right: 3, bottom: 0, left: 0};
+    bulletwidth = bulletParentWidth - bulletmargin.left - bulletmargin.right;    
+    bulletHeight = 30 - bulletmargin.top - bulletmargin.bottom;
+    bulletchart = d3.bullet()
+    .width(bulletwidth)
+    .height(bulletHeight)
+
+  var svg = d3.select(WhereToPut).selectAll("svg")
+      .data(WhatDataToPut)
+    .enter().append("svg")
+      .attr("class", "bullet")
+      .attr("width", bulletwidth + bulletmargin.left + bulletmargin.right)
+      .attr("height", bulletHeight + bulletmargin.top + bulletmargin.bottom)
+    .append("g")
+    //   .attr("transform", "translate(" + this.margin.left + "," +this.margin.top + ")")
+      .call(bulletchart);
+}// end of bullet chart fun
+
+randomize(d) {
+  if (!d.randomizer) d.randomizer = this.randomizer(d);
+  d.ranges = d.ranges.map(d.randomizer);
+  d.markers = d.markers.map(d.randomizer);
+  d.measures = d.measures.map(d.randomizer);
+  return d;
+}// fun required for bullet chart
+randomizer(d) {
+  var k = d3.max(d.ranges) * .2;
+  return function(d) {
+    return Math.max(0, d + k * (Math.random() - .5));
+        };
+}//fun  required for bullet chart
 
 
 // fun for barChart starts here for home page card
-barChart(){
+barChart(whereToPut, whatToPut){
     c3.generate({
-        bindto: "#barChart"+this.card_index,
+        bindto: whereToPut,
         data: {
             type: 'bar',
             // columns: [
@@ -112,7 +199,7 @@ barChart(){
             //                   ['data2', 200, 130, 90, 240, 130, 220],
             //                   ['data3', 300, 200, 160, 400, 250, 250]
             //                 ],
-            columns: this.barGraphVisits,
+            columns: whatToPut,
             //  [
             //     ['data1', 180, 170, 180, 190, 170, 140, 170, 190, 76 ]
             //     // ['data2', 180, 170, 180, 180, 190, 190, 190, 190, 76 ]
@@ -145,82 +232,6 @@ barChart(){
          }
         });
     }// fun barChart end here
-
-
-  navigateToDetailPage(hero){
-    this.navCtrl.push("summary", hero);
-    // console.log(this.hero, "hero");
-  }
-
-
-
-// Variables required for bullet chart are listed here
-bulletParentWidth;
-chart;
-margin;
-width;
-height;
-something;
-bulletChart() {
-    this.bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth;
-    this.margin = {top: 0, right: 3, bottom: 0, left: 0};
-    this.width = this.bulletParentWidth - this.margin.left - this.margin.right;    
-    this.height = 30 - this.margin.top - this.margin.bottom;
-// console.log("width", this.bulletParentWidth);
- this.chart = d3.bullet()
-    .width(this.width)
-    .height(this.height)
-    // .actualColor("#ff0000")
-    // .targetColor("#00FF00")
-    // .projectedColor("#0000FF")
-
-this.something = d3.json("https://api.myjson.com/bins/1ciwp3", (error, data) => {
-  if (error) throw error;
-
-  var svg = d3.select("#bulletChart"+this.card_index).selectAll("svg")
-      .data(data)
-    .enter().append("svg")
-      .attr("class", "bullet")
-      .attr("width", this.width + this.margin.left + this.margin.right)
-      .attr("height", this.height + this.margin.top + this.margin.bottom)
-    .append("g")
-    //   .attr("transform", "translate(" + this.margin.left + "," +this.margin.top + ")")
-      .call(this.chart);
-
-//   var title = svg.append("g")
-//       .style("text-anchor", "end")
-//       .attr("transform", "translate(-6," + this.height / 2 + ")");
-
-//   title.append("text")
-//       .attr("class", "title")
-//       .text(function(d) { return d.title; });
-
-//   title.append("text")
-//       .attr("class", "subtitle")
-//       .attr("dy", "1em")
-//       .text(function(d) { return d.subtitle; });
-
-  // d3.selectAll("button").on("click", function() {
-  //   svg.datum(this.randomize).call(this.chart.duration(1000)); // TODO automatic transition
-  // });
-});
-
-}// end of bullet chart fun
-
-randomize(d) {
-  if (!d.randomizer) d.randomizer = this.randomizer(d);
-  d.ranges = d.ranges.map(d.randomizer);
-  d.markers = d.markers.map(d.randomizer);
-  d.measures = d.measures.map(d.randomizer);
-  return d;
-}// fun required for bullet chart
-randomizer(d) {
-  var k = d3.max(d.ranges) * .2;
-  return function(d) {
-    return Math.max(0, d + k * (Math.random() - .5));
-        };
-}//fun  required for bullet chart
-
 
 
 

@@ -13,12 +13,10 @@ import {PeopleServiceProvider} from '../../providers/people-service/people-servi
 })
 
 export class HomePage {
-  master = 'Master';
-  public people: any;
-  public bgimg: any;
  @Output('card') card:any;
  @ViewChild ('dashboardChart') dashboardChart: ElementRef;
-
+  public people: any;
+  public bgimg: any;
   
   constructor(
     public navCtrl: NavController, 

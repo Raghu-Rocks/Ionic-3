@@ -1,3 +1,21 @@
-page-bullet {
+.bullet-wrapper {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+}
 
+.ranges {
+    position: absolute;
+    top: 0;
+}
+
+.actual {
+    position: absolute;
+    border-radius: 0 15px 15px 0;
+}
+
+.target {
+    position: absolute;
+    width: 3px;
+    top: 0;
+    bottom: 0;
 }
