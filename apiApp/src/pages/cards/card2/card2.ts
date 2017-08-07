@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PeopleServiceProvider } from '../../../providers/people-service/people-service';
 import * as c3 from 'c3';
 declare var d3: any;
-declare var nv: any;
+// declare var nv: any;
 
 @IonicPage()
 @Component({
@@ -108,15 +108,9 @@ ngOnInit() {
   }
 
 
-  bulletData
-  bulletTemp
-  bulletCardData
-  bulletCardDataArray
+  bulletData; bulletTemp; bulletCardData;  bulletCardDataArray
 
-  bulletTempProjected
-  bulletProjectedData
-  bulletProjectedDataArray
-  bulletProjectedDataValue
+  bulletTempProjected;  bulletProjectedData;  bulletProjectedDataArray;  bulletProjectedDataValue
   
   mapjson (){
 //donut data
@@ -134,7 +128,7 @@ ngOnInit() {
 
 //bullet projected data
   this.bulletTempProjected = Object.entries(this.bulletData[2][1]);
-  // console.log(this.bulletTempProjected);
+  // console.log(this.bulletTempProjected,"bulletTempProjected");
   this.bulletProjectedData = Object.entries(this.bulletTempProjected[1]);
   // console.log(this.bulletProjectedData);
   this.bulletProjectedDataArray = Object.entries(this.bulletProjectedData[0][1]);

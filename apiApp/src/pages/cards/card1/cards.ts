@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, ElementRef,ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PeopleServiceProvider } from '../../../providers/people-service/people-service';
-import { C3providerProvider, } from '../../../providers/c3provider/c3provider';
+// import { C3providerProvider, } from '../../../providers/c3provider/c3provider';
 import * as c3 from 'c3';  
 // import * as d3 from 'd3'; 
 declare var d3: any;
@@ -11,13 +11,12 @@ declare var d3: any;
 @Component({
   selector: 'card1-design',
   templateUrl: 'cards.html',
-  providers: [PeopleServiceProvider,C3providerProvider]
+  providers: [PeopleServiceProvider]
 })
 
 export class Card1Page {
   
   @Input() hero:any = PeopleServiceProvider;
-  @Input('master') masterName: string;
   @Input('index') card_index:string;
   @ViewChild ("bulletChart")bulletCharts: ElementRef;
     public cardDataArray:any;       public data :any;                      public cardData : any;   public cardTargetProjected: any;
@@ -63,6 +62,9 @@ export class Card1Page {
     this.cardTargetProjected = Object.entries(this.data[2][1]);
     this.cardTargetData = Object.entries( this.cardTargetProjected[1][1])[0][1];
     this.cardProjectedData = Object.entries( this.cardTargetProjected[2][1])[0][1];
+    // this.areaGraphData = Object.keys(this.dataObject);
+    // console.log(this.cardTargetProjected, 'cardProjected');
+
 
     //last week lebel and data
     this.jsonData = Object.entries(this.hero);
@@ -83,10 +85,9 @@ export class Card1Page {
     // console.log(this.barGraphTarget);
     this.barDataVisits = Object.entries(this.barData[1])[0][1];
     this.barGraphVisits = Object.entries(this.barDataVisits);
-    console.log(this.barGraphVisits, 'Visits');
+    // console.log(this.barGraphVisits, 'Visits');
     this.cdr.detectChanges();
   }// end of fun json mapping
-
   processBulletChart(whereToPut, whichWeekData, projectedValue, targetValue, actualValue){
     for (var i in whichWeekData) {
                   // console.log(this.tdy, 'tdy');
@@ -99,13 +100,13 @@ export class Card1Page {
                       // console.log(this.title,'titlettt');
                     }
                     else{
-                      //  console.log(test[test_val],'test[test_val]');
+                      //  console.log(test[test_val],'test[test_val]');                       
                       var arr_object=test[test_val];
                       if(typeof(arr_object)=='object' ){ // loop for date  inside object something like 15/11
                           for(var new_visit in arr_object ){
                             // console.log(arr_object[new_visit],new_visit,'data and key');
                             var arr_object1=arr_object[new_visit];
-                           // console.log(arr_object1,'arr_object12',typeof arr_object1);
+                          //  console.log(arr_object1,'arr_object12',typeof arr_object1);
                             if(typeof (arr_object1)!='object' ){ // loop for date  inside object something like 15/11
                             //  console.log(arr_object1, 'abc');                 
                                 var count1=0;  var count2=0;

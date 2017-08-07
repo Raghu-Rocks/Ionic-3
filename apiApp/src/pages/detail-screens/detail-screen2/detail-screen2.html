@@ -13,43 +13,47 @@
     <div *ngFor="let item of cardName; let i = index;">
           <h2 *ngIf="i == 1" class="screen-title" align="center">{{item[1]}}</h2>
     </div>
-    <div *ngFor="let item of navParams.data.detail_trends; let i = index;">
-          <div *ngIf="i == 0">
-            <ion-grid class="white-txt">
-              <ion-row class="pos-relative">
-                  <ion-col class="detail-screen-card bg-grey">
-                  	<p class="detail-screen-card-title">Last week</p>
-      				      <div class="demo-bullet"></div>
-               		  <div>
-                          		<span  class="legend-txt small-txt" >2.02M</span>
-                          		<span  class="legend-txt small-txt" >0.00</span>
-        			      </div>
-                </ion-col>
-	              <span class="txt-total">Total</span>
-                <ion-col class="detail-screen-card bg-blue">
-                  	<p class="detail-screen-card-title">Today</p>
-      				      <div class="demo-bullet"></div>
-               		  <div align="right">
-                          		<span  class="legend-txt small-txt" >2.02M</span>
-                          		<span  class="legend-txt small-txt" >0.00</span>
-        			      </div>
-                </ion-col>
-              </ion-row>
-          </ion-grid>
+        <div *ngIf="i == 0">
+
         </div>
-    </div>
     <ion-grid class="white-txt">
-      <ion-row class="pos-relative">
-      		<ion-col col-5 class="detail-screen-card bg-grey">
+      <div *ngFor="let keys of tdyVisitsKeys; let i = index;">
+        <ion-row class="pos-relative"  [ngClass]="{'hide': i < 0}">
+            <ion-col class="detail-screen-card bg-grey">
+                  <p class="detail-screen-card-title">Last week</p>
+      				  <div class="demo-bullet"></div>
+               	<div>
+                          		<span  class="legend-txt small-txt legend-tdy" >2.02M</span>
+                          		<span  class="legend-txt small-txt legend-target" >2.02M</span>
+                          		<span  class="legend-txt small-txt legend-projected">0.00</span>
+        			  </div>
+          </ion-col>
+	        <span class="txt-total">Total</span>
+          <ion-col class="detail-screen-card bg-blue">
+                <p class="detail-screen-card-title">Today</p>
+      				  <div class="demo-bullet"></div>
+               	<div align="right">
+                          		<span  class="legend-txt small-txt legend-tdy" >{{keys[1]}}</span>
+                          		<span  class="legend-txt small-txt legend-target" >2.02M</span>
+                          		<span  class="legend-txt small-txt legend-projected">0.00</span>
+        			  </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="pos-relative" >
+      		<ion-col col-5 class="">
         			<div>
-stgsjv        			</div>
+                  <span>{{keys[0]}}</span>
+                  <span><ion-icon name="arrow-dropright-circle"></ion-icon></span>
+              </div>
       		</ion-col>
-      		<ion-col col-7 class="detail-screen-card bg-grey">
-        			<div>
-         				<div id="bulletChart" #bulletChart class="donut-chart"></div>
-        			</div>
+      		<ion-col col-7 class="">
+              <div class="card1-bullet-wraper" #bulletChart>
+                  <div id="detaiBullet{{keys[1]}}"></div>
+                  <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
+              </div>
       		</ion-col>
-    	</ion-row>
+        </ion-row>
+      </div>
     </ion-grid>
 
 

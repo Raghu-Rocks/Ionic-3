@@ -14,34 +14,47 @@
 </ion-header>
 
   <ion-content class="app-bg">
+        {{array2}}   {{array1}}
+        <div *ngFor="let item of cardName; let i = index;">
+          <h2 *ngIf="i == 1" class="screen-title" align="center">{{item[1]}}</h2>
+        </div>
     <div  *ngFor="let item of cardName; let i = index; let f = first;">
-        <div *ngIf="i == 0">
-        	<h2 class="screen-title" align="center">{{item[1]}}</h2>
-<ion-grid class="white-txt">
-  <ion-row class="pos-relative">
-    <ion-col class="detail-screen-card bg-grey">
-                  	<p class="detail-screen-card-title">Last week</p>
-      				<div class="demo-bullet"></div>
+      <div *ngIf="i == 0">
+        <ion-grid class="white-txt">
+          <ion-row class="pos-relative">
+              <ion-col class="detail-screen-card bg-grey">
+                <p class="detail-screen-card-title">Last week</p>
+                <!-- <div class="demo-bullet"></div> -->
+                <div class="card1-bullet-wraper" #bulletChart>
+                      <div id="bulletLast{{lastBulletA}}" class="bulletLastGraph"></div>
+                  <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
+                </div>
                		<div>
-                          		<span  class="legend-txt small-txt" >2.02M</span>
-                          		<span  class="legend-txt small-txt" >0.00</span>
-        			</div>
-    </ion-col>
-	<span class="txt-total">Total</span>
-    <ion-col class="detail-screen-card bg-blue">
+                          <span  class="legend-txt legend-tdy small-txt" >{{lstArray3 || "0.00"}}</span>
+                          <span  class="legend-txt legend-target small-txt" >{{lstArray2 || "0.00"}}</span>
+                          <span  class="legend-txt legend-projected small-txt" >{{lstArray1 || "0.00"}}</span>
+        			    </div>
+              </ion-col>
+	            <span class="txt-total">Total</span>
+              <ion-col class="detail-screen-card bg-blue">
                   	<p class="detail-screen-card-title">Today</p>
-      				<div class="demo-bullet"></div>
+                <!-- <div class="demo-bullet"></div> -->
+                <div class="card1-bullet-wraper" #bulletChart>
+                      <div id="bulletTdy{{tdyBulletA}}"></div>
+                  <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
+                </div>
                		<div align="right">
-                          		<span  class="legend-txt small-txt" >2.02M</span>
-                          		<span  class="legend-txt small-txt" >0.00</span>
-        			</div>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+                          		<span  class="legend-txt legend-tdy small-txt" >{{tdyArray3 || "0.00"}}</span>
+                              <span  class="legend-txt legend-target small-txt" >{{tdyArray2 || "0.00"}}</span>
+                              <span  class="legend-txt legend-projected small-txt" >{{tdyArray1 || "0.00"}}</span>
+        			    </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         	<div> 
          		<div id="dashboardChart" #dashboardChart class="donut-chart"></div>
          	</div>
       	</div>         
-    </div>
+      </div>
 </ion-content>
 
