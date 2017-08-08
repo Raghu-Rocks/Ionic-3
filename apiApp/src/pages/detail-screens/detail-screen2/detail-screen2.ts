@@ -27,6 +27,7 @@ export class channels {
     ngAfterViewInit(){
         this.mapjson ();
         this.processDetailBullet();
+        this.lastWeekVisitsData();
         // for (var index = 0; index < this.tdyVisitsValues.length; index++) {
         //   var element = this.tdyVisitsValues[index];
         //   var divId = "#detaiBullet"+element;
@@ -34,7 +35,9 @@ export class channels {
         // }
     }   
     detailTrends:any; collection:any; collectionArray:any;collectionData:any; collectionDataVisits:any; tdyVisits:any; tdyVisitsKeys:any;
-    tdyVisitsValues:any
+    tdyVisitsValues:any;
+    lstWeekCollection:any; lstWeekCollectionArray:any; lastWeekData:any; lastWeekDataVisits:any; lastWeekVisitsObject:any;
+    lastWeekVisitsValue:any; lastWeekVisits:any = [];
     mapjson (){
       // today
       this.data = Object.entries(this.navParams.data);
@@ -51,10 +54,27 @@ export class channels {
       this.tdyVisitsValues = Object.values(this.tdyVisits);
 
       this.detailBulletData = Object.entries(this.collectionData);
-      console.log(this.detailBulletData, "detailBulletData");
+
+
+      //last week data
+      this.lstWeekCollection = Object.entries(this.detailTrends[1][0])[0][1];
+      this.lstWeekCollectionArray = Object.entries(this.lstWeekCollection)[2];
+      this.lastWeekData = Object.entries(this.lstWeekCollectionArray[1])[1][1];
+      this.lastWeekDataVisits = Object.entries(this.lastWeekData)[0][1];
+      this.lastWeekVisitsObject = Object.entries(this.lastWeekDataVisits)[0][1];
+      this.lastWeekVisitsValue = Object.values(this.lastWeekVisitsObject);
+      console.log(this.lastWeekVisitsValue, "lstWeekCollection");
+      // console.log(this.detailBulletData, "detailBulletData");
       this.cdr.detectChanges();
     }
-
+  lastWeekVisitsData(){
+      for (var index = 0; index < this.lastWeekVisitsValue.length; index++) {
+        this.lastWeekVisits[index] = this.kFormatter(this.lastWeekVisitsValue[index]);
+     // return this.lastWeekVisits;
+      }
+        console.log(this.lastWeekVisits, 'lastWeekVisits');
+    
+  }
   processDetailBullet(){
         for (var i in this.detailBulletData) {
         if (this.detailBulletData.hasOwnProperty(i)) {
@@ -80,12 +100,12 @@ export class channels {
                         // console.log(this.title,'title444');
                         if(this.title.indexOf('Project')!=-1){
                           this.projectedValue[count1] =arr_object1[new_visit1];
-                        console.log(this.title,'title444');
+                        // console.log(this.title,'title444');
                           count1++;
                         }
                         else{
                             this.actualValue[count2] =arr_object1[new_visit1];
-                            console.log(this.title,'title555');  
+                            // console.log(this.title,'title555');  
                             count2++;
                         }
                     }
@@ -98,11 +118,17 @@ export class channels {
     }
     }
                       if(this.projectedValue.length>0){
-                        console.log(this.actualValue,"actualValue",this.projectedValue,'projectedValue');
+                        // console.log(this.actualValue,"actualValue",this.projectedValue,'projectedValue');
                         for (var j = 0; j < this.actualValue.length; j++) {
-                          var bulletStackData = [{"ranges":[0, this.projectedValue[j], 0], "measures":[this.actualValue[j] ],	  "markers":[270]  }];
-                          var divId = "#detaiBullet"+this.actualValue[j];
-                          this.renderBulletChart(divId, bulletStackData);
+                          var bulletStackData1 = [{"ranges":[0, this.projectedValue[j], 0], "measures":[this.actualValue[j] ],	  "markers":[0]  }];
+                          var bulletStackData2 = [{"ranges":[0, 0, 0], "measures":[this.lastWeekVisitsValue[j] ],	  "markers":[0]  }];
+                          var divId1 = "#detailBullet"+this.actualValue[j];
+                          this.renderBulletChart(divId1, bulletStackData1);
+                          var divId2 = "#detailTdyBullet"+this.actualValue[j]
+                          this.renderBulletChart(divId2, bulletStackData1);
+                          var divId3 = "#lastWeekBullet"+this.actualValue[j]
+                          this.renderBulletChart(divId3, bulletStackData2);
+                          
                         }
                     }//if(this.array2.length>0){
   }
