@@ -1,97 +1,88 @@
-.date-btn{
-    height: 40px;
-    padding: 0 16px;
-// display: inline-block;
-// -webkit-box-sizing: content-box;
-// -moz-box-sizing: content-box;
-// box-sizing: content-box;
-// float: none;
-// z-index: auto;
-// width: 106px;
-// height: auto;
-// position: static;
-// cursor: pointer;
-// opacity: 1;
-// margin: 0;
-// padding: 5px;
-// overflow: visible;
-// border: 20px none rgba(0,0,0,0);
-// -webkit-border-radius: 116px;
-// border-radius: 116px;
-// font: normal normal bold 15px/normal "Battambang", Helvetica, sans-serif;
-// color: darkslateblue;
-// text-align: center;
-// text-transform: uppercase;
-// -o-text-overflow: clip;
-// text-overflow: clip;
-// background: wheat;
-// -webkit-box-shadow: none;
-// box-shadow: none;
-// text-shadow: none;
-// -webkit-transition: background 0.2s cubic-bezier(0.25, 0.25, 0.75, 0.75);
-// -moz-transition: background 0.2s cubic-bezier(0.25, 0.25, 0.75, 0.75);
-// -o-transition: background 0.2s cubic-bezier(0.25, 0.25, 0.75, 0.75);
-// transition: background 0.2s cubic-bezier(0.25, 0.25, 0.75, 0.75);
-// -webkit-transform: none;
-// transform: none;
-// -webkit-transform-origin: 50% 50% 0;
-// transform-origin: 50% 50% 0;
+//colors
+
+
+//fonts
+$font_0: Roboto;
+
+.date-btn {
+	height: 40px;
+	padding: 0 16px;
+	ion-icon {
+		margin-right: 5px;
+		// color: $color_cerulean_blue_approx;
+		font-weight: bolder;
+	}
 }
-.detail-back-btn button.back-button{
-    position: absolute;
-    z-index: 1;
+.screen-title {
+	font-size: 20px;
+	font-weight: normal;
+	font-family: $font_0;
+	color: $white;
 }
-.date-btn ion-icon{
-    margin-right: 5px;
-    // color: #204eb5;
-    font-weight: bolder;
+.bg-transparent {
+	background-color: transparent !important;
 }
-.screen-title{
-    font-size: 20px;
-    font-weight: normal;
-    font-family: "Roboto";
-    color: #ffffff;
+// .demo-bullet {
+// 	height: 10px;
+// 	background: $web_orange;
+// 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+// 	border-radius: 0 15px 15px 0;
+// 	margin-right: 5px;
+// }
+.detail-screen-card {
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 1px 2px $black_30;
 }
-.bg-transparent{
-    background-color: transparent !important;
+.detail-screen-card-title {
+	margin: 5px 0;
 }
-.demo-bullet{
-    height: 10px;
-    background: orange;
-    border-radius: 0px 15px 15px 0px;
-    margin-right: 5px;  
+.bg-grey {
+	background-color: $bar_graph_bg;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px 0 0 5px;
 }
-.detail-screen-card{
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+.bg-blue {
+	background-color: $color_astronaut_blue_approx;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 0 5px 5px 0;
 }
-.detail-screen-card-title{
-    margin: 5px 0;  
+.txt-total {
+	background: $color_astronaut_blue_approx;
+	border: 1px solid $black;
+	line-height: 15px;
+	display: inline-block;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 15px;
+	padding: 2px 8px;
+	margin: auto;
+	position: absolute;
+	bottom: -14%;
+	left: 43%;
+	margin: 0 auto;
+	z-index: 1;
 }
-.bg-grey{
-    background-color: #464646;
-    border-radius: 5px 0 0 5px;
+.pos-relative {
+	position: relative;
 }
-.bg-blue{
-    background-color: #0A3B66;
-    border-radius: 0 5px 5px 0;
+.detail-bottom-nav {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: $black;
+	font-size: 16px;
+	padding: 5px;
+	color: $white;
+	display: flex;
+	justify-content: space-around;
+	ion-icon {
+		color: $white;
+	}
 }
-.txt-total{
-    background: #0A3B66;
-    border: 1px solid black;
-    line-height: 15px;
-    display: inline-block;
-    border-radius: 15px;
-    padding: 2px 8px 2px 8px;
-    margin: auto;
-    position: absolute;
-    bottom: -14%;
-    left: 43%;
-    margin: 0 auto;
-    z-index: 1;
+.detail-back-btn button.back-button {
+	position: absolute;
+	z-index: 1;
 }
-.pos-relative{
-    position: relative;
-}
-#dashboardChart .c3-chart-lines{
-    fill: rgb(255, 127, 14);
+#dashboardChart .c3-chart-lines {
+	fill: $color_flamenco_approx;
 }

@@ -10,7 +10,7 @@ export type D3 = typeof D3JS;
   Generated class for the C3providerProvider provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
+  for more info on providers and Angular DI.
 */
 @Injectable()
 export class C3providerProvider {

@@ -1,8 +1,8 @@
-import { Component, Input, ElementRef, ViewChild, OnInit, AfterViewInit, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnChanges, SimpleChanges} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import * as d3 from 'd3';  
 // import * as nv from 'nv';  
-declare var d3: any;
+// declare var d3: any;
 
 
 @IonicPage()

@@ -17,7 +17,8 @@ export class Card2Page implements AfterViewInit, OnInit{
 
   @Input() hero2:any = PeopleServiceProvider;
   @Input('index') card_index:any;
-  @ViewChild ('#dashboardCharts')dashboardChart: ElementRef;
+  @ViewChild ('#donut')dashboardChart: ElementRef;
+  @ViewChild ('parentDiv')donutParentDiv: ElementRef;
   @ViewChild ("bullet")bulletCharts: ElementRef;
     public data :any;
     public cardData : any;
@@ -28,17 +29,13 @@ export class Card2Page implements AfterViewInit, OnInit{
     public array1:any=[];
     public array2:any=[];
     // Variables required for bullet chart are listed here
-          bulletParentWidth;
-          chart;
-          margin;
-          width;
-          bulletHeight;
-  ranges: number[] = [130, 230, 210];
-  actual: number[] = [200];
-  target: number[] = [193];
-  colors: any[] = ['lightgrey', 'orange', 'green'];
-  height: number = 20;
-
+          bulletParentWidth;          chart;          margin;          width;          bulletHeight;
+  // ranges: number[] = [130, 230, 210];
+  // actual: number[] = [200];
+  // target: number[] = [193];
+  // colors: any[] = ['lightgrey', 'orange', 'green'];
+  // height: number = 20;
+      donutPerentHeight:any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -51,18 +48,20 @@ ngOnInit() {
   ngAfterViewInit() {
         this.mapjson ();
         this.donutChart();
-        this.renderBulletData();
+        this.processBulletChart();
+        this.donutPerentHeight=this.donutParentDiv.nativeElement.offsetHeight - 21;
+        console.log(this.donutPerentHeight, 'height');
   }
   navigateToDetailPage(){
-    this.navCtrl.push("channels", this.hero2)
+      this.navCtrl.push("channels", this.hero2)
   }
   //rendering bullet data and calling data variable and bullet function here
-  renderBulletData(){
+  processBulletChart(){
     for (var i in this.bulletTempProjected) {
         if (this.bulletTempProjected.hasOwnProperty(i)) {
             var test = this.bulletTempProjected[i];
-            var data_graph=test[1][1];
-            var counter =0
+            // var data_graph=test[1][1];
+            // var counter =0
           for(var test_val in test){
               if(typeof(test[test_val])!='object' ){
                       this.title=test[test_val]; // prints title
@@ -76,9 +75,8 @@ ngOnInit() {
                    //     console.log(arr_object[new_visit],new_visit,'data and key');
                   var arr_object1=arr_object[new_visit];
                   if(typeof(arr_object1)=='object' ){ // loop for date  inside object something like 15/11
-                      var  array1=[];
-                      var count1=0;var counter =0;
-                      var array2=[];var count2=0
+                      // var  array1=[];
+                      var count1=0;var count2=0
                     for(var new_visit1 in arr_object1 ){
                         // console.log(arr_object1[new_visit1],new_visit1,'data and key2',count1); // data points
                         // console.log(this.title,'title444');
@@ -138,7 +136,7 @@ ngOnInit() {
 
   }
 renderBulletChart(whereToPut, WhatToPut) {
-    this.bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth;
+    this.bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth; 
     this.margin = {top: 0, right: 3, bottom: 0, left: 0};
     this.width = this.bulletParentWidth - this.margin.left - this.margin.right;    
     this.bulletHeight = 30 - this.margin.top - this.margin.bottom;
@@ -184,7 +182,8 @@ randomizer(d) {
             show: false
         },
         size: {
-        height: 160
+        // height: this.donutPerentHeight
+        height: 240
     },
     donut: {
       width: 12

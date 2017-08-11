@@ -1,85 +1,88 @@
-    <div class="mail-icon-container">
-        <h2 class="card-name">{{hero.name}}</h2>
-        <ion-icon name="mail" class="mail-icon"></ion-icon>
-      </div>
-            <!--<div *ngFor="let m of ['1','2','3']"   (click)="show()">{{m}}-click me</div>-->
-    <ion-card class="border-radius" color="greys" (click)="navigateToDetailPage(this.hero)">
-        <ion-card-content>
-                  <ion-grid class="nopadding">
-                    <ion-row>
-                      <ion-col col-12 >
-                            <ion-grid class="nopadding">
-                                <ion-row class="small-txt">
-                                        <ion-col col-4 >
-                                            <span *ngFor="let item of data; let i = index">
+<div class="mail-icon-container">
+    <h2 class="card-name">{{hero.name}}</h2>
+    <ion-icon name="mail" class="mail-icon"></ion-icon>
+</div>
+<!--<div *ngFor="let m of ['1','2','3']"   (click)="show()">{{m}}-click me</div>-->
+<ion-card class="border-radius" color="greys" (click)="navigateToDetailPage(this.hero)">
+    <ion-card-content>
+        <ion-grid class="nopadding">
+            <ion-row>
+                <ion-col col-12>
+                    <ion-grid class="nopadding">
+                        <ion-row class="small-txt">
+                            <ion-col col-4  class="nopadding">
+                                <span *ngFor="let item of data; let i = index">
                                                 <span class="legend-txt legend-tdy bold" *ngIf="i == 0">{{item[1]}}</span>
-                                            </span>
-                                           <span class="small-txt" *ngFor="let items of cardData; let i = index">
-                                                <span>{{items[1]}}</span>
-                                            </span>
-                                        </ion-col>
-                                        <ion-col col-4 >
-                                            <span class="small-txt" *ngFor="let items of cardTargetProjected; let i = index">
+                                </span>
+                                <span class="small-txt" *ngFor="let items of cardData; let i = index">
+                                                <span>{{card1tdyA}}</span>
+                                </span>
+                            </ion-col>
+                            <ion-col col-4  class="nopadding">
+                                <span class="small-txt" *ngFor="let items of cardTargetProjected; let i = index">
                                                 <span *ngIf="i == 1">
                                                     <span class="legend-txt legend-tdy bold">{{items[0]}}</span>
-                                                    <span>{{cardTargetData}}</span>
-                                            </span>                                             
-                                            </span>
-                                        </ion-col>
+                                <span>{{card1tdyT}}</span>
+                                </span>
+                                </span>
+                            </ion-col>
 
-                                        <ion-col col-4 >
-                                            <span class="small-txt" *ngFor="let items of cardTargetProjected; let i = index">
+                            <ion-col col-4  class="nopadding">
+                                <span class="small-txt" *ngFor="let items of cardTargetProjected; let i = index">
                                                 <span *ngIf="i == 2">
                                                         <span class="legend-projected legend-txt bold">{{items[0]}}</span>
-                                                        <span>{{cardProjectedData}}</span>
-                                                    </span>
-                                            </span>
-                                        </ion-col>
-                                </ion-row>
-                            </ion-grid>
+                                <span>{{card1tdyP}}</span>
+                                </span>
+                                </span>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
 
-                            <div class="card1-bullet-wraper" #bulletChart>
-                                    <div id="bulletTdy{{card_index}}"></div>
-                                    <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
-                            </div>
-                            <div class="card1-bullet-wraper" #bulletChart>
-                                    <div id="bulletLstWeek{{card_index}}"></div>
-                            </div>
-                            <!--<page-bullet [index] = "i" #bulletChart></page-bullet>-->
-                            <ion-grid class="nopadding">
-                                <ion-row class="small-txt">
-                                        <ion-col col-4 >
-                                            <span *ngFor="let item of lastWeek; let i = index">
-                                                <span *ngIf="i == 1">
+                    <div class="card1-bullet-wraper" #bulletChart>
+                        <div id="bulletTdy{{card_index}}"></div>
+                        <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
+                    </div>
+                    <div class="card1-bullet-wraper" #bulletChart>
+                        <div id="bulletLstWeek{{card_index}}"></div>
+                    </div>
+                    <!--<page-bullet [index] = "i" #bulletChart></page-bullet>-->
+                    <ion-grid class="nopadding">
+                        <ion-row class="small-txt" >
+                            <ion-col col-4  class="nopadding">
+                                <span *ngFor="let item of lastWeek; let i = index">
+                                        <span *ngIf="i == 1">
                                                     <span class="legend-txt legend-tdy bold"  *ngIf="i == 1">{{item}}</span>
-                                                    <span>{{lastWeekData[0][1]}}</span>
-                                                </span>
-                                            </span>
-                                        </ion-col>
-                                        <ion-col col-4 >
-                                              <span>
+                                                    <span>{{lastWeekA || "0.00"}}</span>
+                                        </span>
+                                </span>
+                            </ion-col>
+                            <ion-col col-4  class="nopadding">
+                                <span *ngFor="let item of lastWeek; let i = index">
+                                        <span *ngIf="i == 1">
+                                    
                                                     <span class="legend-target legend-txt bold">Target</span>
-                                                    <span>0.00</span>
-                                            </span>
-                                        </ion-col>
-                                    <ion-col col-4 >
-                                    </ion-col>
-                                </ion-row>
-                        </ion-grid>
-                    </ion-col>
-                    <ion-col col-12  class="bar-graph-bg">
-                          <div> 
-                              <div id="barChart{{card_index}}" #dashboardChart class="donut-chart"></div>
-                          </div>
-                      <!--<p>1. Template : {{hero.template}}</p>
+                                                    <span>{{lastWeekT || "0.00"}}</span>
+                                        </span>
+                                </span>
+                            </ion-col>
+                            <ion-col col-4>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-col>
+                <ion-col col-12 class="bar-graph-bg">
+                    <div>
+                        <div id="barChart{{card_index}}" #dashboardChart class="donut-chart bar-chart"></div>
+                    </div>
+                    <!--<p>1. Template : {{hero.template}}</p>
                       <p>2. Target_column_name : {{hero.target_column_name}}</p>
                       <p>3. Source_metric : {{hero.source_metric}}</p>
                       <p>4. Counter : {{hero.counter}}</p>-->
-                    </ion-col>
-                </ion-row>
-              </ion-grid>
-          </ion-card-content>
-      </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card-content>
+</ion-card>
 
 
 <!--<ion-card>

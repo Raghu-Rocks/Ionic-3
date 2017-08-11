@@ -1,0 +1,44 @@
+<!--
+  Generated template for the NotificationDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Notification Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<!-- <ion-card *ngFor="let cardData of notify" [navPush]="myApp"> -->
+  <ion-card *ngFor="let cardData of notify" >
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+              <ion-avatar item-start>
+              <img src="../../assets/images/icon_{{cardData.product_type}}.png">
+              </ion-avatar>
+        </ion-col>
+        <ion-col col-8>
+              <h2>{{cardData.title}}</h2>
+              <p>{{cardData.message}}</p>
+              <ion-icon right>{{cardData.time}}</ion-icon>
+        </ion-col>
+      </ion-row>
+</ion-grid>
+  <!-- <ion-item>
+    <ion-avatar item-start>
+      <img src="../../assets/images/icon_{{cardData.product_type}}.png">
+    </ion-avatar>
+    <h2>{{cardData.title}}</h2>
+    <p>{{cardData.message}}</p>
+     <ion-icon>{{cardData.time}}</ion-icon>
+  </ion-item> -->
+  </ion-card>
+
+</ion-content>

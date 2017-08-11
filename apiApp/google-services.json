@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "488908667368",
+    "firebase_url": "https://dma-app.firebaseio.com",
+    "project_id": "dma-app",
+    "storage_bucket": "dma-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488908667368:android:9f654014c129dc3e",
+        "android_client_info": {
+          "package_name": "com.adobe.dmaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488908667368-s602kf8r8cv4smjcsrut9te1vhqq7aj1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh9eOPRXyXVqvAumUNdXArKDqEMoMcq4k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

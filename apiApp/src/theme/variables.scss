@@ -1,16 +1,30 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
-$font-path: "../assets/fonts";
 
-@import "ionic.globals";
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
 
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
+//fonts
+$font_0: sans-serif;
+$helvetica: "Helvetica Neue", sans-serif;
+
+@import "ionic.globals";
+
+
+
+
+//urls
+$url_0: url(../../assets/images/background.png);
+
+
 // Shared Variables
-// -------------------------------------------------
+// --------------------------------------------------
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
@@ -32,16 +46,40 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222,
-  greys: #F7F6F6,
-  light-blue: #3371FF,
-  light-sky: #B8CDFE,
-  green1: #108A03,
-  green2: #17CB04,
-  wheat1: #FEFBE1
+  dark:       #222
 );
+$white: #ffffff;
+$black: #000;
+$color_bullet: #eaab1c;
+$color_bar_graph: rgb(246, 139, 25);
+$color_target_legend: #2ca02c;
+$color_projected_legend: #e8e8e8;
+$color_paid_search: #d5406a;
+$color_affiliates: #0d6580;
+$color_organic: #21daa0;
+$color_display: #d3885f;
+$color_others: #0b94ff;
+$color_matisse_approx: #1e5799;
+$color_curious_blue_approx: #2989d8;
+$color_mariner_approx: #207cca;
+$color_jordy_blue_approx: #7db9e8;
+$color_viking_approx: #69b6d5;
+$mail_icon: #3774ff;
+$color_storm_dust_approx: #666;
+$color_mountain_mist_approx: #999;
+$color_gallery_approx: #eee;
+$color_alto_approx: #ddd;
+$color_celeste_approx: #ccc;
+$transparent: transparent;
+$color_silver_approx: #bdbdbd;
 
-
+$color_cerulean_blue_approx: #204eb5;
+$web_orange: orange;
+$black_30: rgba(0, 0, 0, 0.3);
+$bar_graph_bg: #464646;
+$color_astronaut_blue_approx: #0a3b66;
+$color_flamenco_approx: rgb(255, 127, 14);
+// $black_100: rgba(0, 0, 0, 1);
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

@@ -1,3 +1,4 @@
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
@@ -11,6 +12,9 @@
     <button menuClose ion-item *ngFor="let p of people; let i=index" (click)="openPage(p.template,p)">
         {{p.name}}
       </button>
+    <button menuClose ion-item (click)="openPage('NotificationDetailsPage','')">
+        Notification
+      </button>  
       <!--<button menuClose ion-item>
           <ion-item>Test2</ion-item>
       </button>-->

@@ -8,6 +8,26 @@
 </ion-header>
 
 <ion-content class="app-bg home">
+      <section>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-12>
+                      <div class="user-icon-box">
+                            <ion-icon ios="ios-settings" md="md-settings"  class="refresh-share"></ion-icon>
+                            <ion-icon ios="ios-contact" md="md-contact" class="user-pic"></ion-icon>
+                            <ion-icon ios="ios-share" md="md-share" class="refresh-share"></ion-icon>
+
+                      </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-12>
+                                            <div class="name" text-center>Raghu Nandan</div>
+                                            <div class="desg" text-center>Consultant, Adobe Global Services</div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+      </section>
       <div *ngFor="let card of people let i = index; let f=first; let l=last; let e=even; let o=odd;">
       <!--<h1>Length : {{card.length}}</h1>-->
             <card1-design *ngIf="card.template == 'summary' " [hero]="card" [index]="i"></card1-design>          

@@ -1,20 +1,58 @@
-page-cards {
 
+
+// page-cards {
+// }
+.mrgn-rght {
+	margin-right: 10px;
 }
-.mrgn-rght{margin-right: 10px;}
-.bar-graph-bg{
-    background: #464646;
+.bar-graph-bg {
+	background: $bar_graph_bg;
 }
-
-
-
-.bullet { font: 10px sans-serif; }
-.bullet .marker { stroke: #000; stroke-width: 2px; }
-.bullet .tick line { stroke: #666; stroke-width: .5px; }
-.bullet .range.s0 { fill: #eee; }
-.bullet .range.s1 { fill: #ddd; }
-.bullet .range.s2 { fill: #ccc; }
-.bullet .measure.s0 { fill: #eaab1c; }
-.bullet .measure.s1 { fill: #eaab1c; }
-.bullet .title { font-size: 14px; font-weight: bold; }
-.bullet .subtitle { fill: #999; }
+.bullet {
+	font: 10px $font_0;
+	.marker {
+		stroke: $black;
+		stroke-width: 2px;
+	}
+	.range {
+		&.s0 {
+			fill: $color_gallery_approx;
+		}
+		&.s1 {
+			fill: $color_alto_approx;
+		}
+		&.s2 {
+			fill: $color_celeste_approx;
+		}
+	}
+	.measure {
+		&.s0 {
+			fill: $color_bullet;
+		}
+		&.s1 {
+			fill: $color_bullet;
+		}
+	}
+	.title {
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.subtitle {
+		fill: $color_mountain_mist_approx;
+	}
+	.tick line {
+		stroke: $color_storm_dust_approx;
+		stroke-width: .5px;
+	}
+}
+.bar-chart .c3-bar {
+	fill: $color_bar_graph !important;
+	stroke: $color_bar_graph !important;
+}
+.bar-chart .c3-line {
+	fill: $transparent !important;
+	// stroke: $color_bar_graph !important;
+}
+.bar-chart .c3-circle{
+    fill: $transparent !important;
+}

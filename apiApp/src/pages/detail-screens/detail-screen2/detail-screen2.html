@@ -18,7 +18,7 @@
         </div>
     <ion-grid class="white-txt">
       <div *ngFor="let keys of tdyVisitsKeys; let i = index;">
-        <ion-row class="pos-relative"  [ngClass]="{'hide': i < 0}">
+        <ion-row class="pos-relative"  [ngClass]="{'hide': i > 0}">
             <ion-col class="detail-screen-card bg-grey">
                   <p class="detail-screen-card-title">Last week</p>
                 <!-- <div class="demo-bullet"></div> -->
@@ -62,5 +62,10 @@
       </div>
     </ion-grid>
 
-
+      <div class="detail-bottom-nav">
+          <!-- <ion-icon name="home"></ion-icon> -->
+          <ion-icon ios="ios-home" md="md-home" (click)="navigateToHome()"></ion-icon>
+          <ion-icon ios="ios-share" md="md-share"></ion-icon>
+          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+      </div>
   </ion-content>

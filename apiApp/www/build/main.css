@@ -45301,6 +45301,28 @@ ion-navbar.toolbar {
   font-size: 11px;
 }
 
+.bullet-wrapper {
+  position: relative;
+  background-color: transparent;
+}
+
+.ranges {
+  position: absolute;
+  top: 0;
+}
+
+.actual {
+  position: absolute;
+  border-radius: 0 15px 15px 0;
+}
+
+.target {
+  position: absolute;
+  width: 3px;
+  top: 0;
+  bottom: 0;
+}
+
 .mrgn-rght {
   margin-right: 10px;
 }
@@ -45336,7 +45358,7 @@ ion-navbar.toolbar {
 }
 
 .bullet .measure.s0 {
-  fill: lightsteelblue;
+  fill: #eaab1c;
 }
 
 .bullet .measure.s1 {
@@ -45389,8 +45411,30 @@ ion-card-content {
   justify-content: space-between;
 }
 
+#bulletChart20 .bullet .measure.s0,
+#bulletChart20 .bullet .measure.s1,
+#bulletChart30 .bullet .measure.s0,
+#bulletChart30 .bullet .measure.s1 {
+  fill: #d5406a;
+}
+
+#bulletChart21 .bullet .measure.s0,
+#bulletChart21 .bullet .measure.s1,
+#bulletChart31 .bullet .measure.s0,
+#bulletChart31 .bullet .measure.s1 {
+  fill: #0d6580;
+}
+
+#bulletChart22 .bullet .measure.s0,
+#bulletChart22 .bullet .measure.s1,
+#bulletChart32 .bullet .measure.s0,
+#bulletChart32 .bullet .measure.s1 {
+  fill: #21daa0;
+}
+
 .date-btn {
   height: 40px;
+  padding: 0 16px;
 }
 
 .detail-back-btn button.back-button {
@@ -45456,6 +45500,23 @@ ion-card-content {
 
 .pos-relative {
   position: relative;
+}
+
+#dashboardChart .c3-chart-lines {
+  fill: #ff7f0e;
+}
+
+.left-legend-icon {
+  float: right;
+  padding-right: 10px;
+}
+
+.left-legends {
+  padding-top: 8px;
+}
+
+.row-gap {
+  margin: 10px 0;
 }
 
 .hamburger {

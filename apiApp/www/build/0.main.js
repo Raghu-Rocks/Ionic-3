@@ -59,68 +59,142 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the DetailScreen2Page page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 var channels = (function () {
     function channels(navCtrl, navParams, cdr) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.cdr = cdr;
+        this.actualValue = [];
+        this.projectedValue = [];
+        this.lastWeekVisits = [];
         this.navParams.get("hero");
     }
     channels.prototype.ngAfterViewInit = function () {
         this.mapjson();
-        this.bulletChart();
+        this.processDetailBullet();
+        this.lastWeekVisitsData();
+        // for (var index = 0; index < this.tdyVisitsValues.length; index++) {
+        //   var element = this.tdyVisitsValues[index];
+        //   var divId = "#detaiBullet"+element;
+        //   this.renderBulletChart(divId);
+        // }
     };
     channels.prototype.mapjson = function () {
         // today
         this.data = Object.entries(this.navParams.data);
         this.cardName = Object.entries(this.data[0]);
-        console.log(this.data, "data");
-        console.log(this.cardName[1][1], "cardName");
+        this.detailTrends = Object.entries(this.data[5])[1];
+        // console.log(this.detailTrends, "detailTrends");
+        this.collection = Object.entries(this.detailTrends[1][0])[1][1];
+        this.collectionArray = Object.entries(this.collection)[2];
+        this.collectionData = Object.entries(this.collectionArray[1])[1][1];
+        this.collectionDataVisits = Object.entries(this.collectionData)[0][1];
+        this.tdyVisits = Object.entries(this.collectionDataVisits)[0][1];
+        this.tdyVisitsKeys = Object.entries(this.tdyVisits);
+        // this.tdyVisitsKeys = Object.keys(this.tdyVisits);
+        this.tdyVisitsValues = Object.values(this.tdyVisits);
+        this.detailBulletData = Object.entries(this.collectionData);
+        //last week data
+        this.lstWeekCollection = Object.entries(this.detailTrends[1][0])[0][1];
+        this.lstWeekCollectionArray = Object.entries(this.lstWeekCollection)[2];
+        this.lastWeekData = Object.entries(this.lstWeekCollectionArray[1])[1][1];
+        this.lastWeekDataVisits = Object.entries(this.lastWeekData)[0][1];
+        this.lastWeekVisitsObject = Object.entries(this.lastWeekDataVisits)[0][1];
+        this.lastWeekVisitsValue = Object.values(this.lastWeekVisitsObject);
+        console.log(this.lastWeekVisitsValue, "lstWeekCollection");
+        // console.log(this.detailBulletData, "detailBulletData");
         this.cdr.detectChanges();
     };
-    channels.prototype.bulletChart = function () {
-        var _this = this;
-        this.bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth;
-        this.margin = { top: 0, right: 3, bottom: 0, left: 0 };
-        this.width = this.bulletParentWidth - this.margin.left - this.margin.right;
-        this.height = 30 - this.margin.top - this.margin.bottom;
-        console.log("width", this.bulletParentWidth);
-        this.chart = d3.bullet()
-            .width(this.width)
-            .height(this.height);
+    channels.prototype.lastWeekVisitsData = function () {
+        for (var index = 0; index < this.lastWeekVisitsValue.length; index++) {
+            this.lastWeekVisits[index] = this.kFormatter(this.lastWeekVisitsValue[index]);
+            // return this.lastWeekVisits;
+        }
+        console.log(this.lastWeekVisits, 'lastWeekVisits');
+    };
+    channels.prototype.processDetailBullet = function () {
+        for (var i in this.detailBulletData) {
+            if (this.detailBulletData.hasOwnProperty(i)) {
+                var test = this.detailBulletData[i];
+                var data_graph = test[1][1];
+                var counter = 0;
+                for (var test_val in test) {
+                    if (typeof (test[test_val]) != 'object') {
+                        this.title = test[test_val]; // prints title
+                        // console.log(this.title,'title');
+                    }
+                    else {
+                        // console.log(test[test_val],'test[test_val]');
+                        var arr_object = test[test_val];
+                        if (typeof (arr_object) == 'object') {
+                            for (var new_visit in arr_object) {
+                                //     console.log(arr_object[new_visit],new_visit,'data and key');
+                                var arr_object1 = arr_object[new_visit];
+                                if (typeof (arr_object1) == 'object') {
+                                    var count1 = 0;
+                                    var count2 = 0;
+                                    for (var new_visit1 in arr_object1) {
+                                        // console.log(arr_object1[new_visit1],new_visit1,'data and key2',count1); // data points
+                                        // console.log(this.title,'title444');
+                                        if (this.title.indexOf('Project') != -1) {
+                                            this.projectedValue[count1] = arr_object1[new_visit1];
+                                            // console.log(this.title,'title444');
+                                            count1++;
+                                        }
+                                        else {
+                                            this.actualValue[count2] = arr_object1[new_visit1];
+                                            // console.log(this.title,'title555');  
+                                            count2++;
+                                        }
+                                    }
+                                } //if(typeof(arr_object1)=='object' )
+                            } //for(var new_visit in arr_object )
+                        }
+                    }
+                }
+            }
+        }
+        if (this.projectedValue.length > 0) {
+            // console.log(this.actualValue,"actualValue",this.projectedValue,'projectedValue');
+            for (var j = 0; j < this.actualValue.length; j++) {
+                var bulletStackData1 = [{ "ranges": [0, this.projectedValue[j], 0], "measures": [this.actualValue[j]], "markers": [0] }];
+                var bulletStackData2 = [{ "ranges": [0, 0, 0], "measures": [this.lastWeekVisitsValue[j]], "markers": [0] }];
+                var divId1 = "#detailBullet" + this.actualValue[j];
+                this.renderBulletChart(divId1, bulletStackData1);
+                var divId2 = "#detailTdyBullet" + this.actualValue[j];
+                this.renderBulletChart(divId2, bulletStackData1);
+                var divId3 = "#lastWeekBullet" + this.actualValue[j];
+                this.renderBulletChart(divId3, bulletStackData2);
+            }
+        } //if(this.array2.length>0){
+    };
+    channels.prototype.renderBulletChart = function (WhereToPut, whatToPut) {
+        // Variables required for bullet chart are listed here
+        var bulletParentWidth;
+        var chart;
+        var margin;
+        var width;
+        var height;
+        bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth;
+        margin = { top: 0, right: 3, bottom: 0, left: 0 };
+        width = bulletParentWidth - margin.left - margin.right;
+        height = 30 - margin.top - margin.bottom;
+        chart = d3.bullet()
+            .width(width)
+            .height(height);
         // .actualColor("#ff0000")
         // .targetColor("#00FF00")
         // .projectedColor("#0000FF")
-        this.something = d3.json("https://api.myjson.com/bins/rdlfz", function (error, data) {
-            if (error)
-                throw error;
-            var svg = d3.select("#bulletChart").selectAll("svg")
-                .data(data)
-                .enter().append("svg")
-                .attr("class", "bullet")
-                .attr("width", _this.width + _this.margin.left + _this.margin.right)
-                .attr("height", _this.height + _this.margin.top + _this.margin.bottom)
-                .append("g")
-                .call(_this.chart);
-            //   var title = svg.append("g")
-            //       .style("text-anchor", "end")
-            //       .attr("transform", "translate(-6," + this.height / 2 + ")");
-            //   title.append("text")
-            //       .attr("class", "title")
-            //       .text(function(d) { return d.title; });
-            //   title.append("text")
-            //       .attr("class", "subtitle")
-            //       .attr("dy", "1em")
-            //       .text(function(d) { return d.subtitle; });
-            d3.selectAll("back-button").on("click", function () {
-                svg.datum(this.randomize).call(this.chart.duration(1000)); // TODO automatic transition
-            });
+        var svg = d3.select(WhereToPut).selectAll("svg")
+            .data(whatToPut)
+            .enter().append("svg")
+            .attr("class", "bullet")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .call(chart);
+        d3.selectAll("back-button").on("click", function () {
+            svg.datum(this.randomize).call(this.chart.duration(1000)); // TODO automatic transition
         });
     }; // end of bullet chart fun
     channels.prototype.randomize = function (d) {
@@ -137,6 +211,17 @@ var channels = (function () {
             return Math.max(0, d + k * (Math.random() - .5));
         };
     }; //fun  required for bullet chart
+    channels.prototype.kFormatter = function (num) {
+        if (isNaN(num))
+            return 0;
+        //	console.log(num);
+        if (num > 99999) {
+            return (num / 1000000).toFixed(2) + 'M';
+        }
+        else {
+            return num > 999 ? (num / 1000).toFixed(2) + 'k' : num.toFixed(2);
+        }
+    };
     return channels;
 }());
 __decorate([
@@ -144,17 +229,13 @@ __decorate([
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Slides */])
 ], channels.prototype, "slides", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Input */])('index'),
-    __metadata("design:type", Object)
-], channels.prototype, "card_index", void 0);
-__decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* ViewChild */])("bulletChart"),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* ElementRef */])
 ], channels.prototype, "bulletCharts", void 0);
 channels = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'page-detail-screen2',template:/*ion-inline-start:"C:\My-Work\ionic\ionic_3\apiApp\src\pages\detail-screens\detail-screen2\detail-screen2.html"*/'\n\n<ion-header>\n\n  <ion-navbar class="detail-back-btn">\n\n    <ion-title  align="center">\n\n      <button ion-button round class="date-btn">\n\n        <ion-icon  md="md-time" ios="ios-time-outline"></ion-icon>{{navParams.data.date_today}}\n\n      </button>\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n  <ion-content class="app-bg">\n\n    <div *ngFor="let item of cardName; let i = index;">\n\n          <h2 *ngIf="i == 1" class="screen-title" align="center">{{item[1]}}</h2>\n\n    </div>\n\n    <div *ngFor="let item of navParams.data.detail_trends; let i = index;">\n\n          <div *ngIf="i == 0">\n\n            <ion-grid class="white-txt">\n\n              <ion-row class="pos-relative">\n\n                  <ion-col class="detail-screen-card bg-grey">\n\n                  	<p class="detail-screen-card-title">Last week</p>\n\n      				      <div class="demo-bullet"></div>\n\n               		  <div>\n\n                          		<span  class="legend-txt small-txt" >2.02M</span>\n\n                          		<span  class="legend-txt small-txt" >0.00</span>\n\n        			      </div>\n\n                </ion-col>\n\n	              <span class="txt-total">Total</span>\n\n                <ion-col class="detail-screen-card bg-blue">\n\n                  	<p class="detail-screen-card-title">Today</p>\n\n      				      <div class="demo-bullet"></div>\n\n               		  <div align="right">\n\n                          		<span  class="legend-txt small-txt" >2.02M</span>\n\n                          		<span  class="legend-txt small-txt" >0.00</span>\n\n        			      </div>\n\n                </ion-col>\n\n              </ion-row>\n\n          </ion-grid>\n\n        </div>\n\n    </div>\n\n    <ion-grid class="white-txt">\n\n      <ion-row class="pos-relative">\n\n      		<ion-col col-5 class="detail-screen-card bg-grey">\n\n        			<div>\n\nstgsjv        			</div>\n\n      		</ion-col>\n\n      		<ion-col col-7 class="detail-screen-card bg-grey">\n\n        			<div>\n\n         				<div id="bulletChart" #bulletChart class="donut-chart"></div>\n\n        			</div>\n\n      		</ion-col>\n\n    	</ion-row>\n\n    </ion-grid>\n\n\n\n\n\n  </ion-content>\n\n'/*ion-inline-end:"C:\My-Work\ionic\ionic_3\apiApp\src\pages\detail-screens\detail-screen2\detail-screen2.html"*/,
+        selector: 'page-detail-screen2',template:/*ion-inline-start:"C:\My-Work\ionic\ionic_3\apiApp\src\pages\detail-screens\detail-screen2\detail-screen2.html"*/'\n\n<ion-header>\n\n  <ion-navbar class="detail-back-btn">\n\n    <ion-title  align="center">\n\n      <button ion-button round class="date-btn">\n\n        <ion-icon  md="md-time" ios="ios-time-outline"></ion-icon>{{navParams.data.date_today}}\n\n      </button>\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n  <ion-content class="app-bg">\n\n    <div *ngFor="let name of cardName; let i = index;">\n\n          <h2 *ngIf="i == 1" class="screen-title" align="center">{{name[1]}}</h2>\n\n    </div>\n\n        <div *ngIf="i == 0">\n\n\n\n        </div>\n\n    <ion-grid class="white-txt">\n\n      <div *ngFor="let keys of tdyVisitsKeys; let i = index;">\n\n        <ion-row class="pos-relative"  [ngClass]="{\'hide\': i < 0}">\n\n            <ion-col class="detail-screen-card bg-grey">\n\n                  <p class="detail-screen-card-title">Last week</p>\n\n                <!-- <div class="demo-bullet"></div> -->\n\n              <div class="card1-bullet-wraper" #bulletChart>\n\n                  <div id="lastWeekBullet{{keys[1]}}"></div>\n\n              </div>\n\n               	<div>\n\n                          		<span  class="legend-txt small-txt legend-tdy" >{{this.lastWeekVisits[i]}}</span>\n\n                          		<!-- <span  class="legend-txt small-txt legend-target" >2.02M</span> -->\n\n                          		<span  class="legend-txt small-txt legend-projected">0.00</span>\n\n        			  </div>\n\n          </ion-col>\n\n	        <span class="txt-total">Total</span>\n\n          <ion-col class="detail-screen-card bg-blue">\n\n                <p class="detail-screen-card-title">Today</p>\n\n                <!-- <div class="demo-bullet"></div> -->\n\n              <div class="card1-bullet-wraper" #bulletChart>\n\n                  <div id="detailTdyBullet{{keys[1]}}"></div>\n\n              </div>\n\n               	<div align="right">\n\n                          		<span  class="legend-txt small-txt legend-tdy" >{{keys[1]}}</span>\n\n                          		<span  class="legend-txt small-txt legend-target" >0.00</span>\n\n                          		<span  class="legend-txt small-txt legend-projected">{{this.actualValue[i] || 0.00}}</span>\n\n        			  </div>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row class="pos-relative row-gap" >\n\n      		<ion-col col-5 class="">\n\n        			<div class="left-legends">\n\n                  <span>{{keys[0]}}</span>\n\n                  <span class="left-legend-icon"><ion-icon name="arrow-dropright-circle"></ion-icon></span>\n\n              </div>\n\n      		</ion-col>\n\n      		<ion-col col-7 class="">\n\n              <div class="card1-bullet-wraper" #bulletChart>\n\n                  <div id="detailBullet{{keys[1]}}"></div>\n\n                  <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->\n\n              </div>\n\n      		</ion-col>\n\n        </ion-row>\n\n      </div>\n\n    </ion-grid>\n\n\n\n\n\n  </ion-content>\n\n'/*ion-inline-end:"C:\My-Work\ionic\ionic_3\apiApp\src\pages\detail-screens\detail-screen2\detail-screen2.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* ChangeDetectorRef */]])
 ], channels);

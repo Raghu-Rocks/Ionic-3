@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, ElementRef,ChangeDetectorRef} from '@angular/core';
+import { Component, ViewChild, ElementRef,ChangeDetectorRef} from '@angular/core';
 import { IonicPage, NavController, NavParams,Slides } from 'ionic-angular';
 // import * as c3 from 'c3';  
 declare var d3: any;
@@ -28,12 +28,10 @@ export class channels {
         this.mapjson ();
         this.processDetailBullet();
         this.lastWeekVisitsData();
-        // for (var index = 0; index < this.tdyVisitsValues.length; index++) {
-        //   var element = this.tdyVisitsValues[index];
-        //   var divId = "#detaiBullet"+element;
-        //   this.renderBulletChart(divId);
-        // }
-    }   
+    }
+  navigateToHome(){
+        this.navCtrl.popToRoot();
+  }
     detailTrends:any; collection:any; collectionArray:any;collectionData:any; collectionDataVisits:any; tdyVisits:any; tdyVisitsKeys:any;
     tdyVisitsValues:any;
     lstWeekCollection:any; lstWeekCollectionArray:any; lastWeekData:any; lastWeekDataVisits:any; lastWeekVisitsObject:any;
@@ -79,8 +77,8 @@ export class channels {
         for (var i in this.detailBulletData) {
         if (this.detailBulletData.hasOwnProperty(i)) {
             var test = this.detailBulletData[i];
-            var data_graph=test[1][1];
-            var counter =0
+            // var data_graph=test[1][1];
+            // var counter =0
           for(var test_val in test){
               if(typeof(test[test_val])!='object' ){
                       this.title=test[test_val]; // prints title

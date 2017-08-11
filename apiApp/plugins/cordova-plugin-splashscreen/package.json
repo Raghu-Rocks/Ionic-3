@@ -10,7 +10,7 @@
         "spec": ">=4.0.1 <4.1.0",
         "type": "range"
       },
-      "C:\\xampp\\htdocs\\DMAIonic\\apiApp\\node_modules"
+      "C:\\Users\\mulage\\Documents\\ionic\\ionic2\\push2\\node_modules"
     ]
   ],
   "_from": "cordova-plugin-splashscreen@>=4.0.1 <4.1.0",
@@ -45,7 +45,7 @@
   "_shasum": "773cd1363c1f3bacb9901663e9e3793dd3e0a19d",
   "_shrinkwrap": null,
   "_spec": "cordova-plugin-splashscreen@~4.0.1",
-  "_where": "C:\\xampp\\htdocs\\DMAIonic\\apiApp\\node_modules",
+  "_where": "C:\\Users\\mulage\\Documents\\ionic\\ionic2\\push2\\node_modules",
   "author": {
     "name": "Apache Software Foundation"
   },

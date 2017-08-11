@@ -15,37 +15,26 @@ export class summary {
     public title:any;
     data:any;
     cardName:any;
-    public lstArray1:any;
-    public lstArray2:any;
-    public lstArray3:any;
-    public tdyArray1:any;
-    public tdyArray2:any;
-    public tdyArray3:any;
-    tdyBulletA:any =[];
-    tdyBulletT:any =[];
-    tdyBulletP:any =[];
-    lastBulletA:any =[];
-    lastBulletT:any =[];
-    lastBulletP:any =[];
-    areaActualValue:any =[];
-    areaTargetValue:any =[];
-    users:any = [];
-    values:any = [];
+    public lstArray1:any;        public lstArray2:any;    public lstArray3:any;    public tdyArray1:any;
+    public tdyArray2:any;       public tdyArray3:any;
+    tdyBulletA:any =[];    tdyBulletT:any =[];    tdyBulletP:any =[];                   lastBulletA:any =[];
+    lastBulletT:any =[];    lastBulletP:any =[];    areaActualValue:any =[];         areaTargetValue:any =[];
+    users:any = [];           values:any = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private cdr:ChangeDetectorRef) {
       this.navParams.get("hero");
   }
-
  ngAfterViewInit(){
         this.mapjson ();
-        // console.log(this.lastBulletP,'test');
-
         this.processBulletGraph("#bulletLast"+this.lastBulletA, this.lstWekData, this.lastBulletP, this.lastBulletT, this.lastBulletA,"lastWeek");
        this.processBulletGraph("#bulletTdy"+this.tdyBulletA, this.tdyData, this.tdyBulletP, this.tdyBulletT, this.tdyBulletA,"");
         this.renderLastWeekData();
         this.renderTdyWeekData();
         this.processAreaChart("#dashboardChart");
     }
-
+  navigateToHome(){
+    this.navCtrl.popToRoot();
+  }
     detailTrends:any; lastWeek:any; lastWeekCollection:any; lstWekData:any; lstWekShoppers:any; lstWekTarget:any;                                  
      tdy:any; tdyCollection:any; tdyData:any;
      graphArea:any; graphCollection:any; areaGraphData:any;
@@ -101,14 +90,13 @@ export class summary {
                 c3.generate({
         bindto: whereToPut,
         data: {
-        columns: whatToPut
-           
-        ,
-        types: {
-            data1: 'area',
-            data2: 'area-spline'
-        },
-        // type: 'area',
+        columns: whatToPut,
+ 
+        // types: {
+        //     data1: 'area',
+        //     data2: 'area-spline'
+        // },
+        type: 'line',
         //     colors: {
         //       data1: '#ff0000', data2: '#ff9900'
         //   }
@@ -125,8 +113,8 @@ export class summary {
             if (whichWeekData.hasOwnProperty(i)) {
                 var test = whichWeekData[i];
                 // console.log(test, "test");
-                var data_graph=test[1][1];
-                var counter =0
+                // var data_graph=test[1][1];
+                // var counter =0
                 for(var test_val in test){
                 if(typeof(test[test_val])!='object' ){
                       this.title=test[test_val]; // prints title
@@ -141,7 +129,7 @@ export class summary {
                                 var arr_object1=arr_object[new_visit];
                                 // console.log(arr_object1,'arr_object12',typeof arr_object1);
                             if(typeof (arr_object1)!='object' ){ 
-                                var count1=0;  var count2=0;
+                                // var count1=0;  var count2=0;
 
                                 if (typeof arr_object1=='string') {
                                     //  console.log(this.title,'title44');                                    
@@ -166,8 +154,8 @@ export class summary {
         }
                         if(lastweek=="lastWeek"){
                                 if(targetValue.length>0){
-                                   for (var j = 0; j < targetValue.length; j++) {
-                                        var bulletStackData1 = [{"ranges":[0,0 ,0], "measures":[actualValue[j] ],	  "markers":[targetValue]  }];
+                                   for (var m = 0; m < targetValue.length; m++) {
+                                        var bulletStackData1 = [{"ranges":[0,0 ,0], "measures":[actualValue[m] ],	  "markers":[targetValue]  }];
                                         //  console.log(whereToPut,'whereToPut');
                                         if(whereToPut=='#bulletLast'){
                                             var  graphLen=document.getElementsByClassName('bulletLastGraph').length;
@@ -182,8 +170,8 @@ export class summary {
                                 var bulletStackData = [{"ranges":[0,projectedValue[j] ,0], "measures":[actualValue[j] ],	  "markers":[targetValue]  }];
                                 // console.log(whereToPut,'whereToPut');
                                 if(whereToPut=='#bulletLast'){
-                                    var  graphLen=document.getElementsByClassName('bulletLastGraph').length;
-                                    whereToPut=document.getElementsByClassName('bulletLastGraph')[graphLen-1];
+                                    var  graphLen1=document.getElementsByClassName('bulletLastGraph').length;
+                                    whereToPut=document.getElementsByClassName('bulletLastGraph')[graphLen1-1];
                                 }
                                 this.renderBulletChart(whereToPut, bulletStackData);
                             }
@@ -210,8 +198,8 @@ export class summary {
             if (this.tdyData.hasOwnProperty(i)) {
                 var test = this.tdyData[i];
                 // console.log(test, "test");
-                var data_graph=test[1][1];
-                var counter =0
+                // var data_graph=test[1][1];
+                // var counter =0
                 for(var test_val in test){
                 if(typeof(test[test_val])!='object' ){
                       this.title=test[test_val]; // prints title
@@ -255,8 +243,8 @@ export class summary {
             if (this.lstWekData.hasOwnProperty(i)) {
                 var test = this.lstWekData[i];
                 // console.log(test, "test");
-                var data_graph=test[1][1];
-                var counter =0
+                // var data_graph=test[1][1];
+                // var counter =0
                 for(var test_val in test){
                 if(typeof(test[test_val])!='object' ){
                       this.title=test[test_val]; // prints title

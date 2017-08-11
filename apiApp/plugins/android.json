@@ -7,20 +7,27 @@
         "files": {}
     },
     "installed_plugins": {
+        "phonegap-plugin-push": {
+            "SENDER_ID": "349914175083",
+            "PACKAGE_NAME": "io.ionic.veer"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "io.ionic.veer"
+        },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.ionic.veer"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.ionic.veer"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.ionic.veer"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.ionic.veer"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.ionic.veer"
         }
     },
     "dependent_plugins": {}

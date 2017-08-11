@@ -6,9 +6,9 @@
         <ion-card-content>
             <ion-grid>
                 <ion-row>
-                    <ion-col col-5   >
+                    <ion-col col-5   #parentDiv>
                         <p class="bold center-txt">{{hero2.collection[0].name}}</p>
-                        <div id="dashboardChart{{card_index}}" #dashboardChart class="donut-chart"></div>
+                        <div id="dashboardChart{{card_index}}" #donut class="donut-chart"></div>
                     </ion-col>
                     
                     <ion-col col-7 >
@@ -16,13 +16,13 @@
                         <div *ngFor="let array of cardDataArray; let i = index">
                             <ion-grid class="nopadding"  *ngIf="i < 3">
                                 <ion-row>
-                                        <ion-col col-4  style="padding-right:0;">
+                                        <ion-col col-5 style="padding-right:0;">
                                             <span class="small-txt bold">{{array[0]}}</span>
                                         </ion-col>
-                                        <ion-col col-4 >
+                                        <ion-col col-4  style="padding-right:0;">
                                             <span   class="small-txt legend-txt" [ngClass]="{'legend-paid': i == 0, 'legend-affiliate': i == 1,'legend-organic': i == 2}">{{array[1] || "0.00"}}</span>
                                         </ion-col>
-                                        <ion-col col-4 >
+                                        <ion-col col-3  style="padding-right:0;">
                                              <span  class="small-txt legend-txt legend-projected">{{array[2] || "0.00"}}</span>
                                         </ion-col>
                                         <ion-col col-12   *ngIf="i < 3">

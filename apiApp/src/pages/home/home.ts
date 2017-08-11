@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, Output } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 import {PeopleServiceProvider} from '../../providers/people-service/people-service';
+
 // import { Card1Page } from '../../pages/cards/card1/cards';
 // import { Card2Page } from '../../pages/cards/card2/card2';
 // import * as c3 from 'c3';
@@ -26,7 +27,7 @@ export class HomePage {
         // this.bgimg = 'images/background.png';
         // style="background: url('{{bgimg}}')"
        // this.loadPeople('https://api.myjson.com/bins/14oa07');
-       this.loadPeople('data.json');
+       this.loadPeople('assets/data.json');
     }
 
 
