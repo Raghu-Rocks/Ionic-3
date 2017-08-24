@@ -1,88 +1,111 @@
-//colors
 
+page-detail-screen1, page-detail-screen2{
+    $color_curious_blue_approx: #29a6cd;
+	$color_denim_approx: #246fb3;
 
-//fonts
-$font_0: Roboto;
+	background: $color_curious_blue_approx;
+    background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
+    
+	//fonts
+	$font_0: Roboto;
 
-.date-btn {
-	height: 40px;
-	padding: 0 16px;
-	ion-icon {
-		margin-right: 5px;
-		// color: $color_cerulean_blue_approx;
-		font-weight: bolder;
+	.date-btn {
+		height: 40px;
+		padding: 0 16px;
+		background: $white;
+		color: $date_text;
+		ion-icon {
+			margin-right: 5px;
+			// color: $color_cerulean_blue_approx;
+			font-weight: bolder;
+		}
 	}
-}
-.screen-title {
-	font-size: 20px;
-	font-weight: normal;
-	font-family: $font_0;
-	color: $white;
-}
-.bg-transparent {
-	background-color: transparent !important;
-}
-// .demo-bullet {
-// 	height: 10px;
-// 	background: $web_orange;
-// 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-// 	border-radius: 0 15px 15px 0;
-// 	margin-right: 5px;
-// }
-.detail-screen-card {
-	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-	box-shadow: 0 1px 2px $black_30;
-}
-.detail-screen-card-title {
-	margin: 5px 0;
-}
-.bg-grey {
-	background-color: $bar_graph_bg;
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 5px 0 0 5px;
-}
-.bg-blue {
-	background-color: $color_astronaut_blue_approx;
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 0 5px 5px 0;
-}
-.txt-total {
-	background: $color_astronaut_blue_approx;
-	border: 1px solid $black;
-	line-height: 15px;
-	display: inline-block;
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 15px;
-	padding: 2px 8px;
-	margin: auto;
-	position: absolute;
-	bottom: -14%;
-	left: 43%;
-	margin: 0 auto;
-	z-index: 1;
-}
-.pos-relative {
-	position: relative;
-}
-.detail-bottom-nav {
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: $black;
-	font-size: 16px;
-	padding: 5px;
-	color: $white;
-	display: flex;
-	justify-content: space-around;
-	ion-icon {
+	.screen-title {
+		font-size: 20px;
+		font-weight: normal;
+		font-family: $font_0;
 		color: $white;
 	}
-}
-.detail-back-btn button.back-button {
-	position: absolute;
-	z-index: 1;
-}
-#dashboardChart .c3-chart-lines {
-	fill: $color_flamenco_approx;
+	.bg-transparent {
+		background-color: transparent !important;
+	}
+	.mask31, .mask32{
+		position: absolute;
+		left: auto;
+		top: auto;
+		width: 2px;
+		height: 30px;
+		z-index: 11;
+	}
+	.mask31{	background: $bar_graph_bg;  }
+	.mask32{	background: $color_astronaut_blue_approx;  }
+		
+	// .demo-bullet {
+	// 	height: 10px;
+	// 	background: $web_orange;
+	// 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	// 	border-radius: 0 15px 15px 0;
+	// 	margin-right: 5px;
+	// }
+	.detail-screen-card {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: 0 1px 2px $black_30;
+	}
+	.detail-screen-card-title {
+		margin: 5px 0;
+	}
+	.bg-grey {
+		background-color: $bar_graph_bg;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 5px 0 0 5px;
+	}
+	.bg-blue {
+		background-color: $color_astronaut_blue_approx;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 0 5px 5px 0;
+	}
+	.txt-total {
+		background: $color_astronaut_blue_approx;
+		border: 1px solid $black;
+		line-height: 15px;
+		display: inline-block;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 15px;
+		padding: 2px 8px;
+		margin: auto;
+		position: absolute;
+		bottom: -14%;
+		left: 43%;
+		margin: 0 auto;
+		z-index: 1;
+	}
+	.pos-relative {
+		position: relative;
+	}
+	.detail-bottom-nav {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: $black;
+		font-size: 16px;
+		padding: 5px;
+		color: $white;
+		display: flex;
+		justify-content: space-around;
+		ion-icon {
+			color: $white;
+		}
+	}
+	.detail-back-btn button.back-button {
+		position: absolute;
+		z-index: 1;
+		color: $white;
+	}
+	#dashboardChart .c3-chart-lines {
+		fill: $color_flamenco_approx;
+	}
+	.area-chart {
+        width: calc(100% - 20px);
+    }
 }

@@ -1,9 +1,10 @@
-import { Component, Input, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PeopleServiceProvider } from '../../../providers/people-service/people-service';
-// import { C3providerProvider, } from '../../../providers/c3provider/c3provider';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Screenshot } from '@ionic-native/screenshot';
 import * as c3 from 'c3';
-// import * as d3 from 'd3'; 
+//  import * as d3 from 'd3'; 
 declare var d3: any;
 
 
@@ -14,7 +15,7 @@ declare var d3: any;
     providers: [PeopleServiceProvider]
 })
 
-export class Card1Page {
+export class Card1Page implements AfterViewInit{
 
     @Input() hero: any = PeopleServiceProvider;
     @Input('index') card_index: string;
@@ -27,22 +28,28 @@ export class Card1Page {
 
     // public cardTargetData: any;   public cardProjectedData: any;
     //public dataArrayValue: any; public lastWeekData: any;  
-    public cardDataArray: any;              public data: any;                           public cardData: any; 
-    public cardTargetProjected: any;    public jsonData: any;
-    public mainArray: any;                     public collectionArray: any;         public lastWeek: any;
-                 public dataArray: any;                  
-    public targetValue: any = [];           public actualValue: any = [];           public projectedValue: any = [];
-    public tdy: any;                               public lstWeekData: any;                public title: any;
+    public cardDataArray: any;             public data: any;                            public cardData: any; 
+    public cardTargetProjected: any;    public jsonData: any;                     public mainArray: any;                     
+    public collectionArray: any;            public lastWeek: any;                     public dataArray: any;                  
+    public targetValue: any = [];           public actualValue: any = [];          public projectedValue: any = [];
+    public tdy: any;                               public lstWeekData: any;               public title: any;
 
-    barDataArray: any; barData: any; title1: any; barDataTarget: any; barDataProjected: any; barActualValue: any = []; barTargetValue: any = [];
-    barDataVisits: any; barGraphTarget: any; barGraphVisits: any; barDataObject: any; barProjectedValue: any = [];
+    barDataArray: any; barData: any; title1: any; barDataTarget: any; barDataProjected: any; barActualValue: any = [];
+    barTargetValue: any = [];    barDataVisits: any; barGraphTarget: any; barGraphVisits: any; barDataObject: any;
+    barProjectedValue: any = []; barDataDate:any = [];
 
     count11 = 0; count21 = 0; count31 = 0; count1 = 0; count2 = 0; count3 = 0;
-    card1tdyP: any = []; card1tdyT: any = []; card1tdyA: any = [];
-    lastWeekA:any =[]; lastWeekT:any = [];
+
+    card1tdyP: any = []; card1tdyT: any = []; card1tdyA: any = [];    lastWeekA:any =[]; lastWeekT:any = [];
+
     constructor(
-        public navCtrl: NavController, public peopleServiceProvider: PeopleServiceProvider,
-        public navParams: NavParams, public el: ElementRef, private cdr: ChangeDetectorRef) {
+        public el: ElementRef, 
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        private screenshot: Screenshot,
+        private cdr: ChangeDetectorRef, 
+        private socialSharing: SocialSharing,
+        public peopleServiceProvider: PeopleServiceProvider) {
 
     }
 
@@ -50,6 +57,22 @@ export class Card1Page {
         this.navCtrl.push("summary", hero);
         // console.log(this.hero, "hero");
     }
+    shareSheetShare() {
+        // this.screenShotURL() ;
+        // this.screenshot.save('jpg', 100, "pic" +this.screenCount).then(res => {
+        //   this.screen = res.filePath;
+            var screen
+            this.screenshot.URI(80).then(res => {
+            screen = res.URI;
+            // console.log(screen, 'path');
+        this.socialSharing.share(null, null, screen, null).then(() => {
+        console.log("shareSheetShare: Success");
+        }).catch((Error) => {
+        console.error("shareSheetShare: failed"+ Error);
+        });
+
+        });
+  }
     ngAfterViewInit() {
         //  console.log('after view');
         this.mapjson();
@@ -74,54 +97,8 @@ export class Card1Page {
         // console.log(this.cardTargetProjected, 'cardProjected');
 
         //todays data with Kformatter, this is used in html only.
-            for (var i in this.cardTargetProjected) {
-                if (this.cardTargetProjected.hasOwnProperty(i) || typeof (this.cardTargetProjected[i]) != 'object') {
-                var test = this.cardTargetProjected[i];
-                    for (var test_val in test) {
-                        if (typeof (test[test_val]) != 'object') {
-                            var title = test[test_val]; // prints title
-                            // console.log(title,'titlettt');
-                        }
-                        else{
-                                 // console.log(test[test_val],'test[test_val]');
-                                var arr_object=test[test_val];
-                             if(typeof(arr_object)=='object' ){ // loop for date  inside object something like 15/1
-                                    for(var new_visit1 in arr_object ){
-                                    // console.log(title,'title444');
-                                        if(title.indexOf('Projected')!==-1){
-                                            var tdyP =arr_object[new_visit1];
-                                            if(typeof tdyP=='number'){
-                                                this.card1tdyP.push(this.kFormatter(tdyP));
-                                            }
-                                                else{
-                                                    this.card1tdyP.push(tdyP);
-                                                }
-                                        }
-                                        else if(title.indexOf('Target')!==-1) {
-                                                var tdyT=arr_object[new_visit1];
-                                                if(typeof tdyT=='number'){
-                                                    this.card1tdyT.push(this.kFormatter(tdyT));
-                                                }
-                                                else{
-                                                    this.card1tdyT.push(tdyT);
-                                                }
-                                            }
-                                        else{
-                                               var tdyA=arr_object[new_visit1];
-                                                if(typeof tdyA=='number'){
-                                                        this.card1tdyA.push(this.kFormatter(tdyA));
-                                                }
-                                                else{
-                                                    this.card1tdyA.push(tdyA);
-                                                }
-                                        } 
-                                    }
-                                    // console.log(this.card1tdyA,"aray1",this.card1tdyT,'Array2', this.card1tdyP, "array3"); // data points
-                            }
-                        }
-                    }
-                }
-            }
+        this.tdyAndLastWeekDataForHtmOnlyl(this.cardTargetProjected,this.card1tdyP,this.card1tdyT,this.card1tdyA);
+        
 
 
         //last week lebel and data
@@ -130,53 +107,13 @@ export class Card1Page {
         this.collectionArray = Object.entries(this.mainArray[1][1]);
         this.lastWeek = Object.entries(this.collectionArray[1][1])[0];
         this.dataArray = Object.entries(this.collectionArray[1][1])[2];
-        this.lstWeekData = Object.entries(this.dataArray[1]);// for bullet last week data only
+        this.lstWeekData = Object.entries(this.dataArray[1]);// for bullet last week data only in HTML Template summary
         // this.dataArrayValue = Object.entries(this.dataArray[1])[0][1];
         // this.lastWeekData = Object.entries(this.dataArrayValue);
-        console.log(this.lstWeekData, 'lastWeekData');
+        // console.log(this.lstWeekData, 'lastWeekData');
 
-                        //todays data with Kformatter, this is used in html only.
-            for (var j in this.lstWeekData) {
-                if (this.lstWeekData.hasOwnProperty(j) || typeof (this.lstWeekData[j]) != 'object') {
-                var test1 = this.lstWeekData[j];
-                    for (var test_val1 in test) {
-                        if (typeof (test1[test_val1]) != 'object') {
-                            var title1 = test1[test_val1]; // prints title
-                            // console.log(title,'titlettt');
-                        }
-                        else{
-                                 // console.log(test[test_val],'test[test_val]');
-                                var arr_object12=test1[test_val1];
-                             if(typeof(arr_object12)=='object' ){ // loop for date  inside object something like 15/1
-                                    for(var new_visit12 in arr_object12 ){
-                                    // console.log(title,'title444');
-                                        if(title1.indexOf('Target')!==-1) {
-                                                var lastWeekT=arr_object12[new_visit12];
-                                                if(typeof lastWeekT=='number'){
-                                                    this.lastWeekT.push(this.kFormatter(lastWeekT));
-                                                }
-                                                else{
-                                                    this.lastWeekT.push(lastWeekT);
-                                                }
-                                        }
-                                        else{
-                                               var lastWeekA=arr_object12[new_visit12];
-                                                if(typeof lastWeekA=='number'){
-                                                        this.lastWeekA.push(this.kFormatter(lastWeekA));
-                                                }
-                                                else{
-                                                    this.lastWeekA.push(lastWeekA);
-                                                }
-                                        } 
-                                    }
-                                    console.log(this.lastWeekA,"aray1",this.lastWeekT,'Array2'); // data points
-                            }
-                        }
-                    }
-                }
-            }
-
-
+        this.tdyAndLastWeekDataForHtmOnlyl(this.lstWeekData,null,this.lastWeekT,this.lastWeekA);
+        
         // bar chart data
         this.barDataArray = Object.entries(this.collectionArray[2])[1];
         this.barData = Object.entries(this.barDataArray[1])[2];
@@ -192,86 +129,61 @@ export class Card1Page {
         this.cdr.detectChanges();
     }// end of fun json mapping
 
-    processBarChart() {
-        for (var i in this.barDataObject) {
-            // console.log(this.barDataObject, "dataTarget");     
-            if (this.barDataObject.hasOwnProperty(i)) {
-                var test = this.barDataObject[i];
-                // console.log(test);
-                // var data_graph=test[1][1];
-                // var counter =0
-                for (var test_val in test) {
-                    if (typeof (test[test_val]) != 'object') {
-                        this.title1 = test[test_val]; // prints title
-                        // console.log(this.title,'title1');
-                    }
-                    else {
-                        //  console.log(test[test_val],'test[test_val]');
-                        var arr_object = test[test_val];
-                        if (typeof (arr_object) == 'object') { // loop for date  inside object something like 15/11
-                            for (var new_visit in arr_object) {
-                                //  console.log(arr_object[new_visit],new_visit,'data and key');
-                                var arr_object1 = arr_object[new_visit];
-                                //  console.log(arr_object1,'arr_object12',typeof arr_object1);           
-                                if (typeof (arr_object1) != 'object') { // loop for date  inside object something like 15/11
-                                    // console.log(arr_object1, 'abc');
-                                    //  var count1=0; var count2 =0; var count3 = 0;
-                                    if (typeof arr_object1 == 'string') {
-                                        arr_object1 = arr_object1.slice(0, -1);
-                                        //  this.renderCardData(arr_object1, this.barProjectedValue, this.barTargetValue, this.barActualValue );
-                                        // var count11=0; var count21=0; var count31 =0;                             
-                                        if (this.title1.indexOf('Project') != -1) { // it will be background color of graph
-                                            this.barProjectedValue[this.count11] = arr_object1;
-                                            this.count11++;
-                                            // console.log(this.count11, 'count');
-                                        }
-                                        else if (this.title1.indexOf('Target') != -1) {
-                                            this.barTargetValue[this.count21] = arr_object1;
-                                            this.count21++;
-                                        }
-                                        else {//actual value
-                                            this.barActualValue[this.count31] = arr_object1;
-                                            this.count31++;
-                                            // console.log(this.barActualValue.length, 'this.actualValue.length');                                    
-                                        }
-                                    }
-                                    else if (typeof arr_object1 == 'number') {
-                                        // console.log(this.title1,'title45');
-                                        //  this.renderCardData(arr_object1, this.barProjectedValue, this.barTargetValue, this.barActualValue );
-                                        var count1 = 0;
-                                        if (this.title1.indexOf('Project') != -1) { // it will be background color of graph
-                                            this.barProjectedValue[count1] = arr_object1;
-                                            count1++;
-                                            // console.log(count1, 'count');
-                                        }
-                                        else if (this.title1.indexOf('Target') != -1) {
-                                            this.barTargetValue[this.count2] = arr_object1;
-                                            this.count2++;
-                                        }
-                                        else {//actual value               
-                                            this.barActualValue[this.count3] = arr_object1;
-                                            this.count3++;
-                                            // console.log(this.barActualValue.length, 'this.actualValue.length');                      
-                                        }
-                                    }
 
-                                }//if(typeof(arr_object1)=='object' )
-                                // console.log(this.barActualValue.length, 'this.actualValue.length');                        
-
-                            }//for(var new_visit in arr_object )
+// used for templete summary for today and last week data in Html(cards) not for any graph
+    tdyAndLastWeekDataForHtmOnlyl(whichWeekData,projectedValue, targetValue,actualValue ){
+            //lastWeek data with Kformatter, this is used in html only.
+            for (var i in whichWeekData) {
+                if (this.cardTargetProjected.hasOwnProperty(i) || typeof (whichWeekData[i]) != 'object') {
+                var test = whichWeekData[i];
+                    for (var test_val in test) {
+                        if (typeof (test[test_val]) != 'object') {
+                            var title = test[test_val]; // prints title
+                            // console.log(title,'titlettt');
+                        }
+                        else{
+                                 // console.log(test[test_val],'test[test_val]');
+                                var arr_object=test[test_val];
+                             if(typeof(arr_object)=='object' ){ // loop for date  inside object something like 15/1
+                                    for(var new_visit1 in arr_object ){
+                                    // console.log(title,'title444');
+                                        if(title.indexOf('Projected')!==-1){
+                                            var tdyP =arr_object[new_visit1];
+                                            if(typeof tdyP=='number'){
+                                                projectedValue.push(this.kFormatter(tdyP));
+                                            }
+                                                else{
+                                                    projectedValue.push(tdyP);
+                                                }
+                                        }
+                                        else if(title.indexOf('Target')!==-1) {
+                                                var tdyT=arr_object[new_visit1];
+                                                if(typeof tdyT=='number'){
+                                                    targetValue.push(this.kFormatter(tdyT));
+                                                }
+                                                else{
+                                                    targetValue.push(tdyT);
+                                                }
+                                            }
+                                        else{
+                                               var tdyA=arr_object[new_visit1];
+                                                if(typeof tdyA=='number'){
+                                                        actualValue.push(this.kFormatter(tdyA));
+                                                }
+                                                else{
+                                                    actualValue.push(tdyA);
+                                                }
+                                        } 
+                                    }
+                                    // console.log(this.card1tdyA,"aray1",this.card1tdyT,'Array2', this.card1tdyP, "array3"); // data points
+                            }
                         }
                     }
                 }
             }
-        }
-        // console.log(this.barActualValue,"actualValue",this.barProjectedValue,'projectedValue',this.barTargetValue, 'barTargetValue' );
-        this.barActualValue[0] = 'data1';
-        this.barTargetValue[0] = 'data2';
-
-        var barStackData = [this.barActualValue, this.barTargetValue];
-        this.barChart("#barChart" + this.card_index, barStackData);
     }
 
+    //bullet data is being processed here and calling renderBulletChart() fun. here only
     processBulletChart(whereToPut, whichWeekData, projectedValue, targetValue, actualValue) {
         for (var i in whichWeekData) {
             // console.log(whichWeekData, 'tdy');
@@ -339,6 +251,7 @@ export class Card1Page {
         // console.log(count1, count2, count3, 'count');                  
     }
 
+    //creating bullet chart
     renderBulletChart(WhereToPut, WhatDataToPut) {
         var bulletParentWidth; var bulletchart; var bulletmargin; var bulletwidth; var bulletHeight;
 
@@ -350,7 +263,7 @@ export class Card1Page {
             .width(bulletwidth)
             .height(bulletHeight)
 
-        var svg = d3.select(WhereToPut).selectAll("svg")
+            d3.select(WhereToPut).selectAll("svg")
             .data(WhatDataToPut)
             .enter().append("svg")
             .attr("class", "bullet")
@@ -359,6 +272,9 @@ export class Card1Page {
             .append("g")
             //   .attr("transform", "translate(" + this.margin.left + "," +this.margin.top + ")")
             .call(bulletchart);
+            d3.selectAll('.bullet .measure.s0').attr('rx', 4);
+            d3.selectAll('.bullet .measure.s0').attr('ry', 4);
+
     }// end of bullet chart fun
 
     randomize(d) {
@@ -375,9 +291,94 @@ export class Card1Page {
         };
     }//fun  required for bullet chart
 
+        //processing bar chart data and calling barChart fun here only
+    processBarChart() {
+        for (var i in this.barDataObject) {
+            // console.log(this.barDataObject, "dataTarget");     
+            if (this.barDataObject.hasOwnProperty(i)) {
+                var test = this.barDataObject[i];
+                // console.log(test);
+                // var data_graph=test[1][1];
+                // var counter =0
+                for (var test_val in test) {
+                    if (typeof (test[test_val]) != 'object') {
+                        this.title1 = test[test_val]; // prints title
+                        // console.log(this.title,'title1');
+                    }
+                    else {
+                        //  console.log(test[test_val],'test[test_val]');
+                        var arr_object = test[test_val];
+                        if (typeof (arr_object) == 'object') { // loop for date  inside object something like 15/11
+                            for (var new_visit in arr_object) {
+                                //  console.log(arr_object[new_visit],new_visit,'data and key');
+                                var arr_object1 = arr_object[new_visit];
+                                //  console.log(arr_object1,'arr_object12',typeof arr_object1);   
+                                if (typeof (arr_object1) != 'object') { // loop for date  inside object something like 15/11
+                                    // console.log(arr_object1, 'abc');
+                                    //  var count1=0; var count2 =0; var count3 = 0;
+                                    if (typeof arr_object1 == 'string') {
+                                        arr_object1 = arr_object1.slice(0, -1);
+                                        //  this.renderCardData(arr_object1, this.barProjectedValue, this.barTargetValue, this.barActualValue );
+                                        // var count11=0; var count21=0; var count31 =0;                             
+                                        if (this.title1.indexOf('Project') != -1) { // it will be background color of graph
+                                            this.barProjectedValue[this.count11] = arr_object1;
+                                            this.count11++;
+                                            // console.log(this.count11, 'count');
+                                        }
+                                        else if (this.title1.indexOf('Target') != -1) {
+                                            this.barTargetValue[this.count21] = arr_object1;
+                                            this.count21++;
+                                        }
+                                        else {//actual value
+                                            this.barActualValue[this.count31] = arr_object1;
+                                            this.barDataDate[this.count31] = new_visit;
+                                            this.count31++;
+                                            // console.log(this.barActualValue.length, 'this.actualValue.length');
+                                            // console.log(new_visit, 'this.actualValue.length');                      
+                                                                            
+                                        }
+                                    }
+                                    else if (typeof arr_object1 == 'number') {
+                                        // console.log(this.title1,'title45');
+                                        //  this.renderCardData(arr_object1, this.barProjectedValue, this.barTargetValue, this.barActualValue );
+                                        var count1 = 0;
+                                        if (this.title1.indexOf('Project') != -1) { // it will be background color of graph
+                                            this.barProjectedValue[count1] = arr_object1;
+                                            count1++;
+                                            // console.log(count1, 'count');
+                                        }
+                                        else if (this.title1.indexOf('Target') != -1) {
+                                            this.barTargetValue[this.count2] = arr_object1;
+                                            this.count2++;
+                                        }
+                                        else {//actual value               
+                                            this.barActualValue[this.count3] = arr_object1;
+                                            this.barDataDate[this.count3] = new_visit;                                            
+                                            this.count3++;
+                                            // console.log(this.actualValue.length, 'this.actualValue.length');                      
+                                        }
+                                    }
 
-    // fun for barChart starts here for home page card
-    barChart(whereToPut, whatToPut) {
+                                }//if(typeof(arr_object1)=='object' )
+                                // console.log(this.barActualValue.length, 'this.actualValue.length');                        
+
+                            }//for(var new_visit in arr_object )
+                        }
+                    }
+                }
+            }
+        }
+        // console.log(this.barActualValue,"actualValue",this.barProjectedValue,'projectedValue',this.barTargetValue, 'barTargetValue' );
+        this.barActualValue[0] = 'data1';
+        this.barTargetValue[0] = 'data2';
+
+        var barStackData = [this.barActualValue, this.barTargetValue];
+        this.barChart("#barChart" + this.card_index, barStackData, this.card_index);
+        // console.log('date',this.barDataDate);
+    }
+      // fun for barChart starts here for home page card
+   barChart(whereToPut, whatToPut, cardIndex) {
+        let self:any = this;
         c3.generate({
             bindto: whereToPut,
             data: {
@@ -387,7 +388,19 @@ export class Card1Page {
                     data2: 'line'
                 },
                 columns: whatToPut,
-                labels: true,
+                labels: {
+                    format: {
+                       // Label formatter for card1 and card2 are different, so logic is built with index of the card.
+                        data1: function (v, id, i, j) {
+                                if(cardIndex === 1) {
+                                    return v + '%';
+                                }
+                                else {
+                                    return self.kFormatter(v); 
+                                }
+                            } 
+                    }
+                },
                 colors: {
                     data1: '#F68B24',
                     data2: '#00ff00',
@@ -397,13 +410,13 @@ export class Card1Page {
                 show: false
             },
             size: {
-                height: 80
+                height: 100
             },
             axis: {
                 x: {
                                 show:true,
                                 type: 'category',
-                                categories: ['03/08', '04/08', '05/08', '06/08', '07/08', '08/08', '09/08', '10/08'],
+                                categories: this.barDataDate,
                                 tick: {
                                     centered: true
                                 },
@@ -418,18 +431,19 @@ export class Card1Page {
                 width: {
                     ratio: 0.9 // this makes bar width 50% of length between ticks
                 }
+            },
+            tooltip: {
+                show: false
             }
         });
-        d3.selectAll('.domain').attr('display', 'none');
-          d3.selectAll('.tick line').attr('display', 'none');
-          d3.selectAll('.c3-axis-x').attr("transform", "translate(0,0)");
-          var element = d3.select('.c3-event-rect');
+        var element = d3.select('.c3-event-rect');
           var yvalue = element.node().getBBox().height;
           d3.selectAll('.c3-texts text').attr('y', yvalue-10);
-          d3.selectAll('.c3-texts .c3-text').style('fill', "#000");
-          d3.selectAll('.c3-chart-texts  .c3-target-data2').style('visibility', 'hidden');
+          d3.selectAll('.c3-axis-x').attr("transform", "translate(0,0)");
+          d3.selectAll('.c3-chart').attr("transform", "translate(0, "+((yvalue/2)-10)+")");
 
     }// fun barChart end here
+
 
     kFormatter(num) {
         if (isNaN(num)) return 0;
@@ -440,6 +454,8 @@ export class Card1Page {
             return num > 999 ? (num / 1000).toFixed(2) + 'k' : num.toFixed(2);
         }
     }
+
+
 
 
 

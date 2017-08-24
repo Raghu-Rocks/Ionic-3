@@ -1,7 +1,64 @@
 
 
-// page-cards {
-// }
+card1-design {
+	$bar_key_text_shadow: 1px 2px 3px $black;
+	$bar_value_text_shadow: 1px 2px 3px #aaaaaa;
+
+	.mask1{
+	height: 66px;
+    position: absolute;
+    background: $white;
+    left: 0;
+    width: 8px;
+    top: 26px;
+	}
+	
+	.bar-chart{
+	// color: $white;
+	font-size: .8em;
+	font-weight: normal;
+	.c3-axis-x{
+		.tick{
+			text{
+				fill: $color_celeste_approx;
+				text-shadow: $bar_key_text_shadow;
+			}
+		}
+	}
+	}
+
+		 .c3-texts-data1{
+			 .c3-text{
+				// fill: $color_celeste_approx !important;
+				text-shadow: $bar_value_text_shadow;
+
+			 }
+		 }
+
+	.bar-chart .domain {
+		display: none !important;
+	}
+	.bar-chart .tick line {
+		display: none !important;
+	}
+
+	.bar-chart .c3-axis-x {
+		transform: translate(0, 0) !important;
+	}
+
+	.bar-chart .c3-texts .c3-text {
+		fill: $black !important;
+	}
+	.bar-chart .c3-chart-texts  .c3-target-data2 {    
+		visibility: hidden;
+	}
+
+	.bar-chart .c3-chart-texts  .c3-target-data1 {
+		fill:#a4a4a4 !important;
+	}
+
+}
+// .card-padding{padding: 5px;}
 .mrgn-rght {
 	margin-right: 10px;
 }
@@ -11,7 +68,7 @@
 .bullet {
 	font: 10px $font_0;
 	.marker {
-		stroke: $black;
+		stroke: $color_target_legend;
 		stroke-width: 2px;
 	}
 	.range {

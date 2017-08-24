@@ -28,7 +28,23 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "io.ionic.veer"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.adobe.dmaapp"
+        },
+        "com.darktalker.cordova.screenshot": {
+            "PACKAGE_NAME": "com.adobe.dmaapp"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.adobe.dmaapp"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.adobe.dmaapp"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "es6-promise-plugin": {
+            "PACKAGE_NAME": "com.adobe.dmaapp"
+        }
+    }
 }

@@ -1,5 +1,7 @@
 import { Component, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Screenshot } from '@ionic-native/screenshot';
 import * as c3 from 'c3';
 declare var d3: any;
 
@@ -12,17 +14,27 @@ declare var d3: any;
 })
 export class summary {
     @ViewChild ("bulletChart")bulletCharts: ElementRef;
+    @ViewChild ("headerHeight")headHeight: ElementRef;
     public title:any;
     data:any;
-    cardName:any;
+    cardName:any; areaHeight:any;
     public lstArray1:any;        public lstArray2:any;    public lstArray3:any;    public tdyArray1:any;
     public tdyArray2:any;       public tdyArray3:any;
     tdyBulletA:any =[];    tdyBulletT:any =[];    tdyBulletP:any =[];                   lastBulletA:any =[];
     lastBulletT:any =[];    lastBulletP:any =[];    areaActualValue:any =[];         areaTargetValue:any =[];
-    users:any = [];           values:any = [];
+    barGraphKey:any = [];           values:any = []; barOutputTarget:any =[]; barOutputActual:any = []; count31:any =0; count21:any=0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cdr:ChangeDetectorRef) {
-      this.navParams.get("hero");
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private screenshot: Screenshot,
+    private socialSharing: SocialSharing,
+    private cdr:ChangeDetectorRef,
+      platform:Platform) {
+    this.navParams.get("hero");
+    platform.ready().then((readySource) => {
+        this.areaHeight = platform.height();  
+    });
   }
  ngAfterViewInit(){
         this.mapjson ();
@@ -35,6 +47,29 @@ export class summary {
   navigateToHome(){
     this.navCtrl.popToRoot();
   }
+  navigateToAbout(){
+      this.navCtrl.push("AboutPage", this.data);
+  }
+    shareSheetShare() {
+    // this.screenShotURL() ;
+      // this.screenshot.save('jpg', 100, "pic" +this.screenCount).then(res => {
+      //   this.screen = res.filePath;
+      var screen
+    this.screenshot.URI(80).then(res => {
+      screen = res.URI;
+      console.log(screen, 'path');
+    //   console.log(screen);
+      this.socialSharing.share(null, null, screen, null).then(() => {
+      console.log("shareSheetShare: Success");
+      }).catch((Error) => {
+      console.error("shareSheetShare: failed"+ Error);
+    });
+
+    });
+    // console.log(this.screen, 'screen')
+  }
+
+
     detailTrends:any; lastWeek:any; lastWeekCollection:any; lstWekData:any; lstWekShoppers:any; lstWekTarget:any;                                  
      tdy:any; tdyCollection:any; tdyData:any;
      graphArea:any; graphCollection:any; areaGraphData:any;
@@ -76,34 +111,84 @@ export class summary {
                     }
                     else{
                     //    console.log(test[test_val],'test[test_val]');
-                        this.users = Object.keys(test[test_val]);
-                       this.values = Object.values(test[test_val]);
-                     // console.log(this.users,'value', this.values);
-                        var bulletStackData = [this.users, this.values]; //this.areaActualValue;                            
-                        this.renderAreaGraph(whereToPut, bulletStackData);
+                        this.barGraphKey = Object.keys(test[test_val]);
+                    //    this.values = Object.values(test[test_val]);
+                    //  console.log(this.barGraphKey,'value', this.values);
+                        var arr_object=test[test_val];
+                        if(typeof (arr_object)=='object' ){ // loop for date  inside object something like 15/11
+                            for(var new_visit in arr_object ){
+                                // console.log(arr_object[new_visit],new_visit,'data and key');
+                                var arr_object1=arr_object[new_visit];
+                                // console.log(arr_object1,'arr_object12',typeof arr_object1);
+                            if(typeof (arr_object1)!='object' ){ 
+                                    //  console.log(this.title,'title44');                                    
+                                if (typeof arr_object1=='string') {
+                                    //  console.log(this.title,'title44');                                    
+                                    arr_object1=  arr_object1.slice(0, -1); 
+                                    // console.log(arr_object1,'arr_object12',typeof arr_object1);
+                                    // var count3 =0; var count2=0;                              
+                                     if (this.title.indexOf('Target')!=-1){
+                                        this.barOutputTarget[this.count21]=arr_object1;
+                                        this.count21++;
+                                    }
+                                    else{//actual value
+                                        this.barOutputActual[this.count31]=arr_object1;
+                                        // console.log(this.count31, 'count');                                        
+                                        this.count31++;
+                                    }
+                                }
+                                else{
+                                    // console.log(arr_object1,'arr_object12',typeof arr_object1);
+                                    
+                                    // var count31 =0; var count21=0;                              
+                                     if (this.title.indexOf('Target')!=-1){
+                                        this.barOutputTarget[this.count21]=arr_object1;
+                                        this.count21++;
+                                    }
+                                    else{//actual value
+                                        this.barOutputActual[this.count31]=arr_object1;
+                                        // console.log(this.count31, 'count');
+                                        this.count31++;
+                                    }                                    
+                                }
+                            }
+                        }
                     }
-                  }//for(var test_val in test)
                 }
-              }
+            }//for(var test_val in test)
+            }
+            // console.log(this.barOutputTarget,'target', this.barOutputActual, 'actual');
+        }
+            this.barOutputActual[0]="data1";
+            this.barOutputTarget[0]="data2";
+                        var barStackData = [this.barOutputActual, this.barOutputTarget]; //this.areaActualValue;                            
+                        this.renderAreaGraph(whereToPut, barStackData);
     }
     renderAreaGraph(whereToPut, whatToPut){
-                c3.generate({
-        bindto: whereToPut,
-        data: {
-        columns: whatToPut,
- 
-        // types: {
-        //     data1: 'area',
-        //     data2: 'area-spline'
-        // },
-        type: 'line',
-        //     colors: {
-        //       data1: '#ff0000', data2: '#ff9900'
-        //   }
-        },
-        legend: {
-            show: false
-        }
+        this.areaHeight = this.areaHeight - this.headHeight.nativeElement.offsetHeight - 210;
+        c3.generate({
+            bindto: whereToPut,
+             size: {
+                height: this.areaHeight
+            },
+            data: {
+                columns: whatToPut,
+                types: {
+                    data1: 'area',
+                    data2: 'area-spline'
+                },
+                colors: {
+                    data1: '#eaab1c ',
+                    data2: '#2ca02c '
+                
+               }
+            },
+            legend: {
+                show: false
+            },
+            tooltip: {
+                show: true
+            }
         });
     }
     processBulletGraph(whereToPut, whichWeekData, projectedValue, targetValue, actualValue,lastweek ){
@@ -294,7 +379,7 @@ export class summary {
         .width(bulletwidth)
         .height(bulletHeight)
 
-        var svg = d3.select(WhereToPut).selectAll("svg")
+      d3.select(WhereToPut).selectAll("svg")
       .data(WhatDataToPut)
         .enter().append("svg")
       .attr("class", "bullet")
@@ -303,6 +388,8 @@ export class summary {
         .append("g")
         //   .attr("transform", "translate(" + this.margin.left + "," +this.margin.top + ")")
       .call(bulletchart);
+             d3.selectAll('.bullet .measure.s0').attr('rx', 4);
+            d3.selectAll('.bullet .measure.s0').attr('ry', 4);
 }// end of bullet chart fun
 randomize(d) {
   if (!d.randomizer) d.randomizer = this.randomizer(d);

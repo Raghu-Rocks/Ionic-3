@@ -1,6 +1,19 @@
 page-detail-screen2 {
+    $color_curious_blue_approx: #29a6cd;
+	$color_denim_approx: #246fb3;
 
-
+	background: $color_curious_blue_approx;
+    background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
+	.mask41{
+		position: absolute;
+		left: auto;
+		top: auto;
+		width: 2px;
+		height: 30px;
+        z-index: 11;
+        background: $color_denim_approx;
+	}
+    .mask-first{background: #048ab3;}
 .left-legend-icon{
     float: right;
     padding-right: 10px;
@@ -13,4 +26,12 @@ page-detail-screen2 {
 }
 
 
+}
+
+
+.legends-shown{
+    color: $white;
+    font-size: .8em;
+    text-align: right;
+    padding: 0 10px;
 }

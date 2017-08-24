@@ -1,6 +1,8 @@
 import { Component, Input,OnInit, ViewChild,AfterViewInit, ElementRef, ChangeDetectorRef,ViewEncapsulation } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PeopleServiceProvider } from '../../../providers/people-service/people-service';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Screenshot } from '@ionic-native/screenshot';
 import * as c3 from 'c3';
 declare var d3: any;
 // declare var nv: any;
@@ -39,6 +41,8 @@ export class Card2Page implements AfterViewInit, OnInit{
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
+    private screenshot: Screenshot,
+    private socialSharing: SocialSharing,
     public peopleServiceProvider: PeopleServiceProvider,
     private cdr: ChangeDetectorRef) {
       }
@@ -50,11 +54,61 @@ ngOnInit() {
         this.donutChart();
         this.processBulletChart();
         this.donutPerentHeight=this.donutParentDiv.nativeElement.offsetHeight - 21;
-        console.log(this.donutPerentHeight, 'height');
+        // console.log(this.donutPerentHeight, 'height');
   }
   navigateToDetailPage(){
       this.navCtrl.push("channels", this.hero2)
   }
+
+    shareSheetShare() {
+    // this.screenShotURL() ;
+      // this.screenshot.save('jpg', 100, "pic" +this.screenCount).then(res => {
+      //   this.screen = res.filePath;
+      var screen
+    this.screenshot.URI(80).then(res => {
+      screen = res.URI;
+      console.log(screen, 'path');
+    //   console.log(screen);
+      this.socialSharing.share(null, null, screen, null).then(() => {
+      console.log("shareSheetShare: Success");
+      }).catch((Error) => {
+      console.error("shareSheetShare: failed"+ Error);
+    });
+
+    });
+    // console.log(this.screen, 'screen')
+  }
+
+  bulletData; bulletTemp; bulletCardData;  bulletCardDataArray
+
+  bulletTempProjected;  bulletProjectedData;  bulletProjectedDataArray;  bulletProjectedDataValue
+  
+  mapjson (){
+//donut data
+    this.data = Object.entries(this.hero2.collection[0]);
+    this.temp = Object.entries(this.data[2][1]);
+    this.cardData = Object.entries(this.temp[0][1])[0][1];
+    this.cardDataArray = Object.entries(this.cardData);
+
+//bullet Visits data
+    this.bulletData = Object.entries(this.hero2.collection[1]);
+    this.bulletTemp = Object.entries(this.bulletData[2][1])[0];
+    this.bulletCardData = Object.entries(this.bulletTemp[1]);
+    this.bulletCardDataArray = Object.entries(this.bulletCardData[0][1]);
+    // console.log(this.bulletCardDataArray, 'bulletCardDataArrayValues');
+
+//bullet projected data
+  this.bulletTempProjected = Object.entries(this.bulletData[2][1]);
+  // console.log(this.bulletTempProjected,"bulletTempProjected");
+  this.bulletProjectedData = Object.entries(this.bulletTempProjected[1]);
+  // console.log(this.bulletProjectedData);
+  this.bulletProjectedDataArray = Object.entries(this.bulletProjectedData[0][1]);
+    // console.log(this.bulletProjectedDataArray);
+//bullet projected data
+    this.cdr.detectChanges();
+
+  }
+
   //rendering bullet data and calling data variable and bullet function here
   processBulletChart(){
     for (var i in this.bulletTempProjected) {
@@ -92,7 +146,7 @@ ngOnInit() {
                     if(this.array2.length>0){
                         // console.log(this.array1,this.array2,'asdsds');
                         for (var j = 0; j < this.array1.length; j++) {
-                          var bulletStackData = [{"ranges":[0,this.array1[j] ,0], "measures":[this.array2[j] ],	  "markers":[270]  }]
+                          var bulletStackData = [{"ranges":[0,this.array2[j] ,0], "measures":[this.array1[j] ],	  "markers":[270]  }]
                           this.renderBulletChart("#bulletChart"+ this.card_index + j, bulletStackData);
                         }
                     }//if(this.array2.length>0){
@@ -106,35 +160,6 @@ ngOnInit() {
   }
 
 
-  bulletData; bulletTemp; bulletCardData;  bulletCardDataArray
-
-  bulletTempProjected;  bulletProjectedData;  bulletProjectedDataArray;  bulletProjectedDataValue
-  
-  mapjson (){
-//donut data
-    this.data = Object.entries(this.hero2.collection[0]);
-    this.temp = Object.entries(this.data[2][1]);
-    this.cardData = Object.entries(this.temp[0][1])[0][1];
-    this.cardDataArray = Object.entries(this.cardData);
-
-//bullet Visits data
-    this.bulletData = Object.entries(this.hero2.collection[1]);
-    this.bulletTemp = Object.entries(this.bulletData[2][1])[0];
-    this.bulletCardData = Object.entries(this.bulletTemp[1]);
-    this.bulletCardDataArray = Object.entries(this.bulletCardData[0][1]);
-    // console.log(this.bulletCardDataArray, 'bulletCardDataArrayValues');
-
-//bullet projected data
-  this.bulletTempProjected = Object.entries(this.bulletData[2][1]);
-  // console.log(this.bulletTempProjected,"bulletTempProjected");
-  this.bulletProjectedData = Object.entries(this.bulletTempProjected[1]);
-  // console.log(this.bulletProjectedData);
-  this.bulletProjectedDataArray = Object.entries(this.bulletProjectedData[0][1]);
-    // console.log(this.bulletProjectedDataArray);
-//bullet projected data
-    this.cdr.detectChanges();
-
-  }
 renderBulletChart(whereToPut, WhatToPut) {
     this.bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth; 
     this.margin = {top: 0, right: 3, bottom: 0, left: 0};
@@ -145,7 +170,7 @@ renderBulletChart(whereToPut, WhatToPut) {
     .width(this.width)
     .height(this.bulletHeight)
 
-  var svg = d3.select(whereToPut).selectAll("svg")
+    d3.select(whereToPut).selectAll("svg")
     .data(WhatToPut)
     .enter().append("svg")
       .attr("class", "bullet")
@@ -154,6 +179,8 @@ renderBulletChart(whereToPut, WhatToPut) {
     .append("g")
     //   .attr("transform", "translate(" + this.margin.left + "," +this.margin.top + ")")
       .call(this.chart);
+            d3.selectAll('.bullet .measure.s0').attr('rx', 4);
+            d3.selectAll('.bullet .measure.s0').attr('ry', 4);
 }// end of bullet chart fun
 
 randomize(d) {
@@ -183,10 +210,10 @@ randomizer(d) {
         },
         size: {
         // height: this.donutPerentHeight
-        height: 240
+        height: 170
     },
     donut: {
-      width: 12
+      width: 15
     }
     });
   }

@@ -1,5 +1,5 @@
 
-<ion-header>
+<ion-header class="header-transparent">
   <ion-navbar class="detail-back-btn">
     <ion-title  align="center">
       <button ion-button round class="date-btn">
@@ -12,21 +12,24 @@
   <ion-content class="app-bg">
     <div *ngFor="let name of cardName; let i = index;">
           <h2 *ngIf="i == 1" class="screen-title" align="center">{{name[1]}}</h2>
+          <div *ngIf="i == 1" class="legends-shown">
+            <span class="legend-txt legend-tdy">Today</span>
+            <span class="legend-target legend-txt ">Target</span>
+            <span class="legend-projected legend-txt">Projected</span>
+          </div>
     </div>
-        <div *ngIf="i == 0">
-
-        </div>
     <ion-grid class="white-txt">
       <div *ngFor="let keys of tdyVisitsKeys; let i = index;">
-        <ion-row class="pos-relative"  [ngClass]="{'hide': i > 0}">
+        <ion-row class="pos-relative row-gap"  [hidden]="showGraph!=i">
             <ion-col class="detail-screen-card bg-grey">
                   <p class="detail-screen-card-title">Last week</p>
                 <!-- <div class="demo-bullet"></div> -->
               <div class="card1-bullet-wraper" #bulletChart>
+                <div class="mask31"></div>
                   <div id="lastWeekBullet{{keys[1]}}"></div>
               </div>
                	<div>
-                          		<span  class="legend-txt small-txt legend-tdy" >{{this.lastWeekVisits[i]}}</span>
+                          		<span  class="legend-txt small-txt legend-tdy" >{{this.lastWeekVisits[i] || '0.00'}}</span>
                           		<!-- <span  class="legend-txt small-txt legend-target" >2.02M</span> -->
                           		<span  class="legend-txt small-txt legend-projected">0.00</span>
         			  </div>
@@ -34,18 +37,21 @@
 	        <span class="txt-total">Total</span>
           <ion-col class="detail-screen-card bg-blue">
                 <p class="detail-screen-card-title">Today</p>
+                <!-- {{tdyActualFormted | json}} -->
                 <!-- <div class="demo-bullet"></div> -->
               <div class="card1-bullet-wraper" #bulletChart>
+                <div class="mask32" ></div>                
                   <div id="detailTdyBullet{{keys[1]}}"></div>
               </div>
                	<div align="right">
-                          		<span  class="legend-txt small-txt legend-tdy" >{{keys[1]}}</span>
+                          		<span  class="legend-txt small-txt legend-tdy" >{{tdyActualFormted[i] || '0.00'}}</span>
                           		<span  class="legend-txt small-txt legend-target" >0.00</span>
-                          		<span  class="legend-txt small-txt legend-projected">{{this.actualValue[i] || 0.00}}</span>
+                          		<span  class="legend-txt small-txt legend-projected">{{this.tdyProjectedFormated[i] || "0.00"}}</span>
         			  </div>
           </ion-col>
         </ion-row>
-        <ion-row class="pos-relative row-gap" >
+         <!-- [ngClass]="{'hide': i == 0}"  -->
+        <ion-row class="pos-relative row-gap"  [hidden]="showGraph==i" (click)="showParticularGraph(i)" >
       		<ion-col col-5 class="">
         			<div class="left-legends">
                   <span>{{keys[0]}}</span>
@@ -54,6 +60,7 @@
       		</ion-col>
       		<ion-col col-7 class="">
               <div class="card1-bullet-wraper" #bulletChart>
+                                <div class="mask41" [ngClass]="{'mask-first': i == 0}"></div>                
                   <div id="detailBullet{{keys[1]}}"></div>
                   <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
               </div>
@@ -65,7 +72,7 @@
       <div class="detail-bottom-nav">
           <!-- <ion-icon name="home"></ion-icon> -->
           <ion-icon ios="ios-home" md="md-home" (click)="navigateToHome()"></ion-icon>
-          <ion-icon ios="ios-share" md="md-share"></ion-icon>
-          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+          <ion-icon ios="ios-share" md="md-share"  (click)="shareSheetShare()"></ion-icon>
+          <ion-icon ios="ios-settings" md="md-settings" (click)="navigateToAbout()"></ion-icon>
       </div>
   </ion-content>

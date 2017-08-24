@@ -1,34 +1,35 @@
     <div class="mail-icon-container">
         <h2 class="card-name">{{hero2.name}}</h2>
-        <ion-icon name="mail" class="mail-icon"></ion-icon>
+        <ion-icon name="mail" class="mail-icon"  (click)="shareSheetShare()"></ion-icon>
     </div> 
     <ion-card class="border-radius"  color="wheat1" (click)="navigateToDetailPage()" >
         <ion-card-content>
             <ion-grid>
                 <ion-row>
-                    <ion-col col-5   #parentDiv>
+                    <ion-col col-5   #parentDiv class="nopadding">
                         <p class="bold center-txt">{{hero2.collection[0].name}}</p>
                         <div id="dashboardChart{{card_index}}" #donut class="donut-chart"></div>
                     </ion-col>
                     
-                    <ion-col col-7 >
+                    <ion-col col-7 class="nopadding">
                         <p class="bold center-txt">{{hero2.collection[0].name}}</p>
                         <div *ngFor="let array of cardDataArray; let i = index">
                             <ion-grid class="nopadding"  *ngIf="i < 3">
                                 <ion-row>
-                                        <ion-col col-5 style="padding-right:0;">
+                                        <ion-col col-5 class="nopadding">
                                             <span class="small-txt bold">{{array[0]}}</span>
                                         </ion-col>
-                                        <ion-col col-4  style="padding-right:0;">
+                                        <ion-col col-4 class="nopadding">
                                             <span   class="small-txt legend-txt" [ngClass]="{'legend-paid': i == 0, 'legend-affiliate': i == 1,'legend-organic': i == 2}">{{array[1] || "0.00"}}</span>
                                         </ion-col>
-                                        <ion-col col-3  style="padding-right:0;">
+                                        <ion-col col-3 class="nopadding">
                                              <span  class="small-txt legend-txt legend-projected">{{array[2] || "0.00"}}</span>
                                         </ion-col>
-                                        <ion-col col-12   *ngIf="i < 3">
+                                        <ion-col col-12   *ngIf="i < 3" class="nopadding">
 <!--<div [ngClass]="{'paid-search': i == 0, 'affilates': i == 1,'organic': i == 2}" class="inner-div"></div>-->
 <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
                                             <div #bullet>
+                                                <div class="mask2"></div>
                                                 <div  id="bulletChart{{card_index}}{{i}}"></div>
                                             </div>
                                         </ion-col>
@@ -37,16 +38,16 @@
                         </div>
                     </ion-col>
 
-                    <ion-col col-12 >
-                        <ion-list class="display-flex justify-content">
-                            <ion-item>
+                    <ion-col col-12 class="nopadding">
+                         <div class="display-flex justify-content">
+                            <!-- <ion-item class="nopadding">  -->
                                     <span *ngFor="let array of cardDataArray; let i=index">
                                         <span  class="legend-txt small-txt" 
                                             [ngClass]="{'legend-paid': i == 0, 'legend-affiliate': i == 1,'legend-organic': i == 2, 'legend-display': i == 3, 'legend-others': i == 4,'legend-projected': i == 5}">
                                             {{array[0]}}</span>
                                     </span>
-                            </ion-item>
-                        </ion-list>
+                             <!-- </ion-item> -->
+                        </div> 
                     </ion-col>
                 </ion-row>
               </ion-grid>

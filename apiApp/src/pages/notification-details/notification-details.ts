@@ -31,7 +31,7 @@ public notify: any;
     this.loadPeople();
   }
  loadPeople(){
-    this.NotificationProvider.load('https://expcloudapp.adobe.com/mca/api/v1/user/7e64523e0cc81e878ace507a555b2bf6/alerts')
+    this.NotificationProvider.load('https://expcloudapp.adobe.com/mca/api/v1/user/robin/alerts')
     .then(data => {
       this.notify = data.data;
       console.log(this.notify,'this.notify');

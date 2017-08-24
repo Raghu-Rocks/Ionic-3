@@ -1,29 +1,33 @@
-<ion-header>
+<ion-header class="header-transparent">
   <ion-navbar>
     <button ion-button menuToggle class="hamburger">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title text-center>Home</ion-title>
+    <!-- <ion-title text-center>Home</ion-title> -->
   </ion-navbar>
 </ion-header>
 
 <ion-content class="app-bg home">
+  <!-- <img src="{{ screen }}" *ngIf="state" style="position:absolute;top:88px;left:0;right:0;z-index:99999;height:90px" [hidden]="state != 1"> -->
       <section>
             <ion-grid>
               <ion-row>
                 <ion-col col-12>
                       <div class="user-icon-box">
-                            <ion-icon ios="ios-settings" md="md-settings"  class="refresh-share"></ion-icon>
-                            <ion-icon ios="ios-contact" md="md-contact" class="user-pic"></ion-icon>
-                            <ion-icon ios="ios-share" md="md-share" class="refresh-share"></ion-icon>
+                            <ion-icon ios="ios-settings" md="md-settings"  class="refresh-share" (click)="navigateToAbout()"></ion-icon>
+                            <span class="user-pic">
+                              <!-- <ion-icon ios="ios-contact" md="md-contact"></ion-icon> -->
+                                <img src="{{this.profileImage}}">  
+                            </span>
+                            <ion-icon ios="ios-share" md="md-share" class="refresh-share"  (click)="shareSheetShare()"></ion-icon>
 
                       </div>
                 </ion-col>
               </ion-row>
               <ion-row>
-                <ion-col col-12>
-                                            <div class="name" text-center>Raghu Nandan</div>
-                                            <div class="desg" text-center>Consultant, Adobe Global Services</div>
+                <ion-col col-12 *ngFor="let item of profile let i = index;" [hidden]="i >1">
+                                            <div class="name" text-center>{{item[1]}}</div>
+                                            <!-- <div class="desg" text-center>{{profile.display_title}}</div> -->
                 </ion-col>
               </ion-row>
             </ion-grid>

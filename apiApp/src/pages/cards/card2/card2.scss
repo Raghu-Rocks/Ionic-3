@@ -1,6 +1,13 @@
 // page-card2 {
+.mask2{    
+	height: 100%;
+    width: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+	background: $white;
+}
 card2-design {
-    
 ion-card-content {
 	padding: 0 !important;
 }
@@ -79,6 +86,13 @@ ion-card-content {
 		fill: $color_organic;
 	}
 }
-
+	.donut-chart {
+		.c3-chart-arc{
+			text{
+				font-size: 0.8em;
+				fill: $black;
+			}
+		}
+	}
 
 }

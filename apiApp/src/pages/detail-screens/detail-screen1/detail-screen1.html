@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="header-transparent" #headerHeight>
 
   <ion-navbar class="detail-back-btn">
     <ion-title  align="center">
@@ -16,7 +16,12 @@
   <ion-content class="app-bg">
         {{array2}}   {{array1}}
         <div *ngFor="let item of cardName; let i = index;">
-          <h2 *ngIf="i == 1" class="screen-title" align="center">{{item[1]}}</h2>
+          <h2 *ngIf="i == 1" class="screen-title" align="center">{{item[1]}}</h2>          
+          <div *ngIf="i == 1" class="legends-shown">
+            <span class="legend-txt legend-tdy">Today</span>
+            <span class="legend-target legend-txt ">Target</span>
+            <span class="legend-projected legend-txt">Projected</span>
+          </div>
         </div>
     <div  *ngFor="let item of cardName; let i = index; let f = first;">
       <div *ngIf="i == 0">
@@ -26,6 +31,7 @@
                 <p class="detail-screen-card-title">Last week</p>
                 <!-- <div class="demo-bullet"></div> -->
                 <div class="card1-bullet-wraper" #bulletChart>
+                  <div class="mask31"></div>                  
                       <div id="bulletLast{{lastBulletA}}" class="bulletLastGraph"></div>
                   <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
                 </div>
@@ -40,6 +46,7 @@
                   	<p class="detail-screen-card-title">Today</p>
                 <!-- <div class="demo-bullet"></div> -->
                 <div class="card1-bullet-wraper" #bulletChart>
+                  <div class="mask32"></div>
                       <div id="bulletTdy{{tdyBulletA}}"></div>
                   <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
                 </div>
@@ -52,15 +59,15 @@
             </ion-row>
           </ion-grid>
         	<div> 
-         		<div id="dashboardChart" #dashboardChart class="donut-chart"></div>
+         		<div id="dashboardChart" #dashboardChart class="donut-chart area-chart"></div>
          	</div>
       	</div>         
       </div>
       <div class="detail-bottom-nav">
           <!-- <ion-icon name="home"></ion-icon> -->
           <ion-icon ios="ios-home" md="md-home" (click)="navigateToHome()"></ion-icon>
-          <ion-icon ios="ios-share" md="md-share"></ion-icon>
-          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+          <ion-icon ios="ios-share" md="md-share"  (click)="shareSheetShare()"></ion-icon>
+          <ion-icon ios="ios-settings" md="md-settings" (click)="navigateToAbout()"></ion-icon>
       </div>
 </ion-content>
 

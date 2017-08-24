@@ -1,15 +1,16 @@
 <div class="mail-icon-container">
     <h2 class="card-name">{{hero.name}}</h2>
-    <ion-icon name="mail" class="mail-icon"></ion-icon>
+    <ion-icon name="mail" class="mail-icon"  (click)="shareSheetShare()"></ion-icon>
 </div>
 <!--<div *ngFor="let m of ['1','2','3']"   (click)="show()">{{m}}-click me</div>-->
 <ion-card class="border-radius" color="greys" (click)="navigateToDetailPage(this.hero)">
-    <ion-card-content>
+    <ion-card-content class="nopadding">
         <ion-grid class="nopadding">
             <ion-row>
                 <ion-col col-12>
+                    <div class="mask1"></div>
                     <ion-grid class="nopadding">
-                        <ion-row class="small-txt">
+                        <ion-row class="small-txt" style="margin-bottom:6px;">
                             <ion-col col-4  class="nopadding">
                                 <span *ngFor="let item of data; let i = index">
                                                 <span class="legend-txt legend-tdy bold" *ngIf="i == 0">{{item[1]}}</span>
@@ -21,7 +22,7 @@
                             <ion-col col-4  class="nopadding">
                                 <span class="small-txt" *ngFor="let items of cardTargetProjected; let i = index">
                                                 <span *ngIf="i == 1">
-                                                    <span class="legend-txt legend-tdy bold">{{items[0]}}</span>
+                                                    <span class="legend-txt legend-target bold">{{items[0]}}</span>
                                 <span>{{card1tdyT}}</span>
                                 </span>
                                 </span>
@@ -72,7 +73,7 @@
                 </ion-col>
                 <ion-col col-12 class="bar-graph-bg">
                     <div>
-                        <div id="barChart{{card_index}}" #dashboardChart class="donut-chart bar-chart"></div>
+                        <div id="barChart{{card_index}}" #dashboardChart class="bar-chart"></div>
                     </div>
                     <!--<p>1. Template : {{hero.template}}</p>
                       <p>2. Target_column_name : {{hero.target_column_name}}</p>

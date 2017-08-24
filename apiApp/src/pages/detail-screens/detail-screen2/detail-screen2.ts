@@ -1,5 +1,7 @@
 import { Component, ViewChild, ElementRef,ChangeDetectorRef} from '@angular/core';
 import { IonicPage, NavController, NavParams,Slides } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Screenshot } from '@ionic-native/screenshot';
 // import * as c3 from 'c3';  
 declare var d3: any;
 
@@ -11,16 +13,18 @@ declare var d3: any;
 })
 export class channels {
     @ViewChild(Slides) slides: Slides;
+    showGraph:number = 0;
     // @Input('index') card_index:any;
     @ViewChild ("bulletChart")bulletCharts: ElementRef;
-    data: any;
-    cardName:any;
-    detailBulletData:any;
-    title:any;
-    actualValue:any =[];
-    projectedValue:any =[];
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cdr: ChangeDetectorRef) {
+    data: any;    cardName:any;    detailBulletData:any;
+    title:any;    actualValue:any =[];    projectedValue:any =[];
+    tdyProjectedFormated:any = []; tdyActualFormted:any = [];
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private screenshot: Screenshot,
+    private socialSharing: SocialSharing,
+    private cdr: ChangeDetectorRef) {
         this.navParams.get("hero");
 
   }
@@ -32,6 +36,29 @@ export class channels {
   navigateToHome(){
         this.navCtrl.popToRoot();
   }
+  navigateToAbout(){
+      this.navCtrl.push("AboutPage",this.data);
+      console.log(this.navParams.data, 'this.navParams.data');
+  }
+      shareSheetShare() {
+    // this.screenShotURL() ;
+      // this.screenshot.save('jpg', 100, "pic" +this.screenCount).then(res => {
+      //   this.screen = res.filePath;
+      var screen
+    this.screenshot.URI(80).then(res => {
+      screen = res.URI;
+      console.log(screen, 'path');
+    //   console.log(screen);
+      this.socialSharing.share(null, null, screen, null).then(() => {
+      console.log("shareSheetShare: Success");
+      }).catch((Error) => {
+      console.error("shareSheetShare: failed"+ Error);
+    });
+
+    });
+    // console.log(this.screen, 'screen')
+  }
+
     detailTrends:any; collection:any; collectionArray:any;collectionData:any; collectionDataVisits:any; tdyVisits:any; tdyVisitsKeys:any;
     tdyVisitsValues:any;
     lstWeekCollection:any; lstWeekCollectionArray:any; lastWeekData:any; lastWeekDataVisits:any; lastWeekVisitsObject:any;
@@ -61,7 +88,7 @@ export class channels {
       this.lastWeekDataVisits = Object.entries(this.lastWeekData)[0][1];
       this.lastWeekVisitsObject = Object.entries(this.lastWeekDataVisits)[0][1];
       this.lastWeekVisitsValue = Object.values(this.lastWeekVisitsObject);
-      console.log(this.lastWeekVisitsValue, "lstWeekCollection");
+      // console.log(this.lastWeekVisitsValue, "lstWeekCollection");
       // console.log(this.detailBulletData, "detailBulletData");
       this.cdr.detectChanges();
     }
@@ -70,7 +97,7 @@ export class channels {
         this.lastWeekVisits[index] = this.kFormatter(this.lastWeekVisitsValue[index]);
      // return this.lastWeekVisits;
       }
-        console.log(this.lastWeekVisits, 'lastWeekVisits');
+        // console.log(this.lastWeekVisits, 'lastWeekVisits');
     
   }
   processDetailBullet(){
@@ -98,11 +125,14 @@ export class channels {
                         // console.log(this.title,'title444');
                         if(this.title.indexOf('Project')!=-1){
                           this.projectedValue[count1] =arr_object1[new_visit1];
+                          this.tdyProjectedFormated[count1] = this.kFormatter(arr_object1[new_visit1]);
                         // console.log(this.title,'title444');
                           count1++;
                         }
                         else{
                             this.actualValue[count2] =arr_object1[new_visit1];
+
+                            this.tdyActualFormted[count2] = this.kFormatter(arr_object1[new_visit1]);
                             // console.log(this.title,'title555');  
                             count2++;
                         }
@@ -129,6 +159,7 @@ export class channels {
                           
                         }
                     }//if(this.array2.length>0){
+                        // console.log(this.tdyActualFormted,"actualValue", this.tdyProjectedFormated, 'tdyVisitsKeys');
   }
 
   renderBulletChart(WhereToPut, whatToPut) {
@@ -161,7 +192,8 @@ export class channels {
       d3.selectAll("back-button").on("click", function() {
         svg.datum(this.randomize).call(this.chart.duration(1000)); // TODO automatic transition
       });
-
+            d3.selectAll('.bullet .measure.s0').attr('rx', 4);
+            d3.selectAll('.bullet .measure.s0').attr('ry', 4);
   }// end of bullet chart fun
 
   randomize(d) {
@@ -186,5 +218,8 @@ export class channels {
             return num > 999 ? (num / 1000).toFixed(2) + 'k' : num.toFixed(2);
         }
     }
+      showParticularGraph(graphId){
+        this.showGraph=graphId
+      }
 
 }

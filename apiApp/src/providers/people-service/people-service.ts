@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class PeopleServiceProvider {
-data: any;
+data: any; profile:any; cards:any;
   constructor(public http: Http) {
     // console.log('Hello PeopleServiceProvider Provider');
   }
@@ -31,7 +31,9 @@ data: any;
 
       .map(res => res.json())
       .subscribe(data => {
-          this.data = data.cards;
+          this.profile = data.profile;
+          this.cards = data.cards;
+        this.data = [this.profile, this.cards];
           resolve(this.data);
       });
   });

@@ -1,6 +1,39 @@
 // http://ionicframework.com/docs/v2/theming/
 
+ion-app{
+	$color_curious_blue_approx: #29a6cd;
+	$color_denim_approx: #246fb3;
 
+	background: $color_curious_blue_approx;
+	background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
+.header::after, .tabs[tabsPlacement="top"] > .tabbar::after, .footer::before, .tabs[tabsPlacement="bottom"] > .tabbar::before{
+	background: none;
+}
+.sidemenu-tool{
+	.toolbar-background{	background: $sidemenu-bg; }
+	.sidemenu-title{
+		.toolbar-title{	color: $sidemenu_text; }
+	}
+}
+
+
+.app-content{
+	.scroll-content{
+				background: $sidemenu_bg !important;
+				padding-top: 5px;
+		.sidemenu-container{
+				background: $transparent !important;
+			.sidemenu-btns{
+				background: transparent;
+				color: $sidemenu_text;
+				border-top: 1px solid $black;
+				div{
+					border-bottom: none !important;
+				}
+			}
+		}
+	}
+}
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -15,14 +48,19 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 //colors
-
+.header-transparent{
+	.toolbar-background{
+		background: $transparent;
+	}
+}
 .app-bg {
 	// background-image: $url_0;
 	// background: $url_0 no-repeat center center fixed;
 	background-size: 100%;
-	background: $color_matisse_approx;
-	background: linear-gradient(to right, $color_matisse_approx 0,$color_curious_blue_approx 50%,$color_mariner_approx 100%,$color_jordy_blue_approx 100%,$color_mariner_approx 100%);
-	filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$color_matisse_approx', endcolorstr='$color_mariner_approx',gradienttype=1 );
+	background: $transparent;
+	// background: $color_matisse_approx;
+	// background: linear-gradient(to right, $color_matisse_approx 0,$color_curious_blue_approx 50%,$color_mariner_approx 100%,$color_jordy_blue_approx 100%,$color_mariner_approx 100%);
+	// filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$color_matisse_approx', endcolorstr='$color_mariner_approx',gradienttype=1 );
 }
 .border-radius {
 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
@@ -114,6 +152,6 @@
 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
 	border-radius: 5px 5px 0 0;
 }
-.donut-chart {
-	font-size: 11px;
+
+
 }
