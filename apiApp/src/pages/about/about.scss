@@ -1,0 +1,57 @@
+page-about {
+    $font_10 : 10px;
+    $font_14 : 14px;
+    $font_16 : 16px;
+
+
+    $color_curious_blue_approx: #29a6cd;
+	$color_denim_approx: #246fb3;
+
+	background: $color_curious_blue_approx;
+    background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
+    
+    .toolbar-background{
+        background: $transparent;
+    }
+    .about-back-btn .back-button{
+        position: absolute;
+        z-index: 1;
+        color: $white;
+    }
+    .toolbar-title{
+        color: $white;
+    }
+
+
+
+    ion-content{
+        background: $transparent !important;
+        color: $white !important;
+        .refresh-btn{
+            background-color: #333333;
+            color: #fff;
+            text-shadow: 0 1px 0 #1f1f1f;
+            font-size:$font_16;
+            margin: .5em 0;
+            padding: 1.4em 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            text-transform: capitalize;
+        }
+        h5{
+            font-weight: 400;
+            line-height: 1.1;
+            margin-top: 10px;
+        }
+        .version{
+            font-size:$font_10;
+        }
+        .last-refreshed{
+            font-size:$font_14;
+        }
+    }
+}

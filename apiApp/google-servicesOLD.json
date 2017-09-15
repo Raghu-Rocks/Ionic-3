@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "349914175083",
+    "firebase_url": "https://push2-75c8a.firebaseio.com",
+    "project_id": "push2-75c8a",
+    "storage_bucket": "push2-75c8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349914175083:android:0a47defb73122e6c",
+        "android_client_info": {
+          "package_name": "io.ionic.veer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349914175083-rul3bfklu7gvjqcdo7c09dg1sgknd67u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOUF_wLy-oSZWvP_4mR2BMrJwGdz7vtyM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

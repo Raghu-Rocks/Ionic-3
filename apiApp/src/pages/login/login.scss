@@ -1,0 +1,13 @@
+page-login {
+    background-image: url("../assets/images/app_background.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    ion-content{
+        background: transparent !important;
+
+        .login-header, .aboutDetails{
+            color: $white;
+        }
+    }
+}
