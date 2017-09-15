@@ -1,6 +1,7 @@
 <div class="mail-icon-container">
     <h2 class="card-name">{{hero.name}}</h2>
-    <ion-icon name="mail" class="mail-icon"  (click)="shareSheetShare()"></ion-icon>
+    <!-- <ion-icon name="mail" class="mail-icon"  (click)="shareSheetShare()"></ion-icon> -->
+    <img src="assets/images/email.png" class="mail-icon" (click)="shareSheetShare()">
 </div>
 <!--<div *ngFor="let m of ['1','2','3']"   (click)="show()">{{m}}-click me</div>-->
 <ion-card class="border-radius" color="greys" (click)="navigateToDetailPage(this.hero)">
@@ -13,27 +14,25 @@
                         <ion-row class="small-txt" style="margin-bottom:6px;">
                             <ion-col col-4  class="nopadding">
                                 <span *ngFor="let item of data; let i = index">
-                                                <span class="legend-txt legend-tdy bold" *ngIf="i == 0">{{item[1]}}</span>
-                                </span>
-                                <span class="small-txt" *ngFor="let items of cardData; let i = index">
-                                                <span>{{card1tdyA}}</span>
+                                            <span class="legend-txt legend-tdy bold" *ngIf="i == 0">{{item[1]}}</span>
+                                            <span class="small-txt" *ngIf="i == 0">{{card1tdyA}}</span>
                                 </span>
                             </ion-col>
                             <ion-col col-4  class="nopadding">
                                 <span class="small-txt" *ngFor="let items of cardTargetProjected; let i = index">
-                                                <span *ngIf="i == 1">
-                                                    <span class="legend-txt legend-target bold">{{items[0]}}</span>
-                                <span>{{card1tdyT}}</span>
-                                </span>
+                                    <span *ngIf="i == 1">
+                                        <span class="legend-txt legend-target bold">{{items[0]}}</span>
+                                        <span>{{card1tdyT}}</span>
+                                    </span>
                                 </span>
                             </ion-col>
 
                             <ion-col col-4  class="nopadding">
                                 <span class="small-txt" *ngFor="let items of cardTargetProjected; let i = index">
-                                                <span *ngIf="i == 2">
-                                                        <span class="legend-projected legend-txt bold">{{items[0]}}</span>
-                                <span>{{card1tdyP}}</span>
-                                </span>
+                                        <span *ngIf="i == 2">
+                                             <span class="legend-projected legend-txt bold">{{items[0]}}</span>
+                                            <span>{{card1tdyP}}</span>
+                                        </span>
                                 </span>
                             </ion-col>
                         </ion-row>
@@ -60,7 +59,6 @@
                             <ion-col col-4  class="nopadding">
                                 <span *ngFor="let item of lastWeek; let i = index">
                                         <span *ngIf="i == 1">
-                                    
                                                     <span class="legend-target legend-txt bold">Target</span>
                                                     <span>{{lastWeekT || "0.00"}}</span>
                                         </span>

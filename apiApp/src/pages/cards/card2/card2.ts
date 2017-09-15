@@ -19,17 +19,18 @@ export class Card2Page implements AfterViewInit, OnInit{
 
   @Input() hero2:any = PeopleServiceProvider;
   @Input('index') card_index:any;
-  @ViewChild ('#donut')dashboardChart: ElementRef;
+  @ViewChild ('#donut')donutRef: ElementRef;
   @ViewChild ('parentDiv')donutParentDiv: ElementRef;
-  @ViewChild ("bullet")bulletCharts: ElementRef;
+  @ViewChild ("cardBullet")bulletCharts: ElementRef;
     public data :any;
     public cardData : any;
-    public cardDataArray:any;
+    public donutDataArray:any;
     public temp:any;
     public bulletDataValues: string[];
     public title:any;
-    public array1:any=[];
-    public array2:any=[];
+    public projectedValue:any=[];
+    public actualValue:any=[];
+    public targetValue:any=[];
     // Variables required for bullet chart are listed here
           bulletParentWidth;          chart;          margin;          width;          bulletHeight;
   // ranges: number[] = [130, 230, 210];
@@ -47,14 +48,16 @@ export class Card2Page implements AfterViewInit, OnInit{
     private cdr: ChangeDetectorRef) {
       }
 ngOnInit() {
-          this.kFormatter(this.cardDataArray)
+          // this.kFormatter(this.bulletCardDataArray);
 }
   ngAfterViewInit() {
+    setTimeout(() => {
         this.mapjson ();
         this.donutChart();
         this.processBulletChart();
         this.donutPerentHeight=this.donutParentDiv.nativeElement.offsetHeight - 21;
         // console.log(this.donutPerentHeight, 'height');
+          }, 1);
   }
   navigateToDetailPage(){
       this.navCtrl.push("channels", this.hero2)
@@ -87,22 +90,24 @@ ngOnInit() {
 //donut data
     this.data = Object.entries(this.hero2.collection[0]);
     this.temp = Object.entries(this.data[2][1]);
-    this.cardData = Object.entries(this.temp[0][1])[0][1];
-    this.cardDataArray = Object.entries(this.cardData);
+    this.cardData = Object.entries(this.temp[0][1])[0][1]; //returns object
+    this.donutDataArray = Object.entries(this.cardData); // converting object to array and assigning to variable.
 
 //bullet Visits data
     this.bulletData = Object.entries(this.hero2.collection[1]);
     this.bulletTemp = Object.entries(this.bulletData[2][1])[0];
     this.bulletCardData = Object.entries(this.bulletTemp[1]);
     this.bulletCardDataArray = Object.entries(this.bulletCardData[0][1]);
+          
+    
     // console.log(this.bulletCardDataArray, 'bulletCardDataArrayValues');
 
 //bullet projected data
   this.bulletTempProjected = Object.entries(this.bulletData[2][1]);
   // console.log(this.bulletTempProjected,"bulletTempProjected");
-  this.bulletProjectedData = Object.entries(this.bulletTempProjected[1]);
-  // console.log(this.bulletProjectedData);
-  this.bulletProjectedDataArray = Object.entries(this.bulletProjectedData[0][1]);
+  // this.bulletProjectedData = Object.entries(this.bulletTempProjected[1]);
+  // // console.log(this.bulletProjectedData,'bulletProjectedData');
+  // this.bulletProjectedDataArray = Object.entries(this.bulletProjectedData[0][1]);
     // console.log(this.bulletProjectedDataArray);
 //bullet projected data
     this.cdr.detectChanges();
@@ -111,9 +116,9 @@ ngOnInit() {
 
   //rendering bullet data and calling data variable and bullet function here
   processBulletChart(){
-    for (var i in this.bulletTempProjected) {
-        if (this.bulletTempProjected.hasOwnProperty(i)) {
-            var test = this.bulletTempProjected[i];
+    for (var val in this.bulletTempProjected) {
+        if (this.bulletTempProjected.hasOwnProperty(val)) {
+            var test = this.bulletTempProjected[val];
             // var data_graph=test[1][1];
             // var counter =0
           for(var test_val in test){
@@ -129,27 +134,24 @@ ngOnInit() {
                    //     console.log(arr_object[new_visit],new_visit,'data and key');
                   var arr_object1=arr_object[new_visit];
                   if(typeof(arr_object1)=='object' ){ // loop for date  inside object something like 15/11
-                      // var  array1=[];
+                      // var  projectedValue=[];
                       var count1=0;var count2=0
                     for(var new_visit1 in arr_object1 ){
                         // console.log(arr_object1[new_visit1],new_visit1,'data and key2',count1); // data points
                         // console.log(this.title,'title444');
-                        if(this.title.indexOf('Project')==-1){
-                          this.array1[count1] =arr_object1[new_visit1];
+                        if(this.title.indexOf('Project')!=-1){
+                          this.projectedValue[count1] =arr_object1[new_visit1];
                           count1++;
                         }
+                        else if (this.title.indexOf('Target')!=-1) {
+                            this.targetValue[count2] =arr_object1[new_visit1];
+                            count2++;  
+                        }
                         else{
-                            this.array2[count2] =arr_object1[new_visit1];
+                            this.actualValue[count2] =arr_object1[new_visit1];
                             count2++;
                         }
                     }
-                    if(this.array2.length>0){
-                        // console.log(this.array1,this.array2,'asdsds');
-                        for (var j = 0; j < this.array1.length; j++) {
-                          var bulletStackData = [{"ranges":[0,this.array2[j] ,0], "measures":[this.array1[j] ],	  "markers":[270]  }]
-                          this.renderBulletChart("#bulletChart"+ this.card_index + j, bulletStackData);
-                        }
-                    }//if(this.array2.length>0){
                 }//if(typeof(arr_object1)=='object' )
                     }//for(var new_visit in arr_object )
                 }
@@ -157,6 +159,16 @@ ngOnInit() {
       }
     }
     }
+                    if(this.actualValue.length>0){
+                        // console.log( this.targetValue, 'targetValue',this.projectedValue, 'projectedValue',this.actualValue,'actualValue');
+                        for (var i = 0; i < this.actualValue.length; i++) {
+                          var bulletStackData = [{"ranges":[this.projectedValue[i] ,0,0], "measures":[this.actualValue[i] ],	  "markers":[270]  }]
+                          this.renderBulletChart("#bulletChart"+ this.card_index + i, bulletStackData);
+                        // console.log( this.targetValue, 'targetValue',this.projectedValue, 'projectedValue',this.actualValue,'actualValue');
+                        // console.log( bulletStackData,'bulletStackData');
+                          
+                        }
+                    }//if(this.actualValue.length>0){
   }
 
 
@@ -181,6 +193,8 @@ renderBulletChart(whereToPut, WhatToPut) {
       .call(this.chart);
             d3.selectAll('.bullet .measure.s0').attr('rx', 4);
             d3.selectAll('.bullet .measure.s0').attr('ry', 4);
+            d3.selectAll('.bullet .marker').style('stroke', "transparent");
+
 }// end of bullet chart fun
 
 randomize(d) {
@@ -199,11 +213,18 @@ randomizer(d) {
 
 
   donutChart(){
-        c3.generate({
-        bindto: "#dashboardChart"+this.card_index,
+    c3.generate({
+			padding: {
+				top: 0,
+				right: 0,
+				bottom: 0,
+				left: 0,
+			},
+        bindto: "#donutChartId"+this.card_index,
         data: {
             type: 'donut',
-            columns: this.cardDataArray,
+            columns: this.donutDataArray,
+            order:null //desc,asc,null
         },
         legend: {
             show: false
@@ -211,10 +232,21 @@ randomizer(d) {
         size: {
         // height: this.donutPerentHeight
         height: 170
-    },
+      },
     donut: {
-      width: 15
-    }
+		label: {
+        	threshold: 0.0
+        },
+      	width: 15,
+      	expand: false
+    },
+    tooltip: {
+       show: false
+    },
+    color: {
+            pattern: ['#d5406a', '#0d6580', '#21daa0', '#D3885F', '#0B94FF', '#E8E8E8', '#d62728', '#ff9896']
+    },
+    
     });
   }
   /**

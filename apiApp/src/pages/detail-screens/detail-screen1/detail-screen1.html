@@ -16,12 +16,7 @@
   <ion-content class="app-bg">
         {{array2}}   {{array1}}
         <div *ngFor="let item of cardName; let i = index;">
-          <h2 *ngIf="i == 1" class="screen-title" align="center">{{item[1]}}</h2>          
-          <div *ngIf="i == 1" class="legends-shown">
-            <span class="legend-txt legend-tdy">Today</span>
-            <span class="legend-target legend-txt ">Target</span>
-            <span class="legend-projected legend-txt">Projected</span>
-          </div>
+          <h2 *ngIf="i == 1" class="screen-title" align="center">{{item[1]}}</h2>
         </div>
     <div  *ngFor="let item of cardName; let i = index; let f = first;">
       <div *ngIf="i == 0">
@@ -58,15 +53,21 @@
               </ion-col>
             </ion-row>
           </ion-grid>
+          <div *ngIf="i == 0" class="legends-shown">
+                    <span class="legend-txt legend-tdy">Today</span>
+                    <span class="legend-target legend-txt ">Target</span>
+                    <span class="legend-projected legend-txt">Projected</span>
+          </div>
         	<div> 
          		<div id="dashboardChart" #dashboardChart class="donut-chart area-chart"></div>
          	</div>
       	</div>         
       </div>
-      <div class="detail-bottom-nav">
+      <div class="bottom-taskbar">
           <!-- <ion-icon name="home"></ion-icon> -->
           <ion-icon ios="ios-home" md="md-home" (click)="navigateToHome()"></ion-icon>
-          <ion-icon ios="ios-share" md="md-share"  (click)="shareSheetShare()"></ion-icon>
+          <!-- <ion-icon ios="ios-share" md="md-share"  (click)="shareSheetShare()"></ion-icon> -->
+          <img src="assets/images/taskBarEmail.png"   (click)="shareSheetShare()">
           <ion-icon ios="ios-settings" md="md-settings" (click)="navigateToAbout()"></ion-icon>
       </div>
 </ion-content>

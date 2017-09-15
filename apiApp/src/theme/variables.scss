@@ -12,7 +12,7 @@ $font-path: "../assets/fonts";
 $app-direction: ltr;
 //fonts
 $font_0: sans-serif;
-$helvetica: "Helvetica Neue", sans-serif;
+// $helvetica: "helvetica-neue", sans-serif;
 
 @import "ionic.globals";
 
@@ -126,3 +126,15 @@ $date_text: darkslateblue;
 
 @import "roboto";
 @import "noto-sans";
+
+
+// @font-face{
+// 	font-family: 'Helvetica Neue';
+// 	font-style: normal;
+// 	font-weight: 400;
+// 	src: url('#{$font-path}/hevetica/HelveticaNeue.ttf');
+// }
+
+// span{
+// 	font-family: 'Helvetica Neue' !important;
+// }

@@ -26,7 +26,7 @@
                 <!-- <div class="demo-bullet"></div> -->
               <div class="card1-bullet-wraper" #bulletChart>
                 <div class="mask31"></div>
-                  <div id="lastWeekBullet{{keys[1]}}"></div>
+                  <div id="lastWeekBullet{{keys[1]}}{{i}}"></div>
               </div>
                	<div>
                           		<span  class="legend-txt small-txt legend-tdy" >{{this.lastWeekVisits[i] || '0.00'}}</span>
@@ -41,7 +41,7 @@
                 <!-- <div class="demo-bullet"></div> -->
               <div class="card1-bullet-wraper" #bulletChart>
                 <div class="mask32" ></div>                
-                  <div id="detailTdyBullet{{keys[1]}}"></div>
+                  <div id="detailTdyBullet{{keys[1]}}{{i}}"></div>
               </div>
                	<div align="right">
                           		<span  class="legend-txt small-txt legend-tdy" >{{tdyActualFormted[i] || '0.00'}}</span>
@@ -61,7 +61,7 @@
       		<ion-col col-7 class="">
               <div class="card1-bullet-wraper" #bulletChart>
                                 <div class="mask41" [ngClass]="{'mask-first': i == 0}"></div>                
-                  <div id="detailBullet{{keys[1]}}"></div>
+                  <div id="detailBullet{{keys[1]}}{{i}}"></div>
                   <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->
               </div>
       		</ion-col>
@@ -69,10 +69,11 @@
       </div>
     </ion-grid>
 
-      <div class="detail-bottom-nav">
+      <div class="bottom-taskbar">
           <!-- <ion-icon name="home"></ion-icon> -->
           <ion-icon ios="ios-home" md="md-home" (click)="navigateToHome()"></ion-icon>
-          <ion-icon ios="ios-share" md="md-share"  (click)="shareSheetShare()"></ion-icon>
+          <!-- <ion-icon ios="ios-share" md="md-share"  (click)="shareSheetShare()"></ion-icon> -->
+          <img src="assets/images/taskBarEmail.png"   (click)="shareSheetShare()">
           <ion-icon ios="ios-settings" md="md-settings" (click)="navigateToAbout()"></ion-icon>
       </div>
   </ion-content>

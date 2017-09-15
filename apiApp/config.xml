@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.adobe.dmaapp" version="2.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Ionic Experience Cloud</name>
+    <name>Experience Cloud App</name>
     <description>An awesome App for getting details of your digital marketing tools</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://10.193.112.201:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -18,10 +18,10 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
-    <preference name="FadeSplashScreenDuration" value="300" />
-    <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="FadeSplashScreen" value="300" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -78,7 +78,6 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
     <allow-navigation href="http://10.193.112.201:8100" />
-    <allow-navigation href="http://*/*" />
     <engine name="android" spec="^6.2.3" />
     <plugin name="com.darktalker.cordova.screenshot" spec="^0.1.6" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />

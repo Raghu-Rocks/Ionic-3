@@ -3,7 +3,7 @@ page-detail-screen1, page-detail-screen2{
     $color_curious_blue_approx: #29a6cd;
 	$color_denim_approx: #246fb3;
 
-	background: $color_curious_blue_approx;
+	background: $color_curious_blue_approx;//  bg is required because on navigate to detail it was showing transperent
     background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
     
 	//fonts
@@ -25,9 +25,6 @@ page-detail-screen1, page-detail-screen2{
 		font-weight: normal;
 		font-family: $font_0;
 		color: $white;
-	}
-	.bg-transparent {
-		background-color: transparent !important;
 	}
 	.mask31, .mask32{
 		position: absolute;
@@ -54,27 +51,26 @@ page-detail-screen1, page-detail-screen2{
 	.detail-screen-card-title {
 		margin: 5px 0;
 	}
-	.bg-grey {
-		background-color: $bar_graph_bg;
-		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-		border-radius: 5px 0 0 5px;
+	.legends-shown{
+		color: $white;
+		font-size: .8em;
+		text-align: right;
+		padding: 0 10px;
+		margin-top: 20px;
 	}
-	.bg-blue {
-		background-color: $color_astronaut_blue_approx;
-		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-		border-radius: 0 5px 5px 0;
+	.bg-grey {background-color: $bar_graph_bg;	@include border-radius( 5px 0 0 5px);}
+	.bg-blue {background-color: $color_astronaut_blue_approx;	@include border-radius(0 5px 5px 0);
 	}
 	.txt-total {
 		background: $color_astronaut_blue_approx;
 		border: 1px solid $black;
 		line-height: 15px;
 		display: inline-block;
-		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-		border-radius: 15px;
+		@include border-radius(15px);
 		padding: 2px 8px;
 		margin: auto;
 		position: absolute;
-		bottom: -14%;
+		bottom: -13%;
 		left: 43%;
 		margin: 0 auto;
 		z-index: 1;
@@ -82,30 +78,27 @@ page-detail-screen1, page-detail-screen2{
 	.pos-relative {
 		position: relative;
 	}
-	.detail-bottom-nav {
+	.bottom-taskbar {
 		position: fixed;
 		left: 0;
 		right: 0;
 		bottom: 0;
 		background: $black;
 		font-size: 16px;
-		padding: 5px;
+		padding: 5px 5px 0;
 		color: $white;
 		display: flex;
 		justify-content: space-around;
-		ion-icon {
-			color: $white;
-		}
+
+		ion-icon {color: $white;			padding: 5px 15px 0;		}
+		img{height: 30px;			width: 30px;		}
 	}
-	.detail-back-btn button.back-button {
-		position: absolute;
-		z-index: 1;
-		color: $white;
-	}
-	#dashboardChart .c3-chart-lines {
-		fill: $color_flamenco_approx;
-	}
-	.area-chart {
-        width: calc(100% - 20px);
-    }
+
+	.detail-back-btn button.back-button {position: absolute; z-index: 1; color: $white;	}
+	#dashboardChart .c3-chart-lines {fill: $color_flamenco_approx;	}
+	.area-chart {width: calc(100% - 20px);	}
+	.c3 path{stroke: $transparent;	}
+	.c3 line,{stroke: black; stroke-opacity: 0.08;		}
+	.c3 text{fill: $white;		}
+	.c3-xgrid, .c3-ygrid{stroke-dasharray: 0; stroke: black; stroke-opacity: 0.08;		}
 }

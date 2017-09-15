@@ -1,157 +1,85 @@
 // http://ionicframework.com/docs/v2/theming/
 
 ion-app{
-	$color_curious_blue_approx: #29a6cd;
-	$color_denim_approx: #246fb3;
+		$color_curious_blue_approx: #29a6cd;
+		$color_denim_approx: #246fb3;
 
-	background: $color_curious_blue_approx;
-	background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
-.header::after, .tabs[tabsPlacement="top"] > .tabbar::after, .footer::before, .tabs[tabsPlacement="bottom"] > .tabbar::before{
-	background: none;
-}
-.sidemenu-tool{
-	.toolbar-background{	background: $sidemenu-bg; }
-	.sidemenu-title{
-		.toolbar-title{	color: $sidemenu_text; }
+		background: $color_curious_blue_approx;
+		background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
+	.header::after, .tabs[tabsPlacement="top"] > .tabbar::after, .footer::before, .tabs[tabsPlacement="bottom"] > .tabbar::before{
+		background: none;
 	}
-}
+	.sidemenu-tool{
+		.toolbar-background{	background: $sidemenu-bg; }
+		.sidemenu-title{
+			.toolbar-title{	color: $sidemenu_text; }
+		}
+	}
 
 
-.app-content{
-	.scroll-content{
-				background: $sidemenu_bg !important;
-				padding-top: 5px;
-		.sidemenu-container{
-				background: $transparent !important;
-			.sidemenu-btns{
-				background: transparent;
-				color: $sidemenu_text;
-				border-top: 1px solid $black;
-				div{
-					border-bottom: none !important;
+	.app-content{
+		.scroll-content{
+					background: $sidemenu_bg !important;
+					padding-top: 5px;
+			.sidemenu-container{
+					background: $transparent !important;
+				.sidemenu-btns{
+					background: transparent;
+					color: $sidemenu_text;
+					border-top: 1px solid $black;
+					div{
+						border-bottom: none !important;
+					}
 				}
 			}
 		}
 	}
-}
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
-//colors
-.header-transparent{
-	.toolbar-background{
+	// App Global Sass
+	// --------------------------------------------------
+	// Put style rules here that you want to apply globally. These
+	// styles are for the entire app and not just one component.
+	// Additionally, this file can be also used as an entry point
+	// to import other Sass files to be included in the output CSS.
+	//
+	// Shared Sass variables, which can be used to adjust Ionic's
+	// default Sass variables, belong in "theme/variables.scss".
+	//
+	// To declare rules for a specific mode, create a child rule
+	// for the .md, .ios, or .wp mode classes. The mode class is
+	// automatically applied to the <body> element in the app.
+	//colors
+	.header-transparent{
+		.toolbar-background{			background: $transparent;		}
+	}
+	.app-bg {
+		// background-image: $url_0;
+		// background: $url_0 no-repeat center center fixed;
+		background-size: 100%;
 		background: $transparent;
+		// background: $color_matisse_approx;
+		// background: linear-gradient(to right, $color_matisse_approx 0,$color_curious_blue_approx 50%,$color_mariner_approx 100%,$color_jordy_blue_approx 100%,$color_mariner_approx 100%);
+		// filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$color_matisse_approx', endcolorstr='$color_mariner_approx',gradienttype=1 );
 	}
-}
-.app-bg {
-	// background-image: $url_0;
-	// background: $url_0 no-repeat center center fixed;
-	background-size: 100%;
-	background: $transparent;
-	// background: $color_matisse_approx;
-	// background: linear-gradient(to right, $color_matisse_approx 0,$color_curious_blue_approx 50%,$color_mariner_approx 100%,$color_jordy_blue_approx 100%,$color_mariner_approx 100%);
-	// filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$color_matisse_approx', endcolorstr='$color_mariner_approx',gradienttype=1 );
-}
-.border-radius {
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 6px;
-}
-.white-txt {
-	color: $white;
-}
-.small-txt {
-	font-size: 10px;
-	font-weight: normal;
-}
-.display-flex {
-	display: flex;
-	span {
-		display: inline-block;
+	.border-radius {@include border-radius(6px);}
+	.white-txt {color: $white;}
+	.small-txt {font-size: 10px;font-weight: normal;}
+	.display-flex {	display: flex;
+		span {	display: inline-block;	}
 	}
-}
-.bold {
-	font-weight: bold;
-}
-.center-txt {
-	text-align: center;
-}
-.right-txt {
-	text-align: right;
-}
-.nomargin {
-	margin: 0;
-}
-.nopadding {
-	padding: 0;
-}
-.card-name {
-	font-size: 18px;
-	color: $white;
-	line-height: 1.4;
-	background-color: transparent;
-	padding-left: 12px;
-	font-weight: 100;
-	margin: 20px 0 -5px;
-}
-.legend-txt::before {
-	content: '';
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 7px;
-	background-color: $color_viking_approx;
-	margin-right: 3px;
-	margin-left: 3px;
-}
-.legend-tdy::before {
-	background-color: $color_bullet;
-}
-.legend-target::before {
-	background-color: $color_target_legend;
-}
-.legend-paid::before {
-	background-color: $color_paid_search;
-}
-.legend-affiliate::before {
-	background-color: $color_affiliates;
-}
-.legend-organic::before {
-	background-color: $color_organic;
-}
-.legend-display::before {
-	background-color: $color_display;
-}
-.legend-others::before {
-	background-color: $color_others;
-}
-.legend-projected::before {
-	background-color: $color_projected_legend;
-}
-.mail-icon-container {
-	position: relative;
-}
-.mail-icon {
-	color: $mail_icon;
-	position: absolute;
-	right: 20px;
-	padding: 2px 5px 0;
-	background-color: $white;
-	font-size: 20px;
-	bottom: -10px;
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 5px 5px 0 0;
-}
+	.bold            {font-weight: bold;}
+	.center-txt    {text-align: center;}
+	.right-txt       {text-align: right;}
+	.nomargin    {margin: 0;}
+	.nopadding  {padding: 0;}
 
+	.legend-txt::before 		  {content: ''; display: inline-block;	width: 8px;	height: 8px; @include border-radius(7px); background-color: $color_viking_approx;margin-right: 3px;	margin-left: 3px;}
+	.legend-tdy::before 		 {background-color: $color_bullet;}
+	.legend-target::before		{background-color: $color_target_legend;}
+	.legend-paid::before		 {background-color: $color_paid_search;}
+	.legend-affiliate::before 	 {background-color: $color_affiliates;}
+	.legend-organic::before    {background-color: $color_organic;}
+	.legend-display::before     {background-color: $color_display;}
+	.legend-others::before      {background-color: $color_others;}
+	.legend-projected::before {background-color: $color_projected_legend;}
 
 }

@@ -21,7 +21,7 @@ export class summary {
     public lstArray1:any;        public lstArray2:any;    public lstArray3:any;    public tdyArray1:any;
     public tdyArray2:any;       public tdyArray3:any;
     tdyBulletA:any =[];    tdyBulletT:any =[];    tdyBulletP:any =[];                   lastBulletA:any =[];
-    lastBulletT:any =[];    lastBulletP:any =[];    areaActualValue:any =[];         areaTargetValue:any =[];
+    lastBulletT:any =[];    lastBulletP:any =[];    areaActualValue:any =[];         areaTargetValue:any =[]; axisLabel:any;
     barGraphKey:any = [];           values:any = []; barOutputTarget:any =[]; barOutputActual:any = []; count31:any =0; count21:any=0;
 
   constructor(
@@ -30,13 +30,13 @@ export class summary {
     private screenshot: Screenshot,
     private socialSharing: SocialSharing,
     private cdr:ChangeDetectorRef,
-      platform:Platform) {
-    this.navParams.get("hero");
-    platform.ready().then((readySource) => {
-        this.areaHeight = platform.height();  
-    });
+    public  platform:Platform) {
+        this.navParams.get("hero");
+        platform.ready().then((readySource) => {
+            this.areaHeight = platform.height();  
+        });
   }
- ngAfterViewInit(){
+ionViewDidLoad(){
         this.mapjson ();
         this.processBulletGraph("#bulletLast"+this.lastBulletA, this.lstWekData, this.lastBulletP, this.lastBulletT, this.lastBulletA,"lastWeek");
        this.processBulletGraph("#bulletTdy"+this.tdyBulletA, this.tdyData, this.tdyBulletP, this.tdyBulletT, this.tdyBulletA,"");
@@ -90,6 +90,11 @@ export class summary {
         this.graphCollection = Object.entries(this.graphArea[1]);
         this.areaGraphData = Object.entries(this.graphCollection[1][1]);
         // this.areaGraphData = Object.keys(this.dataObject);
+       var axis; 
+        axis = Object.entries(this.detailTrends[0][1])[2][1];
+        this.axisLabel = Object.entries(axis)[0][1];
+        this.axisLabel = Object.values(this.axisLabel);
+         console.log(this.axisLabel, "detailTrends");
 
         //  console.log(this.areaGraphData, "areaGraphData");
          // console.log(this.lstWekData, "lstWekShoppers");
@@ -165,7 +170,8 @@ export class summary {
                         this.renderAreaGraph(whereToPut, barStackData);
     }
     renderAreaGraph(whereToPut, whatToPut){
-        this.areaHeight = this.areaHeight - this.headHeight.nativeElement.offsetHeight - 210;
+        this.areaHeight = this.areaHeight - this.headHeight.nativeElement.offsetHeight - 220;
+          let self:any = this;
         c3.generate({
             bindto: whereToPut,
              size: {
@@ -173,21 +179,48 @@ export class summary {
             },
             data: {
                 columns: whatToPut,
-                types: {
-                    data1: 'area',
-                    data2: 'area-spline'
-                },
+                // types: {
+                //     data1: 'area',
+                //     data2: 'area-spline'
+                // },
                 colors: {
                     data1: '#eaab1c ',
                     data2: '#2ca02c '
                 
                }
             },
+             axis: {
+                    x: {
+                        label:{
+                            text: self.axisLabel[0]+ "",
+                            position: 'inner-center' // inner-right : default, inner-left, outer-right, outer-center, outer-left
+                        },
+                        tick: {
+                            culling: { max: 15} // the number of tick texts will be adjusted to less than this value                
+                            // for normal axis, default on
+                            // for category axis, default off
+                        }
+                    },
+                    y: {
+                        label: {
+                                text: self.axisLabel[1],
+                                position: 'outer-middle', // inner-middle, inner-top : default, inner-bottom, outer-top, outer-middle, outer-bottom
+                        },
+                        tick: {
+                                // format: d3.format('$,')
+                                format: function (d) { return self.kFormatter(d); }
+                        }
+                    }
+            },
+            grid: {
+                    x: {show: true},
+                    y: {show: true}
+            },
             legend: {
                 show: false
             },
             tooltip: {
-                show: true
+                show: false
             }
         });
     }
@@ -408,9 +441,9 @@ randomizer(d) {
         if (isNaN(num)) return 0;
         //	console.log(num);
         if (num > 99999) {
-            return (num / 1000000).toFixed(2) + 'M';
+            return (num / 1000000).toFixed(1) + 'M';
         } else {
-            return num > 999 ? (num / 1000).toFixed(2) + 'k' : num.toFixed(2);
+            return num > 999 ? (num / 1000).toFixed(1) + 'K' : num.toFixed(0);
         }
     }
 }

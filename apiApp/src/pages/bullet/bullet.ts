@@ -75,7 +75,7 @@ export class BulletPage implements OnChanges, AfterViewInit{
         let range_max: number = Number.MIN_VALUE;
         let target_max: number = Number.MIN_VALUE;
         let max: number = Number.MIN_VALUE;
-        let self = this;
+        // let self = this;
 
         if (this.actual) {
             act_max = Math.max(...this.actual);

@@ -221,9 +221,9 @@ export class Card1Page implements AfterViewInit{
                 }//for(var test_val in test)
             }
         }
-        if (projectedValue.length > -1) {
+        if (projectedValue.length > 0) {
             // console.log(this.projectedValue, this.targetValue, this.actualValue, 'array output3');
-            for (var j = 0; j < projectedValue.length; j++) {
+            for (var j = 0; j < actualValue.length; j++) {
                 var bulletStackData = [{ "ranges": [0, projectedValue[j], 0], "measures": [actualValue[j]], "markers": [targetValue] }]
                 this.renderBulletChart(whereToPut, bulletStackData);
                 //   if (condition) {
@@ -369,6 +369,9 @@ export class Card1Page implements AfterViewInit{
             }
         }
         // console.log(this.barActualValue,"actualValue",this.barProjectedValue,'projectedValue',this.barTargetValue, 'barTargetValue' );
+
+        // this.barActualValue.unshift('data1');
+        // this.barTargetValue.unshift('data2');
         this.barActualValue[0] = 'data1';
         this.barTargetValue[0] = 'data2';
 
@@ -389,17 +392,14 @@ export class Card1Page implements AfterViewInit{
                 },
                 columns: whatToPut,
                 labels: {
-                    format: {
-                       // Label formatter for card1 and card2 are different, so logic is built with index of the card.
-                        data1: function (v, id, i, j) {
-                                if(cardIndex === 1) {
+                    format: function (v, id, i, j) {
+                                 if(self.hero.type == "percentage") {
                                     return v + '%';
                                 }
-                                else {
+                                else if(self.hero.type == "formatter") {
                                     return self.kFormatter(v); 
                                 }
-                            } 
-                    }
+                            }
                 },
                 colors: {
                     data1: '#F68B24',
@@ -413,7 +413,7 @@ export class Card1Page implements AfterViewInit{
                 height: 100
             },
             axis: {
-                x: {
+                    x: {
                                 show:true,
                                 type: 'category',
                                 categories: this.barDataDate,

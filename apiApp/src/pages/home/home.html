@@ -1,6 +1,6 @@
 <ion-header class="header-transparent">
   <ion-navbar>
-    <button ion-button menuToggle class="hamburger">
+    <button ion-button icon-only menuToggle class="hamburger">
       <ion-icon name="menu"></ion-icon>
     </button>
     <!-- <ion-title text-center>Home</ion-title> -->
@@ -10,24 +10,25 @@
 <ion-content class="app-bg home">
   <!-- <img src="{{ screen }}" *ngIf="state" style="position:absolute;top:88px;left:0;right:0;z-index:99999;height:90px" [hidden]="state != 1"> -->
       <section>
-            <ion-grid>
+            <ion-grid class="nopadding">
               <ion-row>
-                <ion-col col-12>
-                      <div class="user-icon-box">
-                            <ion-icon ios="ios-settings" md="md-settings"  class="refresh-share" (click)="navigateToAbout()"></ion-icon>
+                <ion-col col-12 class="nopadding">
+                      <div class="user-info-box">
+                            <ion-icon ios="ios-settings" md="md-settings"  class="cog-icon" (click)="navigateToAbout()"></ion-icon>
                             <span class="user-pic">
                               <!-- <ion-icon ios="ios-contact" md="md-contact"></ion-icon> -->
-                                <img src="{{this.profileImage}}">  
+                                <img src="{{this.profileImage || 'assets/images/missing.gif'}}">  
                             </span>
-                            <ion-icon ios="ios-share" md="md-share" class="refresh-share"  (click)="shareSheetShare()"></ion-icon>
+                              <img src="assets/images/icon_msg.png"  class="home-share" (click)="shareSheetShare()">
+                            <!-- <ion-icon ios="ios-share" md="md-share" class="refresh-share"  (click)="shareSheetShare()"></ion-icon> -->
 
                       </div>
                 </ion-col>
               </ion-row>
               <ion-row>
-                <ion-col col-12 *ngFor="let item of profile let i = index;" [hidden]="i >1">
+                <ion-col col-12 *ngFor="let item of profile let i = index;" [hidden]="i >1" style="padding-bottom:0;">
                                             <div class="name" text-center>{{item[1]}}</div>
-                                            <!-- <div class="desg" text-center>{{profile.display_title}}</div> -->
+                                            <!-- <div class="desig" text-center>{{profile.display_title}}</div> -->
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -35,7 +36,7 @@
       <div *ngFor="let card of people let i = index; let f=first; let l=last; let e=even; let o=odd;">
       <!--<h1>Length : {{card.length}}</h1>-->
             <card1-design *ngIf="card.template == 'summary' " [hero]="card" [index]="i"></card1-design>          
-            <!--<card1-design *ngIf="card.template == 'conversion'" [hero]="card" [index]="i"></card1-design>-->
+            <card1-design *ngIf="card.template == 'conversion'" [hero]="card" [index]="i"></card1-design>
             <card2-design *ngIf="card.template == 'channels'" [hero2]="card" [index]="i"></card2-design>          
     </div>
 </ion-content>

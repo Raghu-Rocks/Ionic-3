@@ -6,41 +6,24 @@ page-home {
 	background: $color_curious_blue_approx;
     background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
 
-    .hamburger{
-        position: absolute;
-        color: $white;
-    }
-    .name{
-        color: $white;
-        font-family: $helvetica;
-    }
-    .desg{
-        color: $white;
-        font-family: $helvetica;    
-    }
-    .user-icon-box{
-        padding: 5px;
+    .hamburger{        position: absolute;        color: $white;    }
+    .name{color: $white;        font-family: 'Helvetica Neue';}
+    .desig{color: $white;        font-family: 'Helvetica Neue';}
+    .user-info-box{
+        // padding: 5px;
         display: flex;
         justify-content: space-around;
         color: white;
+    
+        .cog-icon, .home-share{font-size: 2.8em; border: 2px dotted #4cffff; border-radius: 50%; height: 50px; width: 50px; padding: 4px 7px; margin-top: 16px;}
+        .user-pic{        border: 2px dotted #4cffff;        border-radius: 50%;        width: 26%;        padding: 4px 4px 0px;        }
+        img{            border-radius: 50%;        }
     }
-    .refresh-share{
-        font-size: 2.8em;
-        border: 2px dotted #4cffff;
-        border-radius: 50%;
-        height: 50px;
-        width: 50px;
-        padding: 4px 7px;
-        margin-top: 16px;
+    .card-name {font-size: 18px; color: $white;	line-height: 1.4;	background-color: transparent;	padding-left: 12px;	font-weight: 100;	margin: 15px 0 -10px;    }
+    
+    .mail-icon-container {
+        position: relative;
+        
+        .mail-icon {position: absolute; right: 20px; padding: 7px 7px 3px; background-color: #ffffff; font-size: 20px; bottom: -1px; width: 7%; @include border-radius(5px 5px 0 0);}
     }
-    .user-pic{
-    border: 2px dotted #4cffff;
-    border-radius: 50%;
-    width: 26%;
-    padding: 4px 4px 2px;
-    }
-    img{
-        border-radius: 50%;
-    }
-
 }

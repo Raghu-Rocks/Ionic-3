@@ -145,21 +145,25 @@ export class channels {
       }
     }
     }
-                      if(this.projectedValue.length>0){
+                        // console.log(this.projectedValue.length,"P Value length");
+                      if(this.projectedValue.length != -1){
                         // console.log(this.actualValue,"actualValue",this.projectedValue,'projectedValue');
+                        // console.log(this.actualValue.length,"actualValue length");
                         for (var j = 0; j < this.actualValue.length; j++) {
                           var bulletStackData1 = [{"ranges":[0, this.projectedValue[j], 0], "measures":[this.actualValue[j] ],	  "markers":[0]  }];
                           var bulletStackData2 = [{"ranges":[0, 0, 0], "measures":[this.lastWeekVisitsValue[j] ],	  "markers":[0]  }];
-                          var divId1 = "#detailBullet"+this.actualValue[j];
-                          this.renderBulletChart(divId1, bulletStackData1);
-                          var divId2 = "#detailTdyBullet"+this.actualValue[j]
-                          this.renderBulletChart(divId2, bulletStackData1);
-                          var divId3 = "#lastWeekBullet"+this.actualValue[j]
-                          this.renderBulletChart(divId3, bulletStackData2);
+                          var divId1 = "#detailBullet"+this.actualValue[j]+j;
+                          this.renderBulletChart(divId1, bulletStackData1); // detail normal bullet 
+                          var divId2 = "#detailTdyBullet"+this.actualValue[j]+j;// card tdy bullet
+                          this.renderBulletChart(divId2, bulletStackData1);// card tdy bullet
+                          var divId3 = "#lastWeekBullet"+this.actualValue[j]+j;//card last week bullet
+                          this.renderBulletChart(divId3, bulletStackData2);// card last week bullet
+                        // console.log(bulletStackData1,"bulletStackData1", bulletStackData2, 'bulletStackData2');
                           
                         }
                     }//if(this.array2.length>0){
                         // console.log(this.tdyActualFormted,"actualValue", this.tdyProjectedFormated, 'tdyVisitsKeys');
+                        // console.log(bulletStackData1,"bulletStackData1", bulletStackData2, 'bulletStackData2');
   }
 
   renderBulletChart(WhereToPut, whatToPut) {
@@ -173,11 +177,6 @@ export class channels {
       chart = d3.bullet()
     .width(width)
     .height(height)
-    // .actualColor("#ff0000")
-    // .targetColor("#00FF00")
-    // .projectedColor("#0000FF")
-
-
     var svg = d3.select(WhereToPut).selectAll("svg")
       .data(whatToPut)
       .enter().append("svg")
@@ -194,6 +193,8 @@ export class channels {
       });
             d3.selectAll('.bullet .measure.s0').attr('rx', 4);
             d3.selectAll('.bullet .measure.s0').attr('ry', 4);
+            d3.selectAll('.bullet .marker').style('stroke', "transparent");
+
   }// end of bullet chart fun
 
   randomize(d) {
