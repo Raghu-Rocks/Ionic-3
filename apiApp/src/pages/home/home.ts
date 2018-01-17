@@ -1,9 +1,10 @@
 import { Component, ViewChild, ElementRef, Output } from '@angular/core';
-import { NavController, NavParams, MenuController, IonicPage, LoadingController } from 'ionic-angular';
+import { App, NavController, NavParams, MenuController, IonicPage, LoadingController } from 'ionic-angular';
 import { PeopleServiceProvider} from '../../providers/people-service/people-service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 import { Storage } from '@ionic/storage';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @IonicPage()
@@ -16,12 +17,22 @@ import { Storage } from '@ionic/storage';
 export class HomePage{
     @Output('card') card:any;
     @ViewChild ('dashboardChart') dashboardChart: ElementRef;
-    public people: any;    public bgimg: any; profile:any; profileImage:any;
+    public people: any;    public bgimg: any; profile:any; profileImage:any; error:any;
     screen: any;   state: boolean = false;
-    baseURL = "https://expcloudapp.adobe.com/mca/api/v1/user/";
+    // baseURL = "https://expcloudapp.adobe.com/mca/api/v1/user/";
     data:any[] =[];
+	  baseURL = "https://expcloudapp.adobe.com";
+	  validateTokenURL = this.baseURL + "/mca/api/v1/user/";
+	  logOutURLBase = this.baseURL + "/mca/auth/logout/";
+	  failureURLFormat = "/auth/failed/";
+	  logoutURLFormat = "/auth/logoutsuccess/";
+    authToken: any;
+
+
   constructor(
-	  	public loadingCtrl: LoadingController,
+        private app: App,
+        private iab: InAppBrowser,
+	  	  public loadingCtrl: LoadingController,
         public navCtrl: NavController, 
         public navParams: NavParams,
         public peopleServiceProvider: PeopleServiceProvider,
@@ -39,12 +50,14 @@ export class HomePage{
 	}
 
 	navigateToAbout(){
-		this.navCtrl.push("AboutPage", this.people);
+		// console.log(this.people[0].last_refreshed, 'home.ts about')
+		this.navCtrl.push("AboutPage", this.people[0].last_refreshed);
 	}
 
   	fetchData(){
         this.storage.get('IMSIToken').then((val) => {
-            let APIurl = this.baseURL + val;
+          this.authToken = val;
+            let APIurl = this.validateTokenURL + this.authToken;
             this.loadPeople(APIurl);
         });
 	}
@@ -52,7 +65,7 @@ export class HomePage{
 	ionViewCanEnter() {
 		return new Promise((resolve, reject) => {
 			this.storage.length().then((val) => {
-				if (val > 0){
+				if (val != -1){
 					resolve(true);
 				}
 			}, 
@@ -70,6 +83,12 @@ export class HomePage{
 			console.log(typeof this.profile, 'profile');
 			if (this.profile) {
 				this.userProfileData();
+      }
+      console.log(data[2], 'error', typeof data[2]);
+			if ( typeof(data[2]) != "undefined" && data[2] !== undefined && (data[1] == undefined || typeof(data[1] == "undefined"))){
+        console.log(data[2], 'data[2]');
+        this.error = data[2];
+        this.onLogOut();
 			}
 		});
 	}
@@ -139,5 +158,20 @@ export class HomePage{
     // console.log(this.screen, 'screen')
 
   }
+
+
+  	onLogOut() {
+	/* Logout Action */
+		var logOutURL = this.logOutURLBase + this.authToken;
+		var browser = this.iab.create(logOutURL, "_blank", "location=no,toolbar=no");
+		// this.nav.push(LoginPage);
+		browser.on('loadstop').subscribe((data) => {
+			if (data.url.indexOf(this.logoutURLFormat) !== -1) {
+				this.storage.clear(); 
+				this.app.getRootNav().setRoot("LoginPage");
+				browser.close();
+			}
+		});
+	}
 
 }

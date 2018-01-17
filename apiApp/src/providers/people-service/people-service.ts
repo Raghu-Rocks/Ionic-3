@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class PeopleServiceProvider {
-data: any; profile:any; cards:any;
+data: any; profile:any; cards:any; error:any;
   constructor(public http: Http) {
     // console.log('Hello PeopleServiceProvider Provider');
   }
@@ -33,7 +33,8 @@ data: any; profile:any; cards:any;
 			.subscribe(data => {
 				this.profile = data.profile;
 				this.cards = data.cards;
-				this.data = [this.profile, this.cards];
+				this.error = data.error;
+				this.data = [this.profile, this.cards, this.error];
 				// console.log(typeof this.data, this.data, "data undef");
 				if (this.data != null && typeof(this.data[0]) != "undefined" && typeof(this.data[1]) != "undefined") {
 					// console.log(this.data, 'data set');

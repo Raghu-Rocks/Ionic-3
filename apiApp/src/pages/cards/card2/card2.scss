@@ -38,7 +38,7 @@ ion-card-content {
 .justify-content {
 	justify-content: space-between;
 }
-#bulletChart20 .bullet .measure {
+.bullet-first .bullet .measure {
 	&.s0 {
 		fill: $color_paid_search;
 	}
@@ -46,15 +46,7 @@ ion-card-content {
 		fill: $color_paid_search;
 	}
 }
-#bulletChart30 .bullet .measure {
-	&.s0 {
-		fill: $color_paid_search;
-	}
-	&.s1 {
-		fill: $color_paid_search;
-	}
-}
-#bulletChart21 .bullet .measure {
+.bullet-sec .bullet .measure {
 	&.s0 {
 		fill: $color_affiliates;
 	}
@@ -62,15 +54,7 @@ ion-card-content {
 		fill: $color_affiliates;
 	}
 }
-#bulletChart31 .bullet .measure {
-	&.s0 {
-		fill: $color_affiliates;
-	}
-	&.s1 {
-		fill: $color_affiliates;
-	}
-}
-#bulletChart22 .bullet .measure {
+.bullet-thrd .bullet .measure {
 	&.s0 {
 		fill: $color_organic;
 	}
@@ -78,12 +62,28 @@ ion-card-content {
 		fill: $color_organic;
 	}
 }
-#bulletChart32 .bullet .measure {
+.bullet-frth .bullet .measure {
 	&.s0 {
-		fill: $color_organic;
+		fill: $color_display;
 	}
 	&.s1 {
-		fill: $color_organic;
+		fill: $color_display;
+	}
+}
+.bullet-fifth .bullet .measure {
+	&.s0 {
+		fill: $color_others;
+	}
+	&.s1 {
+		fill: $color_others;
+	}
+}
+.bullet-sixth .bullet .measure {
+	&.s0 {
+		fill: $color_projected_legend;
+	}
+	&.s1 {
+		fill: $color_projected_legend;
 	}
 }
 	.donut-chart {
@@ -91,6 +91,7 @@ ion-card-content {
 			text{
 				font-size: 0.8em;
 				fill: $black;
+				font-weight: bold;
 			}
 			path{
 				stroke: none;
@@ -98,4 +99,10 @@ ion-card-content {
 		}
 	}
 
+}
+
+.truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

@@ -62,7 +62,7 @@ export class LoginPage{
 	DMAAppAuth() {
 		console.log('AuthURL', this.authURL)
 		// let value: any;
-		const browser = this.iab.create(this.authURL, "_self", "location=no,toolbar=no");
+		const browser = this.iab.create(this.authURL, "_blank", "location=no,toolbar=no");
 		browser.on('loadstop').subscribe((data) => {
 		if (data.url.indexOf(this.tokenURLFormat) !== -1) {
 			// set a key/value

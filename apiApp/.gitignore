@@ -1,6 +1,8 @@
 /node_modules
 /www
-/node_modules-not-working
-platforms/android/assets/www/assets/alerts.json
-platforms/
+/platforms/android/assets/www/assets/alerts.json
+/platforms/
+/plugins/
+.sourcemaps/
 .vscode/
+/.sourcemaps

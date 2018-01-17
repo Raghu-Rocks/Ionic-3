@@ -6,29 +6,50 @@ ion-app{
 
 		background: $color_curious_blue_approx;
 		background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
+
+		h1, h2, h3, h4, h5, h6, p{
+			font-family: 'Helvetica-neue';
+		}
+
 	.header::after, .tabs[tabsPlacement="top"] > .tabbar::after, .footer::before, .tabs[tabsPlacement="bottom"] > .tabbar::before{
 		background: none;
 	}
-	.sidemenu-tool{
-		.toolbar-background{	background: $sidemenu-bg; }
-		.sidemenu-title{
-			.toolbar-title{	color: $sidemenu_text; }
+	.side-menu{
+		.menu-inner{
+			background: $sidemenu-bg !important;
 		}
-	}
-
-
-	.app-content{
-		.scroll-content{
-					background: $sidemenu_bg !important;
-					padding-top: 5px;
-			.sidemenu-container{
-					background: $transparent !important;
-				.sidemenu-btns{
-					background: transparent;
+		.sidemenu-tool{
+			padding: 40px;
+			.toolbar-background{	background: $sidemenu-bg; }
+			.sidemenu-title{
+				.toolbar-title{	
 					color: $sidemenu_text;
-					border-top: 1px solid $black;
-					div{
-						border-bottom: none !important;
+					font-size: 24px;
+					font-weight: 100;
+					font-family: 'helvetica-neue-thin' !important;
+				}
+			}
+		}
+		.app-content{
+			background: $transparent !important;			
+			.scroll-content{
+						background: $sidemenu_bg !important;
+						padding-top: 5px;
+				.sidemenu-container{
+						// margin-top: 40px;
+						background: $transparent !important;
+					.sidemenu-btns{
+						background: transparent;
+						color: $sidemenu_text;
+						border-top: 1px solid $black;
+						padding: 10px 16px;
+						font-size: 1.1em;
+						ion-label{
+							font-family: 'Helvetica-neue-thin' !important;
+						}
+						div{
+							border-bottom: none !important;
+						}
 					}
 				}
 			}
@@ -62,7 +83,7 @@ ion-app{
 	}
 	.border-radius {@include border-radius(6px);}
 	.white-txt {color: $white;}
-	.small-txt {font-size: 10px;font-weight: normal;}
+	.small-txt {font-size: 8px;font-weight: bold;}
 	.display-flex {	display: flex;
 		span {	display: inline-block;	}
 	}
@@ -74,6 +95,7 @@ ion-app{
 
 	.legend-txt::before 		  {content: ''; display: inline-block;	width: 8px;	height: 8px; @include border-radius(7px); background-color: $color_viking_approx;margin-right: 3px;	margin-left: 3px;}
 	.legend-tdy::before 		 {background-color: $color_bullet;}
+	.legend-last::before 		 {background-color: $last_year_bullet_color;}
 	.legend-target::before		{background-color: $color_target_legend;}
 	.legend-paid::before		 {background-color: $color_paid_search;}
 	.legend-affiliate::before 	 {background-color: $color_affiliates;}
@@ -81,5 +103,14 @@ ion-app{
 	.legend-display::before     {background-color: $color_display;}
 	.legend-others::before      {background-color: $color_others;}
 	.legend-projected::before {background-color: $color_projected_legend;}
+	.legend-purple::before {background-color: $color_purple_legend;}
+	.legend-yellow::before {background-color: $color_yellow_legend;}
+	.legend-light-pink::before {background-color: $color_light_pink_legend;}
+
+	.last-year-bullet .bullet .measure.s0{
+		fill: $last_year_bullet_color;
+	}
+
+	
 
 }

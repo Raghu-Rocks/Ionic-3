@@ -7,8 +7,8 @@ page-home {
     background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
 
     .hamburger{        position: absolute;        color: $white;    }
-    .name{color: $white;        font-family: 'Helvetica Neue';}
-    .desig{color: $white;        font-family: 'Helvetica Neue';}
+    .name{color: $white;        font-family: 'Helvetica-neue';}
+    .desig{color: $white;        font-family: 'Helvetica-neue';}
     .user-info-box{
         // padding: 5px;
         display: flex;
@@ -19,7 +19,7 @@ page-home {
         .user-pic{        border: 2px dotted #4cffff;        border-radius: 50%;        width: 26%;        padding: 4px 4px 0px;        }
         img{            border-radius: 50%;        }
     }
-    .card-name {font-size: 18px; color: $white;	line-height: 1.4;	background-color: transparent;	padding-left: 12px;	font-weight: 100;	margin: 15px 0 -10px;    }
+    .card-name {font-family: 'Helvetica-neue';font-size: 1.5em; color: $white;	line-height: 1.4;	background-color: transparent;	padding-left: 12px;	font-weight: normal;	margin: 15px 0 -10px;    }
     
     .mail-icon-container {
         position: relative;

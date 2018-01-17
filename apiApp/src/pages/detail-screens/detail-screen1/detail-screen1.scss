@@ -5,9 +5,6 @@ page-detail-screen1, page-detail-screen2{
 
 	background: $color_curious_blue_approx;//  bg is required because on navigate to detail it was showing transperent
     background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
-    
-	//fonts
-	$font_0: Roboto;
 
 	.date-btn {
 		height: 40px;
@@ -23,7 +20,6 @@ page-detail-screen1, page-detail-screen2{
 	.screen-title {
 		font-size: 20px;
 		font-weight: normal;
-		font-family: $font_0;
 		color: $white;
 	}
 	.mask31, .mask32{
@@ -36,20 +32,12 @@ page-detail-screen1, page-detail-screen2{
 	}
 	.mask31{	background: $bar_graph_bg;  }
 	.mask32{	background: $color_astronaut_blue_approx;  }
-		
-	// .demo-bullet {
-	// 	height: 10px;
-	// 	background: $web_orange;
-	// 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	// 	border-radius: 0 15px 15px 0;
-	// 	margin-right: 5px;
-	// }
 	.detail-screen-card {
 		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 		box-shadow: 0 1px 2px $black_30;
-	}
-	.detail-screen-card-title {
-		margin: 5px 0;
+		.detail-screen-card-title {
+			margin: 0 0 3px;
+		}
 	}
 	.legends-shown{
 		color: $white;
@@ -61,23 +49,64 @@ page-detail-screen1, page-detail-screen2{
 	.bg-grey {background-color: $bar_graph_bg;	@include border-radius( 5px 0 0 5px);}
 	.bg-blue {background-color: $color_astronaut_blue_approx;	@include border-radius(0 5px 5px 0);
 	}
-	.txt-total {
-		background: $color_astronaut_blue_approx;
-		border: 1px solid $black;
-		line-height: 15px;
-		display: inline-block;
-		@include border-radius(15px);
-		padding: 2px 8px;
-		margin: auto;
+	.total-box{
+		z-index: 1;
 		position: absolute;
 		bottom: -13%;
-		left: 43%;
-		margin: 0 auto;
-		z-index: 1;
+		left: 0;
+		right: 0;
+		text-align: center;
+		.txt-total {
+			background: $color_astronaut_blue_approx;
+			border: 1px solid $black;
+			line-height: 15px;
+			display: inline-block;
+			@include border-radius(15px);
+			padding: 2px 8px;
+			margin: 0 auto;
+		}
 	}
 	.pos-relative {
 		position: relative;
 	}
+	.x-label{
+		padding-left: 15%;
+		.x-label-text{
+			margin: 0;
+			font-size: 1.4rem;
+			color: #ffffff;
+		}
+	}
+	     .flex-div {
+            width: 100%;
+            display: flex;
+        }
+        .graph-wrapper {
+            width: 90%;
+            float: left;
+        }
+        .y-axis-label {
+            width: 9%;
+            float: left;
+            position: relative;
+            text-align: left;
+            // padding-top: 30px;
+            svg {
+                height: 100%;
+                width: 100%;
+            }
+            p {
+                margin: 0;
+                position: absolute;
+                width: max-content;
+                margin-left: -14px;
+                color: $white;
+            }
+            text {
+                -webkit-text-fill-color: $white;
+                fill: $white;
+			}
+		}
 	.bottom-taskbar {
 		position: fixed;
 		left: 0;

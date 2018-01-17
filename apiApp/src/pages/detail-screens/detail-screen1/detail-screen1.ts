@@ -18,11 +18,11 @@ export class summary {
     public title:any;
     data:any;
     cardName:any; areaHeight:any;
-    public lstArray1:any;        public lstArray2:any;    public lstArray3:any;    public tdyArray1:any;
+    public lstArray1:any;        public lstArray2:any;    public lstArray3:any;    public tdyArray1:any; lastYear:any;
     public tdyArray2:any;       public tdyArray3:any;
     tdyBulletA:any =[];    tdyBulletT:any =[];    tdyBulletP:any =[];                   lastBulletA:any =[];
     lastBulletT:any =[];    lastBulletP:any =[];    areaActualValue:any =[];         areaTargetValue:any =[]; axisLabel:any;
-    barGraphKey:any = [];           values:any = []; barOutputTarget:any =[]; barOutputActual:any = []; count31:any =0; count21:any=0;
+    barGraphKey:any = [];           values:any = []; lineOutputTarget:any =[]; lineOutputActual:any = []; count31:any =0; count21:any=0;
 
   constructor(
     public navCtrl: NavController, 
@@ -42,13 +42,15 @@ ionViewDidLoad(){
        this.processBulletGraph("#bulletTdy"+this.tdyBulletA, this.tdyData, this.tdyBulletP, this.tdyBulletT, this.tdyBulletA,"");
         this.renderLastWeekData();
         this.renderTdyWeekData();
-        this.processAreaChart("#dashboardChart");
+        this.processLineGraph("#dashboardChart");
     }
   navigateToHome(){
     this.navCtrl.popToRoot();
   }
   navigateToAbout(){
-      this.navCtrl.push("AboutPage", this.data);
+    //   console.log(this.navParams.data.last_refreshed, 'raghu1');
+      let lastRefreshed = this.navParams.data.last_refreshed;
+      this.navCtrl.push("AboutPage", lastRefreshed);
   }
     shareSheetShare() {
     // this.screenShotURL() ;
@@ -75,6 +77,12 @@ ionViewDidLoad(){
      graphArea:any; graphCollection:any; areaGraphData:any;
     mapjson (){
          // today
+        //  this.lastYear = this.navParams.data.collection[1].name;
+        // console.log(this.navParams.data.collection[1].name, 'console')
+        var arr:string;
+        arr= this.navParams.data.detail_trends[0][0].name;
+        this.lastYear = arr.split('-');
+      // console.log(this.lastYear, 'console')
         this.data = Object.entries(this.navParams.data);
         this.detailTrends = Object.entries(this.data[5][1][0]);
 
@@ -90,20 +98,25 @@ ionViewDidLoad(){
         this.graphCollection = Object.entries(this.graphArea[1]);
         this.areaGraphData = Object.entries(this.graphCollection[1][1]);
         // this.areaGraphData = Object.keys(this.dataObject);
-       var axis; 
-        axis = Object.entries(this.detailTrends[0][1])[2][1];
-        this.axisLabel = Object.entries(axis)[0][1];
-        this.axisLabel = Object.values(this.axisLabel);
-         console.log(this.axisLabel, "detailTrends");
+// console.log(this.graphCollection)
+//         let axis = Object.entries(this.graphCollection[0][1]);
+//         let x_axis = Object.entries(axis[0])[1];
+//         let y_axis = Object.entries(axis[1])[1];
+        // axis = Object.entries(this.graphArea[1]);
+        // console.log(x_axis[1], 'axis', y_axis[1])
+        // this.axisLabel = Object.entries(axis)[0][1];
+        //  console.log(this.axisLabel, "detailTrends1");
+        // this.axisLabel = Object.values(this.axisLabel);
+        //  console.log(this.axisLabel, "detailTrends2");
 
-        //  console.log(this.areaGraphData, "areaGraphData");
+         console.log(this.axisLabel, "detailTrends");
          // console.log(this.lstWekData, "lstWekShoppers");
             // console.log(this.tdyData, "tdy");
         this.cardName = Object.entries(this.data[0]);
         // console.log(this.cardName[1][1], "cardName");    
         this.cdr.detectChanges();
     }
-    processAreaChart(whereToPut){
+    processLineGraph(whereToPut){
         for (var i in this.areaGraphData) {
                   // console.log(this.tdy, 'tdy');
               if (this.areaGraphData.hasOwnProperty(i) || typeof(this.areaGraphData[i])!='object') {
@@ -133,11 +146,11 @@ ionViewDidLoad(){
                                     // console.log(arr_object1,'arr_object12',typeof arr_object1);
                                     // var count3 =0; var count2=0;                              
                                      if (this.title.indexOf('Target')!=-1){
-                                        this.barOutputTarget[this.count21]=arr_object1;
+                                        this.lineOutputTarget[this.count21]=arr_object1;
                                         this.count21++;
                                     }
                                     else{//actual value
-                                        this.barOutputActual[this.count31]=arr_object1;
+                                        this.lineOutputActual[this.count31]=arr_object1;
                                         // console.log(this.count31, 'count');                                        
                                         this.count31++;
                                     }
@@ -147,11 +160,11 @@ ionViewDidLoad(){
                                     
                                     // var count31 =0; var count21=0;                              
                                      if (this.title.indexOf('Target')!=-1){
-                                        this.barOutputTarget[this.count21]=arr_object1;
+                                        this.lineOutputTarget[this.count21]=arr_object1;
                                         this.count21++;
                                     }
                                     else{//actual value
-                                        this.barOutputActual[this.count31]=arr_object1;
+                                        this.lineOutputActual[this.count31]=arr_object1;
                                         // console.log(this.count31, 'count');
                                         this.count31++;
                                     }                                    
@@ -162,14 +175,25 @@ ionViewDidLoad(){
                 }
             }//for(var test_val in test)
             }
-            // console.log(this.barOutputTarget,'target', this.barOutputActual, 'actual');
+            // console.log(this.lineOutputTarget,'target', this.lineOutputActual, 'actual');
         }
-            this.barOutputActual[0]="data1";
-            this.barOutputTarget[0]="data2";
-                        var barStackData = [this.barOutputActual, this.barOutputTarget]; //this.areaActualValue;                            
-                        this.renderAreaGraph(whereToPut, barStackData);
+        this.lineOutputActual.unshift('data1');
+        // console.log(this.lineOutputTarget, 'line data')
+        for (var index = 0; index < this.lineOutputTarget.length; index++) {
+            if (this.lineOutputTarget[index] == 0) {
+                this.lineOutputTarget = [];
+            }
+        }
+        this.lineOutputTarget.unshift('data2');
+            // this.lineOutputActual[0]="data1";
+            // this.lineOutputTarget[0]="data2";
+                        var lineGraphData = [this.lineOutputActual, this.lineOutputTarget]; //this.areaActualValue;                            
+                        this.renderLineGraph(whereToPut, lineGraphData);
     }
-    renderAreaGraph(whereToPut, whatToPut){
+    renderLineGraph(whereToPut, whatToPut){
+        // console.log(whatToPut[0], 'line data');
+        // console.log(whatToPut[0].length, 'line data');
+        let x_axisRange: number =24;
         this.areaHeight = this.areaHeight - this.headHeight.nativeElement.offsetHeight - 220;
           let self:any = this;
         c3.generate({
@@ -190,23 +214,41 @@ ionViewDidLoad(){
                }
             },
              axis: {
+
                     x: {
-                        label:{
-                            text: self.axisLabel[0]+ "",
-                            position: 'inner-center' // inner-right : default, inner-left, outer-right, outer-center, outer-left
-                        },
+                        min: 0,
+                        max: x_axisRange,
+                        // padding:{
+                        //     left: 0,
+                        //     right: 0
+                        // },
+                        // label:{
+                            // text: self.axisLabel[0]+ "",
+                            // position: 'inner-center' // inner-right : default, inner-left, outer-right, outer-center, outer-left
+                        // },
                         tick: {
-                            culling: { max: 15} // the number of tick texts will be adjusted to less than this value                
-                            // for normal axis, default on
-                            // for category axis, default off
+                                    values: [0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24],
+                                    fit: true,
+                                    centered: true,
+                                    multiline: false,
+                                // count: 10,
+                                    culling: { max: 15} // the number of tick texts will be adjusted to less than this value                
+                                // for normal axis, default on
+                                // for category axis, default off
                         }
                     },
                     y: {
-                        label: {
-                                text: self.axisLabel[1],
-                                position: 'outer-middle', // inner-middle, inner-top : default, inner-bottom, outer-top, outer-middle, outer-bottom
+                        min: 0,
+                        show: true,
+                        padding: {
+                            bottom: 0
                         },
+                        // label: {
+                        //         text: self.axisLabel[1],
+                        //         position: 'outer-middle', // inner-middle, inner-top : default, inner-bottom, outer-top, outer-middle, outer-bottom
+                        // },
                         tick: {
+
                                 // format: d3.format('$,')
                                 format: function (d) { return self.kFormatter(d); }
                         }
@@ -216,6 +258,14 @@ ionViewDidLoad(){
                     x: {show: true},
                     y: {show: true}
             },
+      point: {
+        r: 3,
+        focus: {
+          expand: {
+            r: 4
+          }
+        }
+      },
             legend: {
                 show: false
             },
@@ -407,7 +457,7 @@ ionViewDidLoad(){
         bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth;
         bulletmargin = {top: 0, right: 3, bottom: 0, left: 0};
         bulletwidth = bulletParentWidth - bulletmargin.left - bulletmargin.right;    
-        bulletHeight = 30 - bulletmargin.top - bulletmargin.bottom;
+        bulletHeight = 20 - bulletmargin.top - bulletmargin.bottom;
         bulletchart = d3.bullet()
         .width(bulletwidth)
         .height(bulletHeight)
@@ -423,6 +473,10 @@ ionViewDidLoad(){
       .call(bulletchart);
              d3.selectAll('.bullet .measure.s0').attr('rx', 4);
             d3.selectAll('.bullet .measure.s0').attr('ry', 4);
+            d3.selectAll('.bullet .measure.s0').attr('x', -4);
+            d3.selectAll('.bullet .range.s0').attr('x', -4);
+            d3.selectAll('.bullet .range.s0').attr('rx', 8);
+            d3.selectAll('.bullet .range.s0').attr('ry', 8);
 }// end of bullet chart fun
 randomize(d) {
   if (!d.randomizer) d.randomizer = this.randomizer(d);
@@ -440,10 +494,10 @@ randomizer(d) {
     kFormatter(num) {
         if (isNaN(num)) return 0;
         //	console.log(num);
-        if (num > 99999) {
+        if (num > 999999) {
             return (num / 1000000).toFixed(1) + 'M';
         } else {
-            return num > 999 ? (num / 1000).toFixed(1) + 'K' : num.toFixed(0);
+            return num > 999 ? (num / 1000).toFixed(1) + 'k' : num.toFixed(0);
         }
     }
 }

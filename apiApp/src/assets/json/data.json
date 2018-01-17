@@ -291,8 +291,7 @@
 						}
 					}
 				]
-			],
-			"type": "formatter"
+			]
 		},
 		{
 			"name": "Order Conversion Trend",
@@ -579,8 +578,7 @@
 						}
 					}
 				]
-			],
-			"type": "percentage"
+			]
 		},
 		{
 			"name": "Shoppers by Channel",

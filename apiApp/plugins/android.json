@@ -1,50 +1,53 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "com.darktalker.cordova.screenshot": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
     },
-    "installed_plugins": {
-        "phonegap-plugin-push": {
-            "SENDER_ID": "349914175083",
-            "PACKAGE_NAME": "io.ionic.veer"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "io.ionic.veer"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.ionic.veer"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "io.ionic.veer"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "io.ionic.veer"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.ionic.veer"
-        },
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "io.ionic.veer"
-        },
-        "cordova-plugin-x-socialsharing": {
-            "PACKAGE_NAME": "com.adobe.dmaapp"
-        },
-        "com.darktalker.cordova.screenshot": {
-            "PACKAGE_NAME": "com.adobe.dmaapp"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.adobe.dmaapp"
-        },
-        "cordova-sqlite-storage": {
-            "PACKAGE_NAME": "com.adobe.dmaapp"
-        }
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
     },
-    "dependent_plugins": {
-        "es6-promise-plugin": {
-            "PACKAGE_NAME": "com.adobe.dmaapp"
-        }
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
+    },
+    "phonegap-plugin-push": {
+      "SENDER_ID": "349914175083",
+      "PACKAGE_NAME": "com.adobe.expcloud"
+    },
+    "adobe-mobile-services": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
     }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.adobe.expcloud"
+    }
+  }
 }

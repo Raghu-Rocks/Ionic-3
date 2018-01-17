@@ -10,14 +10,14 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class NotificationProvider {
-public data1:any;
+public alertsData:any;
   constructor(public http: Http) {
     console.log('Hello NotificationProvider Provider');
   }
 load(url) {
-  if (this.data1) {
+  if (this.alertsData) {
     // already loaded data
-    return Promise.resolve(this.data1);
+    return Promise.resolve(this.alertsData);
   }
 
   // don't have the data yet
@@ -31,9 +31,9 @@ load(url) {
        
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
-        this.data1 = data;
+        this.alertsData = data;
          console.log(data,'data');
-        resolve(this.data1);
+        resolve(this.alertsData);
        
       });
   });

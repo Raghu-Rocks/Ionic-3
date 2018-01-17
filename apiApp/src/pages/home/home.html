@@ -33,6 +33,7 @@
               </ion-row>
             </ion-grid>
       </section>
+            <page-target></page-target>          
       <div *ngFor="let card of people let i = index; let f=first; let l=last; let e=even; let o=odd;">
       <!--<h1>Length : {{card.length}}</h1>-->
             <card1-design *ngIf="card.template == 'summary' " [hero]="card" [index]="i"></card1-design>          

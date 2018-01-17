@@ -176,7 +176,7 @@ renderBulletChart(whereToPut, WhatToPut) {
     this.bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth; 
     this.margin = {top: 0, right: 3, bottom: 0, left: 0};
     this.width = this.bulletParentWidth - this.margin.left - this.margin.right;    
-    this.bulletHeight = 30 - this.margin.top - this.margin.bottom;
+    this.bulletHeight = 20 - this.margin.top - this.margin.bottom;
 
     this.chart = d3.bullet()
     .width(this.width)
@@ -193,7 +193,9 @@ renderBulletChart(whereToPut, WhatToPut) {
       .call(this.chart);
             d3.selectAll('.bullet .measure.s0').attr('rx', 4);
             d3.selectAll('.bullet .measure.s0').attr('ry', 4);
-            d3.selectAll('.bullet .marker').style('stroke', "transparent");
+            d3.selectAll('.bullet .range.s0').attr('rx', 4);
+            d3.selectAll('.bullet .range.s0').attr('ry', 4);
+            d3.selectAll('.hide-target .bullet .marker').style('stroke', "transparent");
 
 }// end of bullet chart fun
 
@@ -231,11 +233,11 @@ randomizer(d) {
         },
         size: {
         // height: this.donutPerentHeight
-        height: 170
+        height: 150
       },
     donut: {
 		label: {
-        	threshold: 0.0
+        	threshold: 0.065
         },
       	width: 15,
       	expand: false
@@ -244,10 +246,9 @@ randomizer(d) {
        show: false
     },
     color: {
-            pattern: ['#d5406a', '#0d6580', '#21daa0', '#D3885F', '#0B94FF', '#E8E8E8', '#d62728', '#ff9896']
+            pattern: ['#d5406a', '#0d6580', '#21daa0', '#D3885F', '#0B94FF', '#6a47eb', '#ffb300', '#ff9896']
     },
-    
-    });
+  });
   }
   /**
  * Formats data for Charts/legends and ticks
@@ -258,7 +259,7 @@ randomizer(d) {
  kFormatter(num) {
     if (isNaN(num)) return 0;
     //	console.log(num);
-    if (num > 99999) {
+    if (num > 999999) {
         return (num / 1000000).toFixed(2) + 'M';
     } else {
         return num > 999 ? (num / 1000).toFixed(2) + 'k' : num.toFixed(2);

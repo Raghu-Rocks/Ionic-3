@@ -11,10 +11,10 @@
 </ion-header>
   <ion-content class="app-bg">
     <div *ngFor="let name of cardName; let i = index;">
-          <h2 *ngIf="i == 1" class="screen-title" align="center">{{name[1]}}</h2>
+          <h2 *ngIf="i == 1" class="screen-title" align="center">{{this.lastYear[0]}}</h2>
           <div *ngIf="i == 1" class="legends-shown">
-            <span class="legend-txt legend-tdy">Today</span>
-            <span class="legend-target legend-txt ">Target</span>
+            <span class="legend-txt legend-tdy">Actual</span>
+            <!-- <span class="legend-target legend-txt ">Target</span> -->
             <span class="legend-projected legend-txt">Projected</span>
           </div>
     </div>
@@ -22,44 +22,44 @@
       <div *ngFor="let keys of tdyVisitsKeys; let i = index;">
         <ion-row class="pos-relative row-gap"  [hidden]="showGraph!=i">
             <ion-col class="detail-screen-card bg-grey">
-                  <p class="detail-screen-card-title">Last week</p>
+                  <p class="detail-screen-card-title">{{this.lastYear[1]}}</p>
                 <!-- <div class="demo-bullet"></div> -->
-              <div class="card1-bullet-wraper" #bulletChart>
+              <div class="card1-bullet-wraper hide-target  last-year-bullet" #bulletChart>
                 <div class="mask31"></div>
                   <div id="lastWeekBullet{{keys[1]}}{{i}}"></div>
               </div>
                	<div>
-                          		<span  class="legend-txt small-txt legend-tdy" >{{this.lastWeekVisits[i] || '0.00'}}</span>
+                          		<span  class="legend-txt small-txt legend-last" >{{this.lastWeekVisits[i]}}</span>
                           		<!-- <span  class="legend-txt small-txt legend-target" >2.02M</span> -->
-                          		<span  class="legend-txt small-txt legend-projected">0.00</span>
+                          		<!-- <span  class="legend-txt small-txt legend-projected">0.00</span> -->
         			  </div>
           </ion-col>
-	        <span class="txt-total">Total</span>
+	        <div class="total-box"><span class="txt-total">{{keys[0]}}</span></div>
           <ion-col class="detail-screen-card bg-blue">
                 <p class="detail-screen-card-title">Today</p>
                 <!-- {{tdyActualFormted | json}} -->
                 <!-- <div class="demo-bullet"></div> -->
-              <div class="card1-bullet-wraper" #bulletChart>
+              <div class="card1-bullet-wraper  hide-target" #bulletChart>
                 <div class="mask32" ></div>                
                   <div id="detailTdyBullet{{keys[1]}}{{i}}"></div>
               </div>
                	<div align="right">
-                          		<span  class="legend-txt small-txt legend-tdy" >{{tdyActualFormted[i] || '0.00'}}</span>
-                          		<span  class="legend-txt small-txt legend-target" >0.00</span>
-                          		<span  class="legend-txt small-txt legend-projected">{{this.tdyProjectedFormated[i] || "0.00"}}</span>
+                          		<span  class="legend-txt small-txt legend-tdy" *ngIf="this.tdyActualFormted[i] != 0 && this.tdyActualFormted[i] != null">{{tdyActualFormted[i]}}</span>
+                          		<!-- <span  class="legend-txt small-txt legend-target" >0.00</span> -->
+                          		<span  class="legend-txt small-txt legend-projected" *ngIf="this.tdyProjectedFormated[i] != 0 && this.tdyProjectedFormated[i] != null">{{this.tdyProjectedFormated[i]}}</span>
         			  </div>
           </ion-col>
         </ion-row>
          <!-- [ngClass]="{'hide': i == 0}"  -->
         <ion-row class="pos-relative row-gap"  [hidden]="showGraph==i" (click)="showParticularGraph(i)" >
-      		<ion-col col-5 class="">
+      		<ion-col col-6 class="">
         			<div class="left-legends">
                   <span>{{keys[0]}}</span>
                   <span class="left-legend-icon"><ion-icon name="arrow-dropright-circle"></ion-icon></span>
               </div>
       		</ion-col>
-      		<ion-col col-7 class="">
-              <div class="card1-bullet-wraper" #bulletChart>
+      		<ion-col col-6 class="">
+              <div class="card1-bullet-wraper detail-bullet-padd  hide-target" #bulletChart>
                                 <div class="mask41" [ngClass]="{'mask-first': i == 0}"></div>                
                   <div id="detailBullet{{keys[1]}}{{i}}"></div>
                   <!--<bullet-chart [height]="height" [colors]="colors" [actual]="actual" [target]="target" [ranges]="ranges"></bullet-chart>-->

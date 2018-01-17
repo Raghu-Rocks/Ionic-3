@@ -1,15 +1,17 @@
 {
     "name": "ExperienceCloud",
-    "version": "0.0.1",
-    "author": "Ionic Framework",
-    "homepage": "http://ionicframework.com/",
+    "version": "0.2.0",
+    "author": "Adobe Global Services, STAAC Practice",
+    "description": "Personalized intelligence & actions, for your digital marketing and analysis needs.",
+    "homepage": "http://www.adobe.com/",
     "private": true,
     "scripts": {
         "clean": "ionic-app-scripts clean",
         "build": "ionic-app-scripts build",
         "lint": "ionic-app-scripts lint",
         "ionic:build": "ionic-app-scripts build",
-        "ionic:serve": "ionic-app-scripts serve"
+        "ionic:serve": "ionic-app-scripts serve",
+        "ionic:lint": "npm run lint"
     },
     "dependencies": {
         "@angular/common": "4.1.3",
@@ -35,6 +37,7 @@
         "c3": "^0.4.14",
         "com.darktalker.cordova.screenshot": "^0.1.6",
         "cordova-android": "^6.2.3",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
         "cordova-plugin-inappbrowser": "^1.7.1",
@@ -62,10 +65,12 @@
         "@types/c3": "^0.4.43",
         "@types/d3": "4.10.0",
         "c3": "^0.4.14",
-        "ionic": "3.10.3",
+        "ionic": "3.19.0",
         "typescript": "2.3.4"
     },
-    "description": "An Ionic project",
+    "config": {
+        "ionic_copy": "./overrides/copy.config.js"
+    },
     "cordova": {
         "plugins": {
             "phonegap-plugin-push": {
@@ -80,10 +85,12 @@
             "cordova-plugin-x-socialsharing": {},
             "com.darktalker.cordova.screenshot": {},
             "cordova-plugin-inappbrowser": {},
-            "cordova-sqlite-storage": {}
+            "cordova-sqlite-storage": {},
+            "adobe-mobile-services": {}
         },
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ]
     }
 }

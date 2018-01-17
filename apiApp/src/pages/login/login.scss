@@ -1,13 +1,52 @@
 page-login {
-    background-image: url("../assets/images/app_background.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    ion-content{
-        background: transparent !important;
-
-        .login-header, .aboutDetails{
-            color: $white;
-        }
+    $color_curious_blue_approx: #29a6cd;
+	$color_denim_approx: #246fb3;   
+    .scroll-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
+    .content {
+        background: $color_curious_blue_approx;
+        background: linear-gradient($color_curious_blue_approx 15%, $color_denim_approx 35%);
+       -webkit-animation: MovingBackground 60s ease infinite;
+       -moz-animation: MovingBackground 60s ease infinite;
+       animation: MovingBackground 60s ease infinite;  
+    } 
+
+    // give the footer a white transparent border
+    .footer-ios .toolbar-background-ios {
+        border-color: color($colors, white-transparent, base);  
+    }
+
+    // handles the moving part of the background
+    @-webkit-keyframes MovingBackground {
+        0% { background-position: 0% 50% }
+        50% { background-position: 100% 50% }
+        100% { background-position: 0% 50% }
+    }
+
+    @-moz-keyframes MovingBackground {
+        0% { background-position: 0% 50% }
+        50% { background-position: 100% 50% }
+        100% { background-position: 0% 50% }
+    }
+
+    @keyframes MovingBackground { 
+        0% { background-position: 0% 50% }
+        50% { background-position: 100% 50% }
+        100% { background-position: 0% 50% }
+    }
+
+}
+
+.login-container {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    height: 100%;
+}
+
+.login-container > .button-row img {
+    max-width: 80%;
 }

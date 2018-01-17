@@ -16,7 +16,7 @@ export class channels {
     showGraph:number = 0;
     // @Input('index') card_index:any;
     @ViewChild ("bulletChart")bulletCharts: ElementRef;
-    data: any;    cardName:any;    detailBulletData:any;
+    data: any;    cardName:any;    detailBulletData:any; lastYear:any;
     title:any;    actualValue:any =[];    projectedValue:any =[];
     tdyProjectedFormated:any = []; tdyActualFormted:any = [];
   constructor(
@@ -37,8 +37,9 @@ export class channels {
         this.navCtrl.popToRoot();
   }
   navigateToAbout(){
-      this.navCtrl.push("AboutPage",this.data);
-      console.log(this.navParams.data, 'this.navParams.data');
+    //   console.log(this.navParams.data.last_refreshed, 'raghu1');
+    let lastRefreshed = this.navParams.data.last_refreshed;
+    this.navCtrl.push("AboutPage", lastRefreshed);
   }
       shareSheetShare() {
     // this.screenShotURL() ;
@@ -65,6 +66,10 @@ export class channels {
     lastWeekVisitsValue:any; lastWeekVisits:any = [];
     mapjson (){
       // today
+      var arr:string;
+       arr= this.navParams.data.detail_trends[0][0].name;
+      this.lastYear = arr.split('-');
+      // console.log(this.lastYear, 'console')
       this.data = Object.entries(this.navParams.data);
       this.cardName = Object.entries(this.data[0]);
       this.detailTrends = Object.entries(this.data[5])[1];
@@ -173,7 +178,7 @@ export class channels {
       bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth;
       margin = {top: 0, right: 3, bottom: 0, left: 0};
       width = bulletParentWidth -margin.left - margin.right;    
-      height = 30 - margin.top - margin.bottom;
+      height = 20 - margin.top - margin.bottom;
       chart = d3.bullet()
     .width(width)
     .height(height)
@@ -193,7 +198,11 @@ export class channels {
       });
             d3.selectAll('.bullet .measure.s0').attr('rx', 4);
             d3.selectAll('.bullet .measure.s0').attr('ry', 4);
-            d3.selectAll('.bullet .marker').style('stroke', "transparent");
+            d3.selectAll('.bullet .measure.s0').attr('x', -4);
+            d3.selectAll('.bullet .range.s0').attr('x', -4);
+            d3.selectAll('.bullet .range.s0').attr('rx', 8);
+            d3.selectAll('.bullet .range.s0').attr('ry', 8);
+            d3.selectAll('.hide-target .bullet .marker').style('stroke', "transparent");
 
   }// end of bullet chart fun
 
@@ -213,7 +222,7 @@ export class channels {
     kFormatter(num) {
         if (isNaN(num)) return 0;
         //	console.log(num);
-        if (num > 99999) {
+        if (num > 999999) {
             return (num / 1000000).toFixed(2) + 'M';
         } else {
             return num > 999 ? (num / 1000).toFixed(2) + 'k' : num.toFixed(2);

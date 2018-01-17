@@ -3,7 +3,7 @@
 
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
-$font-path: "../assets/fonts";
+$font-path: "../custom/fonts";
 
 
 // The app direction is used to include
@@ -11,8 +11,8 @@ $font-path: "../assets/fonts";
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 //fonts
-$font_0: sans-serif;
-// $helvetica: "helvetica-neue", sans-serif;
+$font_0: 'Helevetica-neue'sans-serif;
+$helvetica: "Helvetica-neue", sans-serif;
 
 @import "ionic.globals";
 
@@ -46,7 +46,10 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  white: #fff,
+  blue: #186fb1,
+  white-transparent: rgba(255,255,255, 0.2)
 );
 $sidemenu_text: #dedfdf;
 $sidemenu_bg: #272626;
@@ -74,20 +77,20 @@ $color_alto_approx: #ddd;
 $color_celeste_approx: #ccc;
 $transparent: transparent;
 $color_silver_approx: #bdbdbd;
-
 $web_orange: orange;
 $black_30: rgba(0, 0, 0, 0.3);
 $bar_graph_bg: #464646;
 $color_astronaut_blue_approx: #0a3b66;
 $color_flamenco_approx: rgb(255, 127, 14);
 $date_text: darkslateblue;
+$last_year_bullet_color: #F67811;
+$color_purple_legend: #6a47eb;
+$color_yellow_legend: #ffb300;
+$color_light_pink_legend: #ff9896;
 // $black_100: rgba(0, 0, 0, 1);
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
-
 
 // App Material Design Variables
 // --------------------------------------------------
@@ -128,13 +131,40 @@ $date_text: darkslateblue;
 @import "noto-sans";
 
 
-// @font-face{
-// 	font-family: 'Helvetica Neue';
-// 	font-style: normal;
-// 	font-weight: 400;
-// 	src: url('#{$font-path}/hevetica/HelveticaNeue.ttf');
-// }
 
-// span{
-// 	font-family: 'Helvetica Neue' !important;
-// }
+@font-face{
+	font-family: 'Helvetica-neue';
+	font-style: normal;
+	font-weight: 400;
+	src: url('#{$font-path}/HelveticaNeue.ttf');
+}
+@font-face{
+	font-family: 'Helvetica-neue-thin';
+	font-style: normal;
+	// font-weight: 400;
+	src: url('#{$font-path}/HelveticaNeue-Thin.otf');
+}
+@font-face{
+	font-family: 'Helvetica-neue-light';
+	font-style: normal;
+	// font-weight: 400;
+	src: url('#{$font-path}/HelveticaNeue-Light.otf');
+}
+@font-face{
+	font-family: 'Helvetica-neue-ultra-light';
+	font-style: normal;
+	// font-weight: 400;
+	src: url('#{$font-path}/HelveticaNeue-UltraLight.otf');
+}
+@font-face{
+	font-family: 'Helvetica-neue-bold';
+	font-style: normal;
+	// font-weight: bold;
+	src: url('#{$font-path}/helvetica-neue-bold.ttf');
+}
+*{
+  font-family: 'Helvetica-neue';
+  span{
+      font-family: 'Helvetica-neue-bold' !important;
+  }
+}

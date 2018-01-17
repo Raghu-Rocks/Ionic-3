@@ -1,0 +1,972 @@
+{
+"profile": {
+"display_name": "Raghu Nandan",
+"display_title": "Consultant, Adobe Global Services",
+"display_image": "https://expcloudapp.adobe.com/mca/assets/images/profile/missing.gif",
+"company_id": 11
+},
+"cards": [
+{
+"name": "Revenue Trend",
+"template": "summary",
+"date_today": "2018-01-17",
+"last_refreshed": "2018-01-17 02:49:37 EST",
+"collection": [
+{
+"name": "Today",
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"17/01": 67685
+},
+"Target": {
+"17/01": 0
+},
+"Projected": {
+"17/01": 0
+}
+}
+},
+{
+"name": "Last Year",
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"18/01": 1163037
+},
+"Target": {
+"18/01": 0
+}
+}
+},
+{
+"name": "Daily Trend",
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"09/01": 1195855,
+"10/01": 1179013,
+"11/01": 1198578,
+"12/01": 1690633,
+"13/01": 592985,
+"14/01": 548454,
+"15/01": 1039786,
+"16/01": 1234704,
+"17/01": 67685
+},
+"Target": {
+"09/01": 0,
+"10/01": 0,
+"11/01": 0,
+"12/01": 0,
+"13/01": 0,
+"14/01": 0,
+"15/01": 0,
+"16/01": 0,
+"17/01": 0
+},
+"Projected": {
+"17/01": 0
+}
+}
+}
+],
+"detail_trends": [
+[
+{
+"name": "Revenue Trend - Last Year",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"18/01": 1163037
+},
+"Target": {
+"18/01": 0
+}
+}
+}
+},
+{
+"name": "Revenue Trend - Today",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"17/01": 67685
+},
+"Target": {
+"17/01": 0
+},
+"Projected": {
+"17/01": 0
+}
+}
+}
+},
+{
+"name": "Revenue Report",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Hour",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"00 ": 42068,
+"01 ": 22763,
+"02 ": 2854,
+"03 ": null,
+"04 ": null,
+"05 ": null,
+"06 ": null,
+"07 ": null,
+"08 ": null,
+"09 ": null,
+"10 ": null,
+"11 ": null,
+"12 ": null,
+"13 ": null,
+"14 ": null,
+"15 ": null,
+"16 ": null,
+"17 ": null,
+"18 ": null,
+"19 ": null,
+"20 ": null,
+"21 ": null,
+"22 ": null,
+"23 ": null
+},
+"Target": {
+"00 ": 0,
+"01 ": 0,
+"02 ": 0,
+"03 ": 0,
+"04 ": 0,
+"05 ": 0,
+"06 ": 0,
+"07 ": 0,
+"08 ": 0,
+"09 ": 0,
+"10 ": 0,
+"11 ": 0,
+"12 ": 0,
+"13 ": 0,
+"14 ": 0,
+"15 ": 0,
+"16 ": 0,
+"17 ": 0,
+"18 ": 0,
+"19 ": 0,
+"20 ": 0,
+"21 ": 0,
+"22 ": 0,
+"23 ": 0
+}
+}
+}
+}
+]
+],
+"type": "USD"
+},
+{
+"name": "Orders Trend",
+"template": "summary",
+"date_today": "2018-01-17",
+"last_refreshed": "2018-01-17 02:49:34 EST",
+"collection": [
+{
+"name": "Today",
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"17/01": 67
+},
+"Target": {
+"17/01": 0
+},
+"Projected": {
+"17/01": 0
+}
+}
+},
+{
+"name": "Last Year",
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"18/01": 1065
+},
+"Target": {
+"18/01": 0
+}
+}
+},
+{
+"name": "Daily Trend",
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"09/01": 1105,
+"10/01": 1071,
+"11/01": 1027,
+"12/01": 1011,
+"13/01": 666,
+"14/01": 654,
+"15/01": 951,
+"16/01": 1142,
+"17/01": 67
+},
+"Projected": {
+"17/01": 0
+}
+}
+}
+],
+"detail_trends": [
+[
+{
+"name": "Orders Hourly Trend - Last Year",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"18/01": 1065
+},
+"Target": {
+"18/01": 0
+}
+}
+}
+},
+{
+"name": "Orders Hourly Trend - Today",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"17/01": 67
+},
+"Projected": {
+"17/01": 0
+}
+}
+}
+},
+{
+"name": "Orders Report",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Hour",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"00 ": 39,
+"01 ": 23,
+"02 ": 5,
+"03 ": null,
+"04 ": null,
+"05 ": null,
+"06 ": null,
+"07 ": null,
+"08 ": null,
+"09 ": null,
+"10 ": null,
+"11 ": null,
+"12 ": null,
+"13 ": null,
+"14 ": null,
+"15 ": null,
+"16 ": null,
+"17 ": null,
+"18 ": null,
+"19 ": null,
+"20 ": null,
+"21 ": null,
+"22 ": null,
+"23 ": null
+}
+}
+}
+}
+]
+],
+"type": "formatter"
+},
+{
+"name": "Traffic Trend",
+"template": "summary",
+"date_today": "2018-01-17",
+"last_refreshed": "2018-01-17 02:49:34 EST",
+"collection": [
+{
+"name": "Today",
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"17/01": 12458
+},
+"Target": {
+"17/01": 0
+},
+"Projected": {
+"17/01": 0
+}
+}
+},
+{
+"name": "Last Year",
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"18/01": 325005
+},
+"Target": {
+"18/01": 0
+}
+}
+},
+{
+"name": "Daily Trend",
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"09/01": 332670,
+"10/01": 313275,
+"11/01": 316753,
+"12/01": 302082,
+"13/01": 201389,
+"14/01": 182243,
+"15/01": 269834,
+"16/01": 303224,
+"17/01": 12458
+},
+"Target": {
+"09/01": 0,
+"10/01": 0,
+"11/01": 0,
+"12/01": 0,
+"13/01": 0,
+"14/01": 0,
+"15/01": 0,
+"16/01": 0,
+"17/01": 0
+},
+"Projected": {
+"17/01": 0
+}
+}
+}
+],
+"detail_trends": [
+[
+{
+"name": "Traffic Trend - Last Year",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"18/01": 325005
+},
+"Target": {
+"18/01": 0
+}
+}
+}
+},
+{
+"name": "Traffic Trend - Today",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Date",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"17/01": 12458
+},
+"Target": {
+"17/01": 0
+},
+"Projected": {
+"17/01": 0
+}
+}
+}
+},
+{
+"name": "Traffic Report",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Hour",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"00 ": 6628,
+"01 ": 4656,
+"02 ": 1814,
+"03 ": null,
+"04 ": null,
+"05 ": null,
+"06 ": null,
+"07 ": null,
+"08 ": null,
+"09 ": null,
+"10 ": null,
+"11 ": null,
+"12 ": null,
+"13 ": null,
+"14 ": null,
+"15 ": null,
+"16 ": null,
+"17 ": null,
+"18 ": null,
+"19 ": null,
+"20 ": null,
+"21 ": null,
+"22 ": null,
+"23 ": null
+},
+"Target": {
+"00 ": 0,
+"01 ": 0,
+"02 ": 0,
+"03 ": 0,
+"04 ": 0,
+"05 ": 0,
+"06 ": 0,
+"07 ": 0,
+"08 ": 0,
+"09 ": 0,
+"10 ": 0,
+"11 ": 0,
+"12 ": 0,
+"13 ": 0,
+"14 ": 0,
+"15 ": 0,
+"16 ": 0,
+"17 ": 0,
+"18 ": 0,
+"19 ": 0,
+"20 ": 0,
+"21 ": 0,
+"22 ": 0,
+"23 ": 0
+}
+}
+}
+}
+]
+],
+"type": "formatter"
+},
+{
+"name": "Traffic by Referrer Types",
+"template": "channels",
+"date_today": "2018-01-17",
+"last_refreshed": "2018-01-17 02:49:41 EST",
+"collection": [
+{
+"name": "Today",
+"axis_label": {
+"x_axis": "Referrer Type",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"17/01": {
+"Direct": 61.77,
+"Social": 1.9,
+"Search": 30.2,
+"Others": 6.13
+}
+}
+}
+},
+{
+"name": "Today&#039;s Breakup",
+"axis_label": {
+"x_axis": "Referrer Type",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"17/01": {
+"Direct": 7164,
+"Social": 220,
+"Search": 3503,
+"Others": 711
+}
+}
+}
+}
+],
+"detail_trends": [
+[
+{
+"name": "Traffic by Referrer Types - Last Year",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Referrer Type",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"18/01": {
+"Direct": 199363,
+"Social": 1884,
+"Search": 67608,
+"Others": 9863
+}
+}
+}
+}
+},
+{
+"name": "Traffic by Referrer Types - Today",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Referrer Type",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"17/01": {
+"Direct": 7164,
+"Social": 220,
+"Search": 3503,
+"Others": 711
+}
+}
+}
+}
+},
+{
+"name": "Orders by Channel - Last Year",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Referrer Type",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"18/01": {
+"Direct": 550,
+"Social": 6,
+"Search": 243,
+"Others": 87
+}
+}
+}
+}
+},
+{
+"name": "Orders by Channel - Today",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Referrer Type",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"17/01": {
+"Direct": 21,
+"Social": 2,
+"Search": 25,
+"Others": 12
+}
+}
+}
+}
+},
+{
+"name": "Revenue by Channel - Last Year",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Referrer Type",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"18/01": {
+"Direct": 648396,
+"Social": 11822,
+"Search": 220226,
+"Others": 82997
+}
+}
+}
+}
+},
+{
+"name": "Revenue by Channel - Today",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Referrer Type",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"17/01": {
+"Direct": 22057,
+"Social": 2583,
+"Search": 25724,
+"Others": 12393
+}
+}
+}
+}
+}
+]
+],
+"type": "formatter"
+},
+{
+"name": "Traffic by Top Products",
+"template": "channels",
+"date_today": "2018-01-17",
+"last_refreshed": "2018-01-17 02:49:41 EST",
+"collection": [
+{
+"name": "Today",
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"17/01": {
+"X1 Carbon 5th Generation": 2.02,
+"Lenovo YOGA 920-13IKB": 1.47,
+"T470": 1.01,
+"Lenovo ideapad FLEX 5-1470": 0.93,
+"Lenovo ideapad 720S-13IKB": 0.93,
+"Others": 93.65
+}
+}
+}
+},
+{
+"name": "Today&#039;s Breakup",
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"17/01": {
+"X1 Carbon 5th Generation": 312,
+"Lenovo YOGA 920-13IKB": 226,
+"T470": 155,
+"Lenovo ideapad FLEX 5-1470": 144,
+"Lenovo ideapad 720S-13IKB": 143,
+"Others": 14441
+}
+}
+}
+}
+],
+"detail_trends": [
+[
+{
+"name": "Traffic by Top Products - Last Year",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"18/01": {
+"Lenovo YOGA 910-14IKB": 3697,
+"X1 Carbon 4th Generation": 2899,
+"T460s": 1729,
+"T460": 1694,
+"P50": 1582,
+"Others": 346683
+}
+}
+}
+}
+},
+{
+"name": "Traffic by Top Products - Today",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Visits"
+},
+"data": {
+"Visits": {
+"17/01": {
+"X1 Carbon 5th Generation": 312,
+"Lenovo YOGA 920-13IKB": 226,
+"T470": 155,
+"Lenovo ideapad FLEX 5-1470": 144,
+"Lenovo ideapad 720S-13IKB": 143,
+"Others": 14441
+}
+}
+}
+}
+}
+]
+],
+"type": "formatter"
+},
+{
+"name": "Orders by Top Products",
+"template": "channels",
+"date_today": "2018-01-17",
+"last_refreshed": "2018-01-17 02:49:41 EST",
+"collection": [
+{
+"name": "Today",
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"17/01": {
+"Warranty Upgrades": 8.65,
+"X1 Carbon 4th Generation": 4.81,
+"Protection": 3.85,
+"X1 Carbon 5th Generation": 3.85,
+"T460s": 3.85,
+"Others": 75
+}
+}
+}
+},
+{
+"name": "Today&#039;s Breakup",
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"17/01": {
+"Warranty Upgrades": 9,
+"X1 Carbon 4th Generation": 5,
+"Protection": 4,
+"X1 Carbon 5th Generation": 4,
+"T460s": 4,
+"Others": 78
+}
+}
+}
+}
+],
+"detail_trends": [
+[
+{
+"name": "Orders by Top Products - Last Year",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"18/01": {
+"Warranty Upgrades": 176,
+"Protection": 80,
+"X1 Carbon 4th Generation": 63,
+"T460s": 61,
+"MS OFFICE": 48,
+"Others": 1118
+}
+}
+}
+}
+},
+{
+"name": "Orders by Top Products - Today",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Orders"
+},
+"data": {
+"Orders": {
+"17/01": {
+"Warranty Upgrades": 9,
+"X1 Carbon 4th Generation": 5,
+"Protection": 4,
+"X1 Carbon 5th Generation": 4,
+"T460s": 4,
+"Others": 78
+}
+}
+}
+}
+}
+]
+],
+"type": "formatter"
+},
+{
+"name": "Revenue by Top Products",
+"template": "channels",
+"date_today": "2018-01-17",
+"last_refreshed": "2018-01-17 02:49:52 EST",
+"collection": [
+{
+"name": "Today",
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"17/01": {
+"P51": 12.02,
+"X1 Carbon 4th Generation": 9.77,
+"X1 Carbon 5th Generation": 8.48,
+"Lenovo YOGA 920-13IKB": 6.31,
+"X1 YOGA 2nd Generation": 5.53,
+"Others": 57.89
+}
+}
+}
+},
+{
+"name": "Today&#039;s Breakup",
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"17/01": {
+"P51": 8133,
+"X1 Carbon 4th Generation": 6615,
+"X1 Carbon 5th Generation": 5738,
+"Lenovo YOGA 920-13IKB": 4270,
+"X1 YOGA 2nd Generation": 3744,
+"Others": 39184
+}
+}
+}
+}
+],
+"detail_trends": [
+[
+{
+"name": "Revenue by Top Products - Last Year",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"18/01": {
+"T460s": 117831,
+"X1 Carbon 4th Generation": 116813,
+"T560": 98438,
+"P50": 75679,
+"T460": 64093,
+"Others": 662353
+}
+}
+}
+}
+},
+{
+"name": "Revenue by Top Products - Today",
+"template": "trend",
+"collection": {
+"axis_label": {
+"x_axis": "Product",
+"y_axis": "Revenue"
+},
+"data": {
+"Revenue": {
+"17/01": {
+"P51": 8133,
+"X1 Carbon 4th Generation": 6615,
+"X1 Carbon 5th Generation": 5738,
+"Lenovo YOGA 920-13IKB": 4270,
+"X1 YOGA 2nd Generation": 3744,
+"Others": 39184
+}
+}
+}
+}
+}
+]
+],
+"type": "USD"
+}
+],
+"success": true
+}

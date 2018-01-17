@@ -66,9 +66,9 @@ d3.bullet = function() {
       measure.enter().append("rect")
           .attr("class", function(d, i) { return "measure s" + i; })
           .attr("width", w0)
-          .attr("height", height / 3)
+          .attr("height", height / 2)
           .attr("x", reverse ? x0 : 0)
-          .attr("y", height / 3)
+          .attr("y", height / 4)
         .transition()
           .duration(duration)
           .attr("width", w1)
@@ -77,9 +77,9 @@ d3.bullet = function() {
       measure.transition()
           .duration(duration)
           .attr("width", w1)
-          .attr("height", height / 3)
+          .attr("height", height / 2)
           .attr("x", reverse ? x1 : 0)
-          .attr("y", height / 3);
+          .attr("y", height / 4);
 
       // Update the marker lines.
       var marker = g.selectAll("line.marker")
@@ -89,8 +89,8 @@ d3.bullet = function() {
           .attr("class", "marker")
           .attr("x1", x0)
           .attr("x2", x0)
-          .attr("y1", height / 6)
-          .attr("y2", height * 5 / 6)
+          .attr("y1", height / 12)
+          .attr("y2", height * 5 / 4)
         .transition()
           .duration(duration)
           .attr("x1", x1)
@@ -100,8 +100,8 @@ d3.bullet = function() {
           .duration(duration)
           .attr("x1", x1)
           .attr("x2", x1)
-          .attr("y1", height / 6)
-          .attr("y2", height * 5 / 6);
+          .attr("y1", height / 12)
+          .attr("y2", height * 5 / 4);
 
       // Compute the tick format.
       var format = tickFormat || x1.tickFormat(8);

@@ -32,6 +32,7 @@ export class Card1Page implements AfterViewInit{
     public cardTargetProjected: any;    public jsonData: any;                     public mainArray: any;                     
     public collectionArray: any;            public lastWeek: any;                     public dataArray: any;                  
     public targetValue: any = [];           public actualValue: any = [];          public projectedValue: any = [];
+    public targetValueL: any = [];           public actualValueL: any = [];          public projectedValueL: any = [];
     public tdy: any;                               public lstWeekData: any;               public title: any;
 
     barDataArray: any; barData: any; title1: any; barDataTarget: any; barDataProjected: any; barActualValue: any = [];
@@ -55,7 +56,7 @@ export class Card1Page implements AfterViewInit{
 
     navigateToDetailPage(hero) {
         this.navCtrl.push("summary", hero);
-        // console.log(this.hero, "hero");
+        console.log(this.hero, "hero");
     }
     shareSheetShare() {
         // this.screenShotURL() ;
@@ -79,7 +80,7 @@ export class Card1Page implements AfterViewInit{
         this.processBarChart();
         // console.log("#bulletTdy" + this.card_index, this.tdy, this.projectedValue, this.targetValue, this.actualValue, 'valllles');
         this.processBulletChart("#bulletTdy" + this.card_index, this.tdy, this.projectedValue, this.targetValue, this.actualValue);
-        this.processBulletChart("#bulletLstWeek" + this.card_index, this.lstWeekData, this.projectedValue, this.targetValue, this.actualValue);
+        this.processBulletChart("#bulletLstWeek" + this.card_index, this.lstWeekData, this.projectedValueL, this.targetValueL, this.actualValueL);
     }// fun ngafterViewInit ends here
 
     // fun for mapping the json data starts here, the variables are decleard at top
@@ -221,10 +222,10 @@ export class Card1Page implements AfterViewInit{
                 }//for(var test_val in test)
             }
         }
-        if (projectedValue.length > 0) {
-            // console.log(this.projectedValue, this.targetValue, this.actualValue, 'array output3');
+        if (actualValue.length > 0) {
+            console.log(actualValue, targetValue,projectedValue,  'array output3');
             for (var j = 0; j < actualValue.length; j++) {
-                var bulletStackData = [{ "ranges": [0, projectedValue[j], 0], "measures": [actualValue[j]], "markers": [targetValue] }]
+                var bulletStackData = [{ "ranges": [0, projectedValue[j], 0], "measures": [actualValue[j]], "markers": [targetValue[j]] }]
                 this.renderBulletChart(whereToPut, bulletStackData);
                 //   if (condition) {
 
@@ -236,6 +237,7 @@ export class Card1Page implements AfterViewInit{
         var count1 = 0; var count2 = 0; var count3 = 0;
         if (this.title.indexOf('Project') != -1) { // it will be background color of graph
             outputProjected[count1] = objectArray;
+            // console.log(objectArray, 'test')
             count1++;
             // console.log(count1, 'count');
         }
@@ -258,7 +260,7 @@ export class Card1Page implements AfterViewInit{
         bulletParentWidth = this.bulletCharts.nativeElement.offsetWidth;
         bulletmargin = { top: 0, right: 3, bottom: 0, left: 0 };
         bulletwidth = bulletParentWidth - bulletmargin.left - bulletmargin.right;
-        bulletHeight = 30 - bulletmargin.top - bulletmargin.bottom;
+        bulletHeight = 20 - bulletmargin.top - bulletmargin.bottom;
         bulletchart = d3.bullet()
             .width(bulletwidth)
             .height(bulletHeight)
@@ -274,6 +276,8 @@ export class Card1Page implements AfterViewInit{
             .call(bulletchart);
             d3.selectAll('.bullet .measure.s0').attr('rx', 4);
             d3.selectAll('.bullet .measure.s0').attr('ry', 4);
+            d3.selectAll('.bullet .range.s0').attr('rx', 10);
+            d3.selectAll('.bullet .range.s0').attr('ry', 10);
 
     }// end of bullet chart fun
 
@@ -374,13 +378,18 @@ export class Card1Page implements AfterViewInit{
         // this.barTargetValue.unshift('data2');
         this.barActualValue[0] = 'data1';
         this.barTargetValue[0] = 'data2';
-
+// console.log(this.barActualValue, 'bar data');
         var barStackData = [this.barActualValue, this.barTargetValue];
         this.barChart("#barChart" + this.card_index, barStackData, this.card_index);
         // console.log('date',this.barDataDate);
     }
       // fun for barChart starts here for home page card
    barChart(whereToPut, whatToPut, cardIndex) {
+        var indexToRemove = 0;
+        var numberToRemove = 1;
+        this.barDataDate.splice(indexToRemove, numberToRemove);
+        // console.log('date removed',this.barDataDate);
+        
         let self:any = this;
         c3.generate({
             bindto: whereToPut,
@@ -393,12 +402,21 @@ export class Card1Page implements AfterViewInit{
                 columns: whatToPut,
                 labels: {
                     format: function (v, id, i, j) {
-                                 if(self.hero.type == "percentage") {
-                                    return v + '%';
+                                switch (self.hero.type) {
+                                case 'formatter':
+                                    v = self.kFormatter(v); 
+                                    break;
+                                case 'percentage':
+                                    v =  v + '%';
+                                    break;
+                                case 'INR':
+                                    v = '₹' + self.kFormatter(v); 
+                                    break;
+                                case 'USD':
+                                    v = '$' + self.kFormatter(v);
+                                    break;
                                 }
-                                else if(self.hero.type == "formatter") {
-                                    return self.kFormatter(v); 
-                                }
+                                return v;
                             }
                 },
                 colors: {
@@ -448,7 +466,7 @@ export class Card1Page implements AfterViewInit{
     kFormatter(num) {
         if (isNaN(num)) return 0;
         //	console.log(num);
-        if (num > 99999) {
+        if (num > 999999) {
             return (num / 1000000).toFixed(2) + 'M';
         } else {
             return num > 999 ? (num / 1000).toFixed(2) + 'k' : num.toFixed(2);

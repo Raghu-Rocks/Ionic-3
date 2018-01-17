@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, NavController, AlertController, Events } from 'ionic-angular';
+import { App,Platform, Nav, NavController, AlertController, Events } from 'ionic-angular';
 import { Push } from '@ionic/cloud-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,6 +31,7 @@ export class MyApp{
 	public navCtrl:NavController;  
 
 	constructor(
+		public app: App,
 		public platform: Platform, 
 		public statusBar: StatusBar, 
 		public splashScreen: SplashScreen, 
@@ -73,7 +74,9 @@ export class MyApp{
 	fetchData(emittToken): any{
 		this.storage.get('IMSIToken').then((val) => {
 			let APIurl = this.validateTokenURL + val;
+			console.log(val, 'val1');
 			if (val === null) {
+				console.log(val, 'val2')
 				APIurl = this.validateTokenURL + emittToken;
 			}
 			this.loadPeople(APIurl);
@@ -96,7 +99,6 @@ export class MyApp{
 				//  console.log(this.people,'this.people',data,'data');
 			});
 	}
-
 	notification(){
 		this.push.rx.notification()
 			.subscribe((msg) => {
@@ -113,10 +115,11 @@ export class MyApp{
 	/* Logout Action */
 		var logOutURL = this.logOutURLBase + this.authToken;
 		var browser = this.iab.create(logOutURL, "_blank", "location=no,toolbar=no");
-		this.nav.push(LoginPage);
+		// this.nav.push(LoginPage);
 		browser.on('loadstop').subscribe((data) => {
 			if (data.url.indexOf(this.logoutURLFormat) !== -1) {
 				this.storage.clear(); 
+				this.app.getRootNav().setRoot(LoginPage);
 				browser.close();
 			}
 		});
@@ -126,17 +129,17 @@ export class MyApp{
 		this.platform.ready().then(() => {
             // this.notification(); // notification alert
 			this.statusBar.styleDefault();
-			this.splashScreen.hide();			
-			// this.storage.length().then((val) =>{
-			// 	this.tokenLength = val;
-			// 		if(this.tokenLength > 0){
-			// 			setTimeout(() => {
-			// 				this.splashScreen.hide();
-			// 			}, 100);
-			// 		}else{
-			// 				this.splashScreen.hide();
-			// 		}
-			// });
+			// this.splashScreen.hide();			
+			this.storage.length().then((val) =>{
+				this.tokenLength = val;
+					if(this.tokenLength > 0){
+						setTimeout(() => {
+							this.splashScreen.hide();
+						}, 200);
+					}else{
+							this.splashScreen.hide();
+					}
+			});
 		});
 	}
 }

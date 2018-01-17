@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage,NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the AboutPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-about',
@@ -32,20 +26,23 @@ onRefresh(){
   // }
 
       mapjson (){
-        if (this.navParams.data.length < 5) {
-              this.data = Object.entries(this.navParams.data);
-              this.lastRefreshed = Object.entries(this.data[0][1])[3][1];
-              // this.lastRefreshed = Object.values(this.card1);
-              // console.log(this.lastRefreshed, 'data'); 
-        }
-        else if (this.navParams.data.length > 5){
-              this.data = Object.entries(this.navParams.data);
-              this.card1 = Object.entries(this.data[3][1]);
-              this.lastRefreshed = Object.entries(this.card1)[1][1][1];
-              // console.log(this.lastRefreshed, 'lastRefreshed'); 
-          
-        }
-
+            console.log(this.navParams.data, 'about');
+            this.lastRefreshed = this.navParams.data;            
+            // console.log(typeof this.lastRefreshed, 'type');
+            // console.log(this.navParams.data.length, 'about');
+            // let lastCard:any = this.navParams.data.length - 1;
+            // if(typeof(this.navParams.data) !== 'undefined' && !isNaN(lastCard)){
+            //       // console.log(lastCard, 'lastCard', typeof lastCard);
+            //       this.data = Object.entries(this.navParams.data[lastCard]);
+            //       for (lastCard in this.data) {
+            //             let val = this.data[lastCard];
+            //                   console.log(val, 'value');
+            //             if (val.indexOf('last_refreshed') != -1) {
+                                    // this.lastRefreshed = val[1];
+            //             }
+            //       }
+            //   console.log(this.lastRefreshed, 'data');
+            // }
       }
 
 }
